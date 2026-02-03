@@ -326,3 +326,22 @@ body.font-use-sfmono-square {
 body.font-use-ubuntu-mono {
   --font-family-mono: 'UbuntuSansMono-Regular', sans-serif;
 }
+
+/* Custom for Now */
+@font-face {
+  font-family: MPlusCodeLatin;
+  src: url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100..700&display=swap');
+}
+
+body.font-use-m-plus-latin {
+  --font-family-mono: 'MPlusCodeLatin', sans-serif;
+}
+
+@font-face {
+  font-family: Junicode;
+  src: url('https://fonts.cdnfonts.com/css/junicode');
+}
+
+body.font-use-junicode {
+  --font-family-serif: 'Junicode', serif;
+}

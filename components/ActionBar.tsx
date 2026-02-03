@@ -5,7 +5,7 @@ import * as Utilities from '@common/utilities';
 
 import ButtonGroup from '@components/ButtonGroup';
 
-interface ActionBarItem {
+export interface ActionBarItem {
   hotkey?: string;
   onClick?: () => void;
   openHotkey?: string;
@@ -14,7 +14,7 @@ interface ActionBarItem {
   items?: any;
 }
 
-interface ActionBarProps {
+export interface ActionBarProps {
   items: ActionBarItem[];
 }
 

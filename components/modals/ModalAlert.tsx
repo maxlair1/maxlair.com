@@ -5,7 +5,7 @@ import styles from '@components/modals/ModalAlert.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import { useModals } from '@components/page/ModalContext';
+import { useModals } from '@root/components/ref-page/ModalContext';
 
 import Button from '@components/Button';
 import Card from '@components/Card';

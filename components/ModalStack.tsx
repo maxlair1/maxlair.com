@@ -4,7 +4,7 @@ import styles from '@components/ModalStack.module.css';
 
 import * as React from 'react';
 
-import { useModals } from '@components/page/ModalContext';
+import { useModals } from '@root/components/ref-page/ModalContext';
 
 interface ModalStackProps {}
 

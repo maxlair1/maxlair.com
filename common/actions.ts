@@ -1,6 +1,6 @@
 import { type ActionBarItem, type ActionBarProps } from '@components/ActionBar';
 
-const siteActions: ActionBarItem[] = [
+const actions: ActionBarItem[] = [
     {
         body: "Test",
         items: [
@@ -16,4 +16,4 @@ const siteActions: ActionBarItem[] = [
     }
 ];
 
-export default siteActions;
+export default actions;

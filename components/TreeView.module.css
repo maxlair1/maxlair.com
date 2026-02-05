@@ -6,7 +6,7 @@
 .item {
   cursor: pointer;
 
-  &:focus {
+  &:focus, &:hover {
     outline: 0;
     border: 0;
     background: var(--theme-focused-foreground);

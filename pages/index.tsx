@@ -7,6 +7,8 @@ import DebugGrid from '@root/components/DebugGrid';
 import { Logo } from '@root/common/constants';
 import Divider from '@root/components/Divider';
 import Link from 'next/link';
+import DataTable from '@root/components/DataTable';
+import Footer from '@root/components/Footer'
 
 const styles = {
     display: 'flex',
@@ -16,6 +18,14 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
 }
+
+
+const links = [
+    ["check out my thoughts", "[link]"],
+    ["check out my thoughts", "[link]"],
+    ["check out my thoughts", "[link]"],
+    ["check out my thoughts", "[link]"],
+]
 
 export default function Welcome() {
   
@@ -35,12 +45,12 @@ export default function Welcome() {
         </div>
         <div>
             <Divider />
-            Welcome to my labratory site. It's a pleasure to meet you.
-            <br/>
-            Feel free to parooze 
-            <br/>
-            <Link href="#">check out my thoughts</Link><br/>
-            <Link href="#">look at cool stuff</Link><br/>
+            <DataTable data={links}>
+
+            </DataTable>
+            {/* <Link href="#">check out my thoughts</Link><br/>
+            <Link href="#">look at cool stuff</Link><br/> */}
+            <Footer></Footer>
         </div>
     </RootLayout>
   );

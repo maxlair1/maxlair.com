@@ -576,8 +576,8 @@ body {
   --color-white-2: rgba(255, 255, 255, 0.2);
   --color-white-4: rgba(255, 255, 255, 0.4);
 
-  --font-family-mono: 'MPlusCodeLatin', Consolas, monaco, monospace;
-  --font-family-serif: 'Junicode', Georgia, Times New Roman, serif;
+  --font-family-mono: 'Inconsolata', Consolas, monaco, monospace;
+  --font-family-serif: 'Merriweather', Georgia, Times New Roman, serif;
   --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
 
   --theme-text: var(--color-black-100);

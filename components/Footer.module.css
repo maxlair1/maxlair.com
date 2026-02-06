@@ -1,0 +1,14 @@
+.grid-container {
+  display: grid;
+  /* auto-fit fills the space with as many columns as possible with a min width of 200px */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px; /* spacing between grid items */
+  padding: 20px;
+}
+
+.grid-item {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}

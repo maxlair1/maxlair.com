@@ -2,34 +2,46 @@ import * as React from 'react';
 import SidebarLayout from '@root/components/SidebarLayout';
 import ExplorerPage from './explorer';
 import PageLoading from '@root/components/PageLoading';
-import Layout from './layout';
+import { RootLayout } from '../components/layouts/layouts';
+import DebugGrid from '@root/components/DebugGrid';
+import { Logo } from '@root/common/constants';
+import Divider from '@root/components/Divider';
+import Link from 'next/link';
 
-export default function HomePage() {
-  const [progress, setProgress] = React.useState(0);
+const styles = {
+    display: 'flex',
+    margin: '0 auto',
+    paddingBlock: '30vh',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+}
 
-  React.useEffect(() => {
-    const steps = 10;
-    const duration = 1000;
-    const timePerStep = duration / steps;
-    let currentStep = 0;
-
-    const interval = setInterval(() => {
-      currentStep++;
-      setProgress((currentStep / steps) * 100);
-      
-      if (currentStep >= steps) {
-        currentStep = 0; // Loop
-      }
-    }, timePerStep);
-
-    return () => clearInterval(interval);
-  }, []);
+export default function Welcome() {
+  
 
   return (
-    <Layout>
-        <main style={{padding: 24}}>
-            <PageLoading progress={progress} fullscreen={true}></PageLoading>
-        </main>
-    </Layout>
+    <RootLayout>
+        {/* <PageLoading progress={10}></PageLoading> */}
+        <div style={styles}>
+            <div style={{textAlign: 'center'}}>
+                <p style={{fontFamily: 'Junicode', fontSize: '16px'}}>
+                    Max Lair
+                </p>
+                <pre style={{ margin: 0, fontFamily: 'monospace', color: 'var(--theme-focused-foreground)' }}>
+                    {Logo.map(row => row.join('')).join('\n')}
+                </pre>
+            </div>
+        </div>
+        <div>
+            <Divider />
+            Welcome to my labratory site. It's a pleasure to meet you.
+            <br/>
+            Feel free to parooze 
+            <br/>
+            <Link href="#">check out my thoughts</Link><br/>
+            <Link href="#">look at cool stuff</Link><br/>
+        </div>
+    </RootLayout>
   );
 }

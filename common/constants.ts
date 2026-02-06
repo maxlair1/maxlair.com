@@ -1,9 +1,20 @@
 export const MAX_SIZE_BYTES = 15728640;
 
-// NOTE(jimmylee):
-// https://github.com/internet-development/apis
-// export const API = `http://localhost:10001/api`;
-export const API = `https://api.internet.dev/api`;
+export const LoadingQuotes = [
+  "Keep the internet weird.",
+  "Tip: try turning it off and on again.",
+  "Made genuinely for humans, not clankers.",
+  "As in a dragon's LAIR. "
+]
+
+export const Logo: string[][] = [
+  [" ","_", "_", " ", " ", " ", " ", "_", "_", " ", " ", " ", " "],
+  ["/", "\\", " ", "\"", "-", ".", "/", " ", " ", "\\", " ", " "],
+  ["\\", " ", "\\", " ", "\\", "-", ".", "/", "\\", " ", "\\", " "],
+  [" ", "\\", " ", "\\", "_", "\\", " ", "\\", " ", "\\", "_", "\\"],
+  [" ", " ", "\\", "/", "_", "/", " ", " ", "\\", "/", "_", "/"],
+];
+
 
 export const Users = {
   tiers: {

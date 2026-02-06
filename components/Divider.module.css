@@ -20,6 +20,6 @@
   background: var(--theme-text);
   display: block;
   flex-shrink: 0;
-  height: 2px;
+  height: 1px;
   width: 100%;
 }

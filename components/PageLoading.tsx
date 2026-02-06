@@ -2,6 +2,14 @@ import * as React from 'react';
 
 import BlockLoader from './BlockLoader';
 import BarLoader from './BarLoader';
+import { LoadingQuotes } from '@root/common/constants';
+
+export interface PageLoadingProps {
+    progress: number;
+    fullscreen?: boolean;
+    label?: string;
+    quote?: boolean;
+}
 
 const styles_container = {
     display: 'flex',
@@ -9,28 +17,24 @@ const styles_container = {
     gap: '0.5rem',
 }
 
-const styles_screen = {
-    maxWidth: '80ch',
-    margin: '0 auto',
-    padding: '24px',
-}
+export default function PageLoading({ progress, fullscreen, label, quote = true }: PageLoadingProps) {
 
-export interface PageLoadingProps {
-    progress: number;
-    fullscreen?: boolean;
-    label?: string;
-}
+    const [selectedQuote, setSelectedQuote] = React.useState<string>(LoadingQuotes[0]);
 
-export default function PageLoading({ progress, fullscreen, label }: PageLoadingProps) {
+    React.useEffect(() => {
+        setSelectedQuote(LoadingQuotes[Math.floor(Math.random() * LoadingQuotes.length)]);
+    }, []);
+
     return (
-        <div style={styles_screen}>
-            <div style={styles_container}>
-                <div>
-                {label ?? 'Loading...'}
-                <BlockLoader mode={2}></BlockLoader>
-                </div>
-                <BarLoader progress={progress} intervalRate={1}></BarLoader>
+        <div style={styles_container}>
+            <div>
+            {label ?? 'Loading...'}
+            <BlockLoader mode={2}></BlockLoader>
             </div>
+            <BarLoader progress={progress} intervalRate={1}/>
+            <>
+            {quote ? selectedQuote : null}
+            </>
         </div>
     );
 }

@@ -9,6 +9,7 @@ import Divider from '@root/components/Divider';
 import Link from 'next/link';
 import DataTable from '@root/components/DataTable';
 import Footer from '@root/components/Footer'
+import { dina } from '@root/common/type';
 
 const styles = {
     display: 'flex',
@@ -33,11 +34,8 @@ export default function Welcome() {
   return (
     <RootLayout>
         {/* <PageLoading progress={10}></PageLoading> */}
-        <div style={styles}>
+        <div style={styles} className={dina.variable}>
             <div style={{textAlign: 'center'}}>
-                <p style={{fontFamily: 'Junicode', fontSize: '16px'}}>
-                    Max Lair
-                </p>
                 <pre style={{ margin: 0, fontFamily: 'monospace', color: 'var(--theme-focused-foreground)' }}>
                     {Logo.map(row => row.join('')).join('\n')}
                 </pre>

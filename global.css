@@ -576,13 +576,13 @@ body {
   --color-white-2: rgba(255, 255, 255, 0.2);
   --color-white-4: rgba(255, 255, 255, 0.4);
 
-  --font-family-mono: 'Inconsolata', Consolas, monaco, monospace;
+  --font-family-mono: var(--font-dina);
   --font-family-serif: 'Merriweather', Georgia, Times New Roman, serif;
-  --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
+  --font-family: var(--font-dina), -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
 
   --theme-text: var(--color-black-100);
   --theme-line-height-base: 1.25;
-  --font-size: 14px;
+  --font-size: 16px;
 
   --z-index-page: 1;
   --z-index-page-select: 3;
@@ -593,7 +593,7 @@ body {
 
   background: var(--theme-background);
   color: var(--theme-text);
-  font-family: var(--font-family-mono);
+  font-family: var(--font-dina);
   line-height: calc(var(--theme-line-height-base) * 1rem);
 
   font-size: var(--font-size);

@@ -1,8 +1,8 @@
 .root {
   padding-left: 1ch;
 
-  &:focus {
+  /* &:focus {
     outline: 0;
     background: var(--theme-focused-foreground);
-  }
+  } */
 }

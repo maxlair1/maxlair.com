@@ -4,7 +4,7 @@ import Card from '@root/components/Card';
 
 export default function Explorer(): React.ReactNode {
     return (
-        <>
+        <div className='theme-dark'>
             <TreeView defaultValue={true} isRoot title="Animal Kingdom">
                 <TreeView defaultValue={true} title="Chordata">
                 <TreeView defaultValue={true} title="Mammalia">
@@ -66,7 +66,7 @@ export default function Explorer(): React.ReactNode {
                 </TreeView>
                 </TreeView>
             </TreeView>
-        </>
+        </div>
 
     );
 }

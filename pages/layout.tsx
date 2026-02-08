@@ -27,10 +27,10 @@ const Footer:React.FC = () => {
 }
 
 
-export function RootLayout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-us">
-      <body className="theme-dark tint-orange">
+      <body className="theme-light tint-orange">
         <Providers>
           <main>
             {children}

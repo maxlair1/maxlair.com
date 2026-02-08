@@ -1,6 +1,7 @@
 import styles from '@components/Grid.module.css';
 
 import * as React from 'react';
+import { Children, cloneElement } from 'react';
 
 interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;

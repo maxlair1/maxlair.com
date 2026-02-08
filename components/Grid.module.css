@@ -1,4 +1,11 @@
 .grid {
-  display: block;
-  padding: calc(var(--font-size) * var(--theme-line-height-base)) 2ch calc(var(--font-size) * var(--theme-line-height-base)) 2ch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-rows: 0;
+  gap: 20px; /* spacing between grid items */
+  /* padding: calc(var(--font-size) * var(--theme-line-height-base)) 2ch calc(var(--font-size) * var(--theme-line-height-base)) 2ch; */
+}
+
+.grid-item, .grid > * {
+  text-align: left;
 }

@@ -6,10 +6,16 @@
 .item {
   cursor: pointer;
 
-  &:focus, &:hover {
+  &:hover {
     outline: 0;
     border: 0;
     background: var(--theme-focused-foreground);
+  }
+
+  &:focus{
+    outline: 0;
+    border: 0;
+    background: var(--theme-focused-foreground-subdued);
   }
 }
 

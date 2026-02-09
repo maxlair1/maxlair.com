@@ -9,6 +9,7 @@
   align-self: stretch;
   flex-shrink: 0;
   width: 20ch;
+  overflow: hidden;
 }
 
 .handle {

@@ -1,22 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,700&display=swap');
-@import url('https://fonts.cdnfonts.com/css/junicode');
-
-body.font-use-m-plus-latin {
-  --font-family-mono: 'MPlusCodeLatin', monospace;
+body.font-use-dina {
+  --font-family-serif: 'Dina', monospace;
 }
 
-body.font-use-inconsolata {
-  --font-family-mono: 'Inconsolata', monospace;
-}
-
-body.font-use-junicode {
-  --font-family-serif: 'Junicode', serif;
-}
-
-body.font-use-merriweather {
-  --font-family-serif: 'Merriweather', serif;
+body.font-use-source-serif {
+  --font-family-serif: 'Source Serif 4', serif;
 }
 
 

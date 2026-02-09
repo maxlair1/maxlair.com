@@ -439,9 +439,6 @@ body.theme-dark.tint-pink {
   --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
 }
 
-#__next {
-}
-
 html,
 body {
   --color-black-100: rgba(0, 0, 0, 1);
@@ -577,7 +574,7 @@ body {
   --color-white-4: rgba(255, 255, 255, 0.4);
 
   --font-family-mono: var(--font-dina);
-  --font-family-serif: 'Merriweather', Georgia, Times New Roman, serif;
+  --font-family-serif: 'Source Serif 4', Georgia, Times New Roman, serif;
   --font-family: var(--font-dina), -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
 
   --theme-text: var(--color-black-100);

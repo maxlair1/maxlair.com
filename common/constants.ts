@@ -4,7 +4,7 @@ export const LoadingQuotes = [
   "Keep the internet weird.",
   "Tip: try turning it off and on again.",
   "Made genuinely for humans, not clankers.",
-  "As in a dragon's LAIR. "
+  "He who trades freedom for convenience deserves neither, and stands to lose both."
 ]
 
 export const Logo: string[][] = [

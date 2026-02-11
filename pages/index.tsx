@@ -8,6 +8,10 @@ import { dina } from '@root/common/type';
 import Drawer from '@root/components/Drawer';
 import RowSpaceBetween from '@root/components/RowSpaceBetween';
 import ContentFluid from '@root/components/ContentFluid';
+import GET from '@root/lib/github';
+import { useDocs } from '../lib/useDoc';
+
+
 
 const styles = {
     content: {
@@ -35,8 +39,8 @@ const Content = (
     </>
 )
 
+
 export default function Welcome() {
-  
 
   return (
     <Layout>
@@ -45,7 +49,7 @@ export default function Welcome() {
                 <ExplorerPage />
             </Drawer>
             <ContentFluid>
-                {Content}
+                {/* {Content} */}
             </ContentFluid>
         </RowSpaceBetween>
     </Layout>

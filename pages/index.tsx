@@ -44,14 +44,12 @@ export default function Welcome() {
 
   return (
     <Layout>
-        <RowSpaceBetween>
-            <Drawer defaultValue={true}>
-                <ExplorerPage />
-            </Drawer>
-            <ContentFluid>
-                {/* {Content} */}
-            </ContentFluid>
-        </RowSpaceBetween>
+        {/* <Drawer defaultValue={true}> */}
+            <ExplorerPage />
+        {/* </Drawer> */}
+        <ContentFluid>
+            {/* {Content} */}
+        </ContentFluid>
     </Layout>
   );
 }

@@ -1,5 +1,6 @@
 .root {
-  white-space: nowrap;
+  white-space: pre;
+  font-family: monospace;
   -webkit-text-size-adjust: 100%;
 }
 

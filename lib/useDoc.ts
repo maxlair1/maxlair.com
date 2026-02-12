@@ -3,7 +3,7 @@ import matter from 'gray-matter';
 
 import GET from '@root/lib/github';
 
-interface GitHubDirItem {
+export interface GitHubDirItem {
   name: string;
   path: string;
   type: "file" | "dir";
@@ -13,6 +13,8 @@ export interface DocListItem {
   name: string;
   slug: string;
   path: string;
+  pathRelative: string;
+  type: "file" | "dir"
 }
 
 export interface DocData<T = Record<string, any>> {
@@ -26,22 +28,26 @@ export function decodeBase64(input: string): string {
     return new TextDecoder().decode(bytes);
 }
 
-export function isb64(v: unknown): v is GHMD {
-    if (!v || typeof v !== "object") return false;
-    const obj = v as Record<string, unknown>;
-    return obj.encoding === "base64" && typeof obj.content === "string";
-}
-
 export function useDocs() {
 
-    const list = async (): Promise<DocListItem[]> => {
-        const data = (await GET('json')) as GitHubDirItem[];
+    const list = async (dir?: string): Promise<DocListItem[]> => {
+        const data = (await GET('json', undefined, dir)) as GitHubDirItem[];
+
+        const calcRelativePath = (fullPath: string) => {
+            const marker = "_pub/docs/";
+            const index = fullPath.indexOf(marker);
+            return index >= 0
+                ? fullPath.slice(index + marker.length)
+                : fullPath;
+        }
 
         return data
             .map((item) => ({
-            name: item.name,
-            slug: item.name.replace(/\.md$/, ""),
-            path: item.path,
+                name: item.name,
+                slug: item.name.replace(/\.md$/, ""),
+                path: item.path,
+                pathRelative: calcRelativePath(item.path),
+                type: item.type
             }));
         }
 

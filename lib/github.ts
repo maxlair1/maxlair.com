@@ -17,11 +17,11 @@ function getHeaders(type: 'json' | 'raw' ) {
 export default async function GET(
     type: 'json' | 'raw',
     path?: string,
-    docRef?: string,
+    ref?: string,
 ) {
 
     const githubAPIPath = `
-        ${GITHUB_API_BASE}/${owner}/${repo}/contents${path ?? pubPath ?? "/"}${docRef ?? ""}
+        ${GITHUB_API_BASE}/${owner}/${repo}/contents${path ?? pubPath ?? "/"}${ref ?? ""}
     `;
 
     const response = await fetch(

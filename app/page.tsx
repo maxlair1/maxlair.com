@@ -1,12 +1,6 @@
 import * as React from 'react';
-import SidebarLayout from '@root/components/SidebarLayout';
-import ExplorerPage from './explorer';
 import Layout from './layout';
 import { Logo } from '@root/common/constants';
-import Footer from '@root/components/Footer'
-import Drawer from '@root/components/Drawer';
-import RowSpaceBetween from '@root/components/RowSpaceBetween';
-import ContentFluid from '@root/components/ContentFluid';
 
 
 
@@ -39,7 +33,7 @@ const Content = (
 export default function Welcome() {
 
   return (
-    <Layout sidebar={<ExplorerPage />}>
+    <Layout>
         {Content}
     </Layout>
   );

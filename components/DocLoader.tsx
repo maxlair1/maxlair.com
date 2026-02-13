@@ -38,9 +38,11 @@ export default function DocLoader({ docSlug }: DocLoaderProps): React.ReactNode 
     !docSlug
       ? <div>no doc specified</div>
       : (
-        <ReactMarkdown>
-            {doc?.content || "Loading..."}
-        </ReactMarkdown>
+        <div style={{ maxWidth: '120ch', margin: '0 auto', padding: '1rem' }}>
+            <ReactMarkdown>
+                {doc?.content || "Loading..."}
+            </ReactMarkdown>
+        </div>
       )
   );
 }

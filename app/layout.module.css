@@ -15,8 +15,3 @@
   min-height: 0;
   overflow: auto;
 }
-
-.footer {
-  color: var(--theme-background);
-  height: 2rem;
-}

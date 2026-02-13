@@ -5,7 +5,7 @@ import * as React from 'react';
 const DebugGrid: React.FC = () => {
   React.useEffect(() => {
     const debugGrid = document.createElement('div');
-    let isVisible = false;
+    let isVisible = true;
 
     const setGridHeight = () => {
       debugGrid.style.height = `${document.documentElement.scrollHeight}px`;
@@ -24,7 +24,7 @@ const DebugGrid: React.FC = () => {
       `,
       backgroundSize: '1ch 1.25rem',
       pointerEvents: 'none',
-      display: 'none',
+      display: 'block',
     });
 
     document.body.appendChild(debugGrid);

@@ -25,7 +25,12 @@ export const viewport = {
   maximumScale: 1.0,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export interface RootLayoutProps {
+  children: React.ReactNode;
+  sidebarExpanded?: boolean;
+}
+
+export default function RootLayout({ children, sidebarExpanded }: RootLayoutProps) {
   return (
     <html lang="en-us">
       <body className={`theme-dark tint-orange ${styles.body} ${cozette.className}`}>
@@ -35,9 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {children}
               </SidebarLayout>
           </main>
-          <footer className={styles.footer}>
-            <p>Footer content goes here</p>
-          </footer>
         </Providers>
       </body>
     </html>

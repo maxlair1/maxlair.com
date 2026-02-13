@@ -1,0 +1,25 @@
+.body {
+  background: var(--color-black-100);
+  padding: 0.5rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  display: flex;
+  flex: 1;
+}
+
+.main {
+  background: var(--theme-background);
+  border-radius: 2px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: auto;
+}
+
+.footer {
+  color: var(--theme-background);
+  height: 2rem;
+}

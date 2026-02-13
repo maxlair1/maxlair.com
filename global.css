@@ -86,6 +86,12 @@ video {
   vertical-align: baseline;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 a {
   background: var(--theme-border-subdued);
   color: var(--theme-text);
@@ -573,12 +579,22 @@ body {
   --color-white-2: rgba(255, 255, 255, 0.2);
   --color-white-4: rgba(255, 255, 255, 0.4);
 
-  --font-family-mono: var(--font-dina);
+  --font-family-mono: 'Courier New', Courier, monospace;
   --font-family-serif: 'Source Serif 4', Georgia, Times New Roman, serif;
-  --font-family: var(--font-dina), -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
+  --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+  };
 
   --theme-text: var(--color-black-100);
-  --theme-line-height-base: 1.25;
+  --theme-line-height-base: 1;
   --font-size: 16px;
 
   --z-index-page: 1;

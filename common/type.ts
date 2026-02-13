@@ -6,11 +6,11 @@ export const sourceSerif = Source_Serif_4({
   variable: '--font-source-serif',
 })
 
-export const dina = localFont({
+export const cozette = localFont({
   src: [
-    { path: '../fonts/DinaRemasterII-01.ttf', weight: '100', style: 'normal' },
-    { path: '../fonts/DinaRemasterII-Bold-02.ttf', weight: '700', style: 'bold' },
+    { path: '../fonts/CozetteVector.ttf', style: 'normal' },
   ],
-  variable: '--font-dina',
+
+  variable: '--font-cozette',
   display: 'swap',
-}); 
+});

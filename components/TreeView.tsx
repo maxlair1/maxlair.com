@@ -14,9 +14,10 @@ interface TreeViewProps {
   parentLines?: boolean[];
   style?: any;
   title: string;
+  onClick?: () => void;
 }
 
-const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, children, depth = 0, isFile = false, isRoot = false, isLastChild = false, style, parentLines = [] }) => {
+const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, children, depth = 0, isFile = false, isRoot = false, isLastChild = false, style, parentLines = [], onClick }) => {
   const [show, setShow] = React.useState<boolean>(defaultValue);
 
   const onToggleShow = (): void => {
@@ -34,7 +35,7 @@ const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, childr
   const updatedParentLines = [...parentLines, !isLastChild];
 
   return (
-    <div className={styles.root} style={style}>
+    <div className={styles.root} style={style} onClick={onClick}>
       <div tabIndex={0} role="button" onClick={onToggleShow} className={styles.item} aria-expanded={show}>
         {prefix}
         {icon}

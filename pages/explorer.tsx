@@ -1,11 +1,11 @@
 import * as React from 'react';
-import TreeView from '@root/components/TreeView';
-import { useDocs, type DocListItem  } from '@root/lib/useDoc';
-import build from 'next/dist/build';
-import { Suspense } from 'react';
-import PageLoading from '@root/components/PageLoading';
 
-interface docTreeItem extends DocListItem {
+import TreeView from '@root/components/TreeView';
+import { useDocs, type Doc  } from '@root/api/useDoc';
+import Indent from '@root/components/Indent';
+import { useRouter } from 'next/router';
+
+interface docTreeItem extends Doc {
     level: number;
     children?: docTreeItem[];
 }
@@ -18,8 +18,9 @@ interface docTreeItem extends DocListItem {
 
 export default function Explorer(): React.ReactNode {
     const { list } = useDocs(); //load promise
-    const [loading, setLoading] = React.useState(true);
+    const [loading, setLoading] = React.useState<boolean>(true);
     const [tree, setTree] = React.useState<docTreeItem[]>([]);
+    const router = useRouter();
 
     //Maybe map these directly to React.FC<TreeViewProps>?
     async function buildTree(
@@ -55,15 +56,23 @@ export default function Explorer(): React.ReactNode {
                 isFile={item.type === "file"}
                 defaultValue={true}
                 isLastChild={item.children === undefined && item.level >= 1}
-            >
-                {item.children ? renderTree(item.children) : undefined}
-            </TreeView>
+                children={item.children ? renderTree(item.children) : undefined}
+                onClick={() => {
+                    if (item.type === "file") {
+                        router.push(`/docs/${item.slug}`);
+                    }
+                }}
+            />
         ));
     }
 
     return (
         <div className="theme-override-dark">
-                {renderTree(tree)}
+            <Indent>
+                <TreeView title="DOCUMENTS" defaultValue={true}>
+                    {renderTree(tree)}
+                </TreeView>
+            </Indent>
         </div>
     );
 }

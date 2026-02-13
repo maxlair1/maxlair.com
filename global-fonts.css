@@ -1,15 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
-body.font-use-dina {
-  --font-family-mono: 'Dina', monospace;
-}
-
-body.font-use-roboto-mono {
-  --font-family-mono: 'Roboto Mono', monospace;
+body.font-use-cozette {
+  --font-family-mono: var(--font-cozette), monospace;
 }
 
 body.font-use-source-serif {
-  --font-family-serif: 'Source Serif 4', serif;
+  --font-family-source-serif: 'Source Serif 4', serif;
 }
 
 

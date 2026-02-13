@@ -32,7 +32,6 @@ const calcRelativePath = (fullPath: string) => {
 }
 
 export function useDocs() {
-
     const list = async (dir?: string): Promise<Doc[]> => {
         const data = (await GET('json', undefined, dir)) as Doc[];
 
@@ -46,9 +45,9 @@ export function useDocs() {
             }));
         }
 
-    const read = async <T = Record<string, any>>(ref: string): Promise<DocContent<T>>  => {
-        const pathRef = `${ref}.md`;
-        const raw = await GET('raw', pathRef);
+    const read = async <T = Record<string, any>>(slug: string, path?: string): Promise<DocContent<T>>  => {
+        const filename  = `${slug}.md`;
+        const raw = await GET('raw', path, filename);
         const { content, data } = matter(raw);
 
         return {

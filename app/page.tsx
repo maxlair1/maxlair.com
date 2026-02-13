@@ -1,7 +1,7 @@
 import * as React from 'react';
 import SidebarLayout from '@root/components/SidebarLayout';
 import ExplorerPage from './explorer';
-import Layout from '../app/layout';
+import Layout from './layout';
 import { Logo } from '@root/common/constants';
 import Footer from '@root/components/Footer'
 import Drawer from '@root/components/Drawer';

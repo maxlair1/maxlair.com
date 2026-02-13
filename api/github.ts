@@ -1,6 +1,6 @@
-const GITHUB_API_BASE = "https://api.github.com/repos"; // Ensure no '/' on end
+const GITHUB_API_BASE = "https://api.github.com/repos/"; // Ensure no '/' on end
 
-const pubPath = `/_pub/docs/`; // default path to docs
+const pubPath = `_pub/docs/`; // default path to docs
 const owner = process.env.NEXT_PUBLIC_GITHUB_USER!;
 const repo = process.env.NEXT_PUBLIC_GITHUB_REPO!;
 const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN!;
@@ -12,15 +12,20 @@ function getHeaders(type: 'json' | 'raw' ) {
         "User-Agent": "maxlair.com",
     };  
 }
-
+/**
+    NOTE: Always use the format `path/to/` 
+    when defining paths.
+    Start with NO SLASH, and end with SLASH
+    UNLESS it's a file, then NO SLASH at end.
+*/
 export default async function GET(
     type: 'json' | 'raw',
-    ref?: string,
-    path: string = pubPath,
+    path?: string,
+    filename?: string,
 ) {
 
     const githubAPIPath = `
-        ${GITHUB_API_BASE}/${owner}/${repo}/contents${path}${ref ?? ""}
+        ${GITHUB_API_BASE}${owner}/${repo}/contents/${pubPath}${path ?? ""}${filename ?? ""}
     `;
 
     const response = await fetch(

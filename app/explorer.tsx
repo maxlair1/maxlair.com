@@ -1,9 +1,11 @@
+'use client';
+
 import * as React from 'react';
 
 import TreeView from '@root/components/TreeView';
 import { useDocs, type Doc  } from '@root/api/useDoc';
 import Indent from '@root/components/Indent';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface docTreeItem extends Doc {
     level: number;
@@ -22,6 +24,11 @@ export default function Explorer(): React.ReactNode {
     const [tree, setTree] = React.useState<docTreeItem[]>([]);
     const router = useRouter();
 
+    React.useEffect(() => {
+        console.log('Explorer mounted');
+        return () => console.log('Explorer unmounted');
+    }, []);
+
     //Maybe map these directly to React.FC<TreeViewProps>?
     async function buildTree(
         dir?: string,
@@ -39,11 +46,11 @@ export default function Explorer(): React.ReactNode {
         );
     }
 
-    React.useEffect(() => { // digest promise to content at start
+    React.useEffect(() => {
         async function initTree() {
             const tree = await buildTree();
             console.log(tree);
-            setTree(tree); // ← this is what you actually want
+            setTree(tree);
         }
         initTree();
     },[]);
@@ -59,7 +66,7 @@ export default function Explorer(): React.ReactNode {
                 children={item.children ? renderTree(item.children) : undefined}
                 onClick={() => {
                     if (item.type === "file") {
-                        router.push(`/docs/${item.slug}`);
+                        router.push(`${item.pathRelative}${item.slug}`);
                     }
                 }}
             />

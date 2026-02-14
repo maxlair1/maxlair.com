@@ -20,7 +20,7 @@ export interface ActionBarProps {
 
 const ActionBar: React.FC<ActionBarProps> = ({ items }) => {
   return (
-    <div className={styles.root}>
+    <div className={styles.root} >
       <ButtonGroup items={items} />
     </div>
   );

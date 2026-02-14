@@ -1,8 +1,12 @@
-import { type ActionBarItem, type ActionBarProps } from '@components/ActionBar';
+import { type ActionBarItem } from '@components/ActionBar';
 
 const actions: ActionBarItem[] = [
     {
-        body: "Test",
+        hotkey:'CTRL+E',
+        body: "TOGGLE EXPLORER",
+    },
+    {
+        body: "PREFS",
         items: [
             {
                 icon: '⊹',
@@ -13,6 +17,9 @@ const actions: ActionBarItem[] = [
                 children: 'Dark',
             },
         ]
+    },
+    {
+        body: "PANIC!",
     }
 ];
 

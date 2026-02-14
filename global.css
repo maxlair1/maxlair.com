@@ -579,22 +579,23 @@ body {
   --color-white-2: rgba(255, 255, 255, 0.2);
   --color-white-4: rgba(255, 255, 255, 0.4);
 
-  --font-family-mono: 'Courier New', Courier, monospace;
+  --font-family-mono: var(--font-inconsolata), Courier, monospace;
   --font-family-serif: 'Source Serif 4', Georgia, Times New Roman, serif;
   --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  prose.h1,
+  prose.h2,
+  prose.h3,
+  prose.h4,
+  prose.h5,
+  prose.h6,
+  prose > p {
     font-family: var(--font-family-serif);
     font-weight: 400;
   };
 
   --theme-text: var(--color-black-100);
-  --theme-line-height-base: 1;
+  --theme-line-height-base: 1.25;
   --font-size: 16px;
 
   --z-index-page: 1;

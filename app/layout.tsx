@@ -1,7 +1,7 @@
 import '@root/global.css';
 import '@root/global-fonts.css';
 import styles from '@root/app/layout.module.css';
-import { cozette } from '@root/common/type';
+import { cozette, fragmentMono } from '@root/common/type';
 
 import Providers from '@components/Providers';
 import SidebarLayout from '@root/components/SidebarLayout';
@@ -30,10 +30,10 @@ export interface RootLayoutProps {
   sidebarExpanded?: boolean;
 }
 
-export default function RootLayout({ children, sidebarExpanded }: RootLayoutProps) {
+export default function ExploreLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en-us">
-      <body className={`theme-dark tint-orange ${styles.body} ${cozette.className}`}>
+      <body className={`theme-light ${styles.body} ${fragmentMono.className}`}>
         <Providers>
           <main className={styles.main}>
               <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30}>

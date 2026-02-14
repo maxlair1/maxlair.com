@@ -6,6 +6,8 @@ import TreeView from '@root/components/TreeView';
 import { useDocs, type Doc  } from '@root/api/useDoc';
 import Indent from '@root/components/Indent';
 import { useRouter } from 'next/navigation';
+import ActionBar from '@root/components/ActionBar';
+import actions from '@root/common/actions';
 
 interface docTreeItem extends Doc {
     level: number;
@@ -24,10 +26,6 @@ export default function Explorer(): React.ReactNode {
     const [tree, setTree] = React.useState<docTreeItem[]>([]);
     const router = useRouter();
 
-    React.useEffect(() => {
-        console.log('Explorer mounted');
-        return () => console.log('Explorer unmounted');
-    }, []);
 
     //Maybe map these directly to React.FC<TreeViewProps>?
     async function buildTree(
@@ -66,7 +64,7 @@ export default function Explorer(): React.ReactNode {
                 children={item.children ? renderTree(item.children) : undefined}
                 onClick={() => {
                     if (item.type === "file") {
-                        router.push(`${item.pathRelative}${item.slug}`);
+                        router.push(`${item.slug}`);
                     }
                 }}
             />
@@ -75,6 +73,7 @@ export default function Explorer(): React.ReactNode {
 
     return (
         <div className="theme-override-dark">
+            <ActionBar items={actions}/>
             <Indent>
                 <TreeView title="DOCUMENTS" defaultValue={true}>
                     {renderTree(tree)}

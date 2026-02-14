@@ -8,6 +8,7 @@ import Indent from '@root/components/Indent';
 import { useRouter } from 'next/navigation';
 import ActionBar from '@root/components/ActionBar';
 import actions from '@root/common/actions';
+import Image from 'next/image';
 
 interface docTreeItem extends Doc {
     level: number;
@@ -64,7 +65,7 @@ export default function Explorer(): React.ReactNode {
                 children={item.children ? renderTree(item.children) : undefined}
                 onClick={() => {
                     if (item.type === "file") {
-                        router.push(`${item.slug}`);
+                        router.push(`/docs/${item.pathRelative.slice(0, -3)}`);
                     }
                 }}
             />
@@ -73,6 +74,9 @@ export default function Explorer(): React.ReactNode {
 
     return (
         <div className="theme-override-dark">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5ch', padding: '0.5rem 1rem', background: 'var(--theme-focused-foreground-subdued)', borderBottom: '1px solid var(--theme-border)' }}>
+                maxlair
+            </div>
             <ActionBar items={actions}/>
             <Indent>
                 <TreeView title="DOCUMENTS" defaultValue={true}>

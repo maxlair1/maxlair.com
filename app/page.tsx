@@ -4,6 +4,7 @@ import { Logo } from '@root/common/constants';
 import ActionListItem, { ActionListItemProps } from '@root/components/ActionListItem';
 import Grid from '@root/components/Grid';
 import Card from '@root/components/Card';
+import Image from 'next/image';
 
 
 const styles = {
@@ -36,9 +37,10 @@ const Content = (
         <div style={styles.content}>
             <div style={{textAlign: 'center'}}>
                 <pre style={{ margin: 0, fontFamily: 'monospace', color: 'var(--theme-focused)' }}>
-                    <code>
+                    {/* <code>
                         {Logo.map(row => row.join('')).join('\n')}
-                    </code>
+                    </code> */}
+                    <Image src="/ordered_dither.png" alt="Description" width={200} height={200} />
                 </pre>
                 <Grid>
                     <Card title={'START HERE'} mode="left">
@@ -50,9 +52,6 @@ const Content = (
                 </Grid>
             </div>
         </div>
-        {/* <div>
-            <Footer></Footer>
-        </div> */}
     </>
 )
 

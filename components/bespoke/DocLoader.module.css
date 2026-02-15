@@ -1,0 +1,6 @@
+.root {
+    font-family: var(--font-family-serif);
+    max-width: 120ch;
+    margin: 0 auto;
+    padding: 1rem;
+}

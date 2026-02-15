@@ -579,8 +579,8 @@ body {
   --color-white-2: rgba(255, 255, 255, 0.2);
   --color-white-4: rgba(255, 255, 255, 0.4);
 
-  --font-family-mono: var(--font-inconsolata), Courier, monospace;
-  --font-family-serif: 'Source Serif 4', Georgia, Times New Roman, serif;
+  --font-family-mono: var(--font-fragment-mono), 'Fragment Mono', Courier, monospace;
+  --font-family-serif: 'Newsreader', Georgia, Times New Roman, serif;
   --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
 
   prose.h1,
@@ -607,7 +607,7 @@ body {
 
   background: var(--theme-background);
   color: var(--theme-text);
-  font-family: var(--font-dina);
+  font-family: var(--font-family);
   line-height: calc(var(--theme-line-height-base) * 1rem);
 
   font-size: var(--font-size);

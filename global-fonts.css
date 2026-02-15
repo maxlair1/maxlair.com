@@ -1,14 +1,9 @@
-body.font-use-inconsolata {
-  --font-family-mono: var(--font-inconsolata), monospace;
-}
-
-
-body.font-use-cozette {
-  --font-family-mono: var(--font-cozette), monospace;
+body.font-use-fragment-mono {
+  --font-family-mono: var(--font-fragment-mono), monospace;
 }
 
 body.font-use-newsreader {
-  --font-family-source-serif: 'Newsreader', serif;
+  --font-family-source-serif: var(--font-newsreader), serif;
 }
 
 

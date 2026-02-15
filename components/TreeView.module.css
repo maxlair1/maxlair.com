@@ -1,5 +1,6 @@
 .root {
-  white-space: pre;
+  white-space: nowrap;
+  white-space-collapse: preserve;
   -webkit-text-size-adjust: 100%;
 }
 

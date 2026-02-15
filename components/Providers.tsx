@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import { ModalProvider } from '@root/components/ref-page/ModalContext';
 import { createContext, useState, useContext } from 'react';
+import { DocsProvider } from '@root/contexts/DocsContext';
 
 const appContext = createContext({});
 
@@ -12,7 +13,13 @@ interface ProvidersProps {
 }
 
 const Providers: React.FC<ProvidersProps> = ({ children }) => {
-  return <ModalProvider>{children}</ModalProvider>;
+  return (
+    <ModalProvider>
+      <DocsProvider>
+        {children}
+      </DocsProvider>
+    </ModalProvider>
+    );
 };
 
 export default Providers;

@@ -6,6 +6,9 @@ import { useDocs, type DocContent } from '@root/api/useDocs';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { MarkdownComponents } from '@components/md/MarkdownComponents';
+import Card from '@components/Card';
+
+const DEV_MODE = true;
 
 export interface DocLoaderProps {
     docSlug: string;
@@ -13,6 +16,8 @@ export interface DocLoaderProps {
     onDocLoading?: () => void;
     
 }
+
+export const DocMetadata = ({})
 
 export default function DocLoader({ docSlug }: DocLoaderProps): React.ReactNode {
     const [loading, setLoading] = React.useState(false);
@@ -43,6 +48,11 @@ export default function DocLoader({ docSlug }: DocLoaderProps): React.ReactNode 
       ? <div>no doc specified</div>
       : (
         <div className={styles.root} style={{ maxWidth: '120ch', margin: '0 auto', padding: '1rem' }}>
+            <Card>
+                test
+                <h1>{meta?.title || docSlug}</h1>
+                {meta?.description && <p>{meta.description}</p>}
+            </Card>
             <ReactMarkdown components={MarkdownComponents} remarkPlugins={[remarkGfm]}>
                 {doc?.content || "Loading..."}
             </ReactMarkdown>

@@ -38,7 +38,7 @@ export default function ExploreLayout({ children }: RootLayoutProps) {
           <main className={styles.main}>
               <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30}>
                 {children}
-              </SidebarLayout>1
+              </SidebarLayout>
           </main>
         </Providers>
       </body>

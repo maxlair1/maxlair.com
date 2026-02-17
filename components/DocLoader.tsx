@@ -10,9 +10,9 @@ import Badge from './Badge';
 
 export interface DocLoaderProps {
     docSlug: string;
+    docRelativePath?: string; // root of the `/_pub/docs/` directory in the GitHub repo
     onDoc?: () => void;
     onDocLoading?: () => void;
-    
 }
 
 const mdComponents = {
@@ -26,19 +26,16 @@ const mdComponents = {
     }
 }
 
-export default function DocLoader({ docSlug }: DocLoaderProps): React.ReactNode {
+export default function DocLoader({ docSlug, docRelativePath }: DocLoaderProps): React.ReactNode {
     const [loading, setLoading] = React.useState(false);
     const [doc, setDoc] = React.useState<DocContent | null>(null);
     const [meta, setMeta] = React.useState<Record<string, any> | null>(null);
     const { read } = useDocs();
 
     React.useEffect(() => {
-        if (!docSlug) return;
-        
-        //read a doc!
         async function readDoc() {
             setLoading(true);
-            const doc = await read(docSlug)
+            const doc = await read(docSlug, docRelativePath)
             .then(async (doc) => {
                 setDoc(doc);
                 setMeta(doc.meta);
@@ -48,7 +45,7 @@ export default function DocLoader({ docSlug }: DocLoaderProps): React.ReactNode 
         }
         readDoc();
 
-    }, [docSlug]);
+    }, [docRelativePath, docSlug]);
 
   return (
     !docSlug

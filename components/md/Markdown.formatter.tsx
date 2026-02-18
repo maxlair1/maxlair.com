@@ -4,6 +4,7 @@ import {MarkdownComponents} from './Markdown.components';
 // plugins
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import remarkObsidian from '@heavycircle/remark-obsidian';
 
 /** GOALS:  
  *      1. Input Markdown, handle either RAW or .md files.
@@ -19,18 +20,16 @@ const remarkPlugins = [
 ]
 
 const rehypePlugins = [
-    rehypeRaw,
+    // rehypeRaw,
 ]
 
-export function MarkdownFormatter(md: string) {
+export default function MarkdownFormatter({ md }: { md: string }): React.ReactNode {
     return (
-        <div>
-            <ReactMarkdown 
-                components={MarkdownComponents}
-                rehypePlugins={rehypePlugins} 
-                remarkPlugins={remarkPlugins}>
-                {md || "Loading..."}
-            </ReactMarkdown>
-        </div>
+        <ReactMarkdown 
+        components={MarkdownComponents}
+        rehypePlugins={rehypePlugins} 
+        remarkPlugins={remarkPlugins}>
+            {md || "Loading..."}
+        </ReactMarkdown>
     );
 }

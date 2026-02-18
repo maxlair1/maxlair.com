@@ -14,5 +14,4 @@ export const MarkdownComponents = {
       : <Badge {...props}>{children}</Badge>;
   },
 
-  
 }

@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import CodeBlock from '../CodeBlock';
 import Badge from '../Badge';
+import MarkdownFormatter from '../md/Markdown.formatter';
 
 export interface DocLoaderProps {
     docSlug: string;
@@ -52,9 +53,7 @@ export default function DocLoader({ docSlug, docRelativePath }: DocLoaderProps):
       ? <div>no doc specified</div>
       : (
         <div className={styles.root} style={{ maxWidth: '120ch', margin: '0 auto', padding: '1rem' }}>
-            <ReactMarkdown components={mdComponents} remarkPlugins={[remarkGfm]}>
-                {doc?.content || "Loading..."}
-            </ReactMarkdown>
+            <MarkdownFormatter md={doc?.content || ''}/>
         </div>
       )
   );

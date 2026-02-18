@@ -3,7 +3,7 @@
 import styles from '@components/modals/ModalCanvasPlatformer.module.css';
 
 import * as React from 'react';
-import * as Utilities from '@common/utilities';
+import * as Utilities from '@lib/utilities';
 
 import { useModals } from '@root/components/ref-page/ModalContext';
 

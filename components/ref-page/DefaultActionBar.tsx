@@ -3,7 +3,7 @@
 import styles from '@components/page/DefaultActionBar.module.css';
 
 import * as React from 'react';
-import * as Utilities from '@common/utilities';
+import * as Utilities from '@lib/utilities';
 
 import { toggleDebugGrid } from '@components/DebugGrid';
 import { useHotkeys } from '@modules/hotkeys';

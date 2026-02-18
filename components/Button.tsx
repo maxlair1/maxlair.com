@@ -3,7 +3,7 @@
 import styles from '@components/Button.module.css';
 
 import * as React from 'react';
-import * as Utilities from '@common/utilities';
+import * as Utilities from '@lib/utilities';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: 'PRIMARY' | 'SECONDARY';

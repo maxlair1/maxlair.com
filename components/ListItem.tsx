@@ -3,7 +3,7 @@
 import styles from '@components/ListItem.module.css';
 
 import * as React from 'react';
-import * as Utilities from '@common/utilities';
+import * as Utilities from '@lib/utilities';
 
 const ListItem = ({ children }) => {
   const itemRef = React.useRef<HTMLLIElement>(null);

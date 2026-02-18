@@ -3,8 +3,8 @@ import ReactMarkdown from 'react-markdown';
 import {MarkdownComponents} from './Markdown.components';
 // plugins
 import remarkGfm from 'remark-gfm';
+import remarkies from '@lib/remarkies';
 import rehypeRaw from 'rehype-raw';
-import remarkObsidian from '@heavycircle/remark-obsidian';
 
 /** GOALS:  
  *      1. Input Markdown, handle either RAW or .md files.
@@ -17,6 +17,7 @@ import remarkObsidian from '@heavycircle/remark-obsidian';
 
 const remarkPlugins = [
     remarkGfm,
+    remarkies // custom wiki links
 ]
 
 const rehypePlugins = [

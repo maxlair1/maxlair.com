@@ -1,7 +1,7 @@
 import '@root/global.css';
 import '@root/global-fonts.css';
 import styles from '@root/app/layout.module.css';
-import { fragmentMono } from '@root/common/type';
+import { fragmentMono, instrumentSerif, newsreader } from '@root/lib/type';
 
 import Providers from '@components/Providers';
 import SidebarLayout from '@root/components/SidebarLayout';
@@ -33,11 +33,13 @@ export interface RootLayoutProps {
 export default function ExploreLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en-us">
-      <body className={`theme-light ${styles.body} ${fragmentMono.variable}`}>
+      <body className={`theme-light ${fragmentMono.variable} ${newsreader.variable} ${instrumentSerif.variable} `}>
         <Providers>
           <main className={styles.main}>
               <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30}>
-                {children}
+                <div className={styles.content}>
+                  {children}
+                </div>
               </SidebarLayout>
           </main>
         </Providers>

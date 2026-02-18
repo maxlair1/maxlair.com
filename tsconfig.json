@@ -11,8 +11,8 @@
       "@demos/*": [
         "./demos/*"
       ],
-      "@common/*": [
-        "./common/*"
+      "@lib/*": [
+        "./lib/*"
       ],
       "@data/*": [
         "./data/*"

@@ -5,7 +5,7 @@ import { Hotkey } from '@modules/hotkeys/types'
 import { createContext, ReactNode, useState, useContext, useCallback } from 'react'
 import BoundHotkeysProxyProviderProvider from '@modules/hotkeys/bound-hotkeys-proxy-provider'
 
-import * as Utilities from '@common/utilities';
+import * as Utilities from '@lib/utilities';
 
 export type HotkeysContextType = {
   hotkeys: ReadonlyArray<Hotkey>

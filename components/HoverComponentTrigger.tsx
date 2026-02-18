@@ -3,7 +3,7 @@
 import styles from '@components/HoverComponentTrigger.module.css';
 
 import * as React from 'react';
-import * as Position from '@common/position';
+import * as Position from '@lib/position';
 
 import OutsideElementEvent from '@components/detectors/OutsideElementEvent';
 import Popover from '@components/Popover';

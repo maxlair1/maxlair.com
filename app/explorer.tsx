@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import Indent from '@root/components/Indent';
 import ActionBar from '@root/components/ActionBar';
-import actions from '@root/common/actions';
+import actions from '@root/lib/actions';
 import DocTreeView from '@root/components/bespoke/DocTreeView';
 import Image from 'next/image';
 import HeaderImage from '../public/hero_logo.svg';

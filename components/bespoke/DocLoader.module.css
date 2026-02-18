@@ -1,6 +1,15 @@
 .root {
-    font-family: var(--font-family-serif);
     max-width: 120ch;
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
     padding: 1rem;
+    gap: 1rem;
 }
+
+.root h1 {
+    font-family: var(--font-instrument-serif);
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+}
+

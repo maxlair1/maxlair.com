@@ -579,7 +579,7 @@ body {
   --color-white-2: rgba(255, 255, 255, 0.2);
   --color-white-4: rgba(255, 255, 255, 0.4);
 
-  --font-family-mono: var(--font-fragment-mono), 'Fragment Mono', Courier, monospace;
+  --font-family-mono: var(--font-fragment-mono), Courier, monospace;
   --font-family-serif: 'Newsreader', Georgia, Times New Roman, serif;
   --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
 

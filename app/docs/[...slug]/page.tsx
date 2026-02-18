@@ -12,10 +12,9 @@ export default function letsRead({ params }: { params: Promise<{ slug: string[] 
     const docSlug = slug[slug.length - 1];
     const pathOmitSlug = (slug.slice(0, slug.length - 1)).join('/') + (slug.length <= 1 ? '' : '/')
     
-
-    console.log('slug:', slug);
-    console.log('docSlug:', docSlug);
-    console.log('pathOmitSlug:', pathOmitSlug);
+    // console.log('slug:', slug);
+    // console.log('docSlug:', docSlug);
+    // console.log('pathOmitSlug:', pathOmitSlug);
 
     return <DocLoader docRelativePath={pathOmitSlug} docSlug={docSlug}/>;
 }

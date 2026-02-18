@@ -5,7 +5,7 @@ import styles from '@components/bespoke/DocLoader.module.css';
 import { useDocs, type DocContent } from '@root/api/useDocs';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { MarkdownComponents } from '@components/md/MarkdownComponents';
+import { MarkdownComponents } from '@root/components/md/Markdown.components';
 import Card from '@components/Card';
 
 const DEV_MODE = true;

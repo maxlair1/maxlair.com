@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import {MarkdownComponents} from './Markdown.components';
 // plugins
 import remarkGfm from 'remark-gfm';
-import remarkies from '@lib/remarkies';
+import remarkWikis from '@root/lib/remarkWikis';
 import rehypeRaw from 'rehype-raw';
 
 /** GOALS:  
@@ -17,7 +17,7 @@ import rehypeRaw from 'rehype-raw';
 
 const remarkPlugins = [
     remarkGfm,
-    remarkies // custom wiki links
+    remarkWikis // custom wiki links
 ]
 
 const rehypePlugins = [

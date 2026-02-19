@@ -2,7 +2,7 @@ import styles from '@components/BreadCrumbs.module.css';
 
 import * as React from 'react';
 
-interface BreadCrumbsItem {
+export interface BreadCrumbsItem {
   url?: string;
   name: string;
 }

@@ -580,19 +580,29 @@ body {
   --color-white-4: rgba(255, 255, 255, 0.4);
 
   --font-family-mono: var(--font-fragment-mono), Courier, monospace;
-  --font-family-serif: 'Newsreader', Georgia, Times New Roman, serif;
+  --font-family-serif: var(--font-instrument-serif), 'Newsreader', Georgia, Times New Roman, serif;
+  --font-family-sans: -apple-system, helvetica, sans-serif;
   --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
 
-  prose.h1,
-  prose.h2,
-  prose.h3,
-  prose.h4,
-  prose.h5,
-  prose.h6,
-  prose > p {
+  .prose h1 {
     font-family: var(--font-family-serif);
     font-weight: 400;
   };
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6,
+  .prose > p {
+    font-family: var(--font-family-sans);
+    font-weight: 400;
+    line-height: 1.5;
+  };
+
+  .prose h3 {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
 
   --theme-text: var(--color-black-100);
   --theme-line-height-base: 1.25;

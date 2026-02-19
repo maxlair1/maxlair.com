@@ -35,13 +35,13 @@ export default function MarkdownFormatter({ md, frontmatter, title, loaded = tru
     return (
         <Suspense fallback={<div>Loading...</div>} >
             <h1>{frontmatter?.title ?? title}</h1>
-            {frontmatter && <Card title='META' mode='left'>
+            {frontmatter && Object.keys(frontmatter).length > 0 ? <Card title='META' mode='left'>
                 {Object.entries(frontmatter || {}).map(([key, value]) => (
                 <div key={key} style={{marginRight: '1rem'}}>
                     <strong>{key}: </strong>{String(value)}
                 </div>
                 ))}
-            </Card>}
+            </Card> : null}
             <ReactMarkdown 
                 components={MarkdownComponents}
                 rehypePlugins={rehypePlugins} 

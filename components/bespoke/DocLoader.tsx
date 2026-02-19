@@ -39,7 +39,7 @@ export default function DocLoader({ docSlug, docRelativePath }: DocLoaderProps):
     !docSlug
       ? <div>no doc specified</div>
       : (
-        <div className={styles.root} style={{ maxWidth: '120ch', margin: '0 auto', padding: '1rem' }}>
+        <div className={`prose ${styles.root}`} style={{ maxWidth: '120ch', margin: '0 auto', padding: '1rem' }}>
             <MarkdownFormatter md={doc?.content || ''} frontmatter={meta ?? undefined}/>
         </div>
       )

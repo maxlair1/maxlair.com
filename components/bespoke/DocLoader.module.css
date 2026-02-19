@@ -1,5 +1,4 @@
 .root {
-    font-family: var(--font-sans-serif);
     max-width: 120ch;
     display: flex;
     flex-direction: column;
@@ -10,7 +9,7 @@
 
 .root h1 {
     font-family: var(--font-instrument-serif);
-    font-size: 5rem;
+    font-size: 3rem;
     margin-bottom: 1.5rem;
 }
 

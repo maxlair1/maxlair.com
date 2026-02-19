@@ -40,15 +40,7 @@ export default function DocLoader({ docSlug, docRelativePath }: DocLoaderProps):
       ? <div>no doc specified</div>
       : (
         <div className={styles.root} style={{ maxWidth: '120ch', margin: '0 auto', padding: '1rem' }}>
-            <h1>{meta?.title ?? docSlug}</h1>
-            <Card title='META' mode='left'>
-              {Object.entries(meta || {}).map(([key, value]) => (
-                <div key={key} style={{marginRight: '1rem'}}>
-                  <strong>{key}: </strong>{String(value)}
-                </div>
-              ))}
-            </Card>
-            <MarkdownFormatter md={doc?.content || ''}/>
+            <MarkdownFormatter md={doc?.content || ''} frontmatter={meta ?? undefined}/>
         </div>
       )
   );

@@ -25,10 +25,16 @@ const someActions: ActionListItemProps[] = [
     {
         children: 'Check out Designers Drink Coffee',
         icon: '+',
+        href: 'https://designersdrink.coffee/',
     },
     {
         children: 'Contact Me',
         icon: '+',
+    },
+    {
+        children: 'Test Anchor Link',
+        icon: '+',
+        href: '/docs/testDir/testDir2/test5#block-elements',
     },
 ];
 

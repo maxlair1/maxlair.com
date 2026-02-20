@@ -4,8 +4,6 @@ import styles from '@components/bespoke/DocLoader.module.css';
 
 import { useDocs, type DocContent } from '@root/api/useDocs';
 import MarkdownFormatter from '../md/Markdown.formatter';
-import Card from '@components/Card';
-import DataTable from '@components/DataTable';
 
 export interface DocLoaderProps {
     docSlug: string;
@@ -32,9 +30,9 @@ export default function DocLoader({ docSlug, docRelativePath }: DocLoaderProps):
             .catch(err => console.error("Error rendering markdown:", err));
         }
         readDoc();
-
-    }, [docRelativePath, docSlug]);
-
+        
+      }, [docRelativePath, docSlug]);
+      
   return (
     !docSlug
       ? <div>no doc specified</div>

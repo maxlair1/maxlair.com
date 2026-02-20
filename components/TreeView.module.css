@@ -23,3 +23,7 @@
 .empty {
   opacity: 0.5;
 }
+
+.selected {
+    background: var(--theme-focused-foreground-subdued);
+}

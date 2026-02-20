@@ -593,14 +593,19 @@ body {
   .prose h4,
   .prose h5,
   .prose h6,
-  .prose > p {
+  .prose p {
     font-family: var(--font-family-sans);
     font-weight: 400;
     line-height: 1.5;
   };
 
+  .prose p {
+      font-size: 1rem;
+  }
+
   .prose h3 {
     font-weight: 600;
+    font-size: 1rem;
     text-transform: uppercase;
   }
 

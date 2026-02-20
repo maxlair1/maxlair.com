@@ -584,28 +584,29 @@ body {
   --font-family-sans: -apple-system, helvetica, sans-serif;
   --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
 
-  .prose h1 {
-    font-family: var(--font-family-serif);
-    font-weight: 400;
+  .prose {
+    font-family: var(--font-family-sans);
+    line-height: 1.5;
   };
-  .prose h2,
+  
+  .prose p {
+    font-size: 1rem;
+  }
+  
+  .prose h1 {
+    font-family: var(--font-newsreader);
+    font-weight: 400;
+  }
+  
+  .prose h2 {
+    font-weight: 400;
+  }
+
   .prose h3,
   .prose h4,
   .prose h5,
-  .prose h6,
-  .prose p {
-    font-family: var(--font-family-sans);
-    font-weight: 400;
-    line-height: 1.5;
-  };
-
-  .prose p {
-      font-size: 1rem;
-  }
-
-  .prose h3 {
+  .prose h6 {
     font-weight: 600;
-    font-size: 1rem;
     text-transform: uppercase;
   }
 

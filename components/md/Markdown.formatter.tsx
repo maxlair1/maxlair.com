@@ -9,6 +9,7 @@ import remarkWikis from '@root/lib/remarkWikis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
+import Badge from '@components/Badge';
 
 /** GOALS:  
  *      1. Input Markdown, handle either RAW or .md files.
@@ -35,13 +36,6 @@ export default function MarkdownFormatter({ md, frontmatter, title, loaded = tru
     return (
         <Suspense fallback={<div>Loading...</div>} >
             <h1>{frontmatter?.title ?? title}</h1>
-            {frontmatter && Object.keys(frontmatter).length > 0 ? <Card title='META' mode='left'>
-                {Object.entries(frontmatter || {}).map(([key, value]) => (
-                <div key={key} style={{marginRight: '1rem'}}>
-                    <strong>{key}: </strong>{String(value)}
-                </div>
-                ))}
-            </Card> : null}
             <ReactMarkdown 
                 components={MarkdownComponents}
                 rehypePlugins={rehypePlugins} 

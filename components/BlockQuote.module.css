@@ -1,0 +1,6 @@
+blockquote {
+    border-left: 0.25ch solid var(--theme-border);
+    padding-left: 2ch;
+    margin-left: 0;
+    margin-right: 0; 
+}

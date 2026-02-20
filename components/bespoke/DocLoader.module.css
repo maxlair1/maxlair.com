@@ -13,3 +13,12 @@
     margin-bottom: 1.5rem;
 }
 
+/* Put styles for native components below! */
+
+/* blockquote {
+    border-left: 0.25ch solid var(--theme-border);
+    padding-left: 2ch;
+    margin-left: 0;
+    margin-right: 0; 
+} */
+

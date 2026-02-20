@@ -1,6 +1,8 @@
 import CodeBlock from '@components/CodeBlock';
 import Badge from '@components/Badge';
 import DataTable from '@components/DataTable';
+import BlockQuote from '@components/BlockQuote';
+import AlertBanner from '../AlertBanner';
 
 export const MarkdownComponents = {
 
@@ -14,4 +16,7 @@ export const MarkdownComponents = {
       : <Badge {...props}>{children}</Badge>;
   },
 
+  blockquote: ({node, children, ...props}) => {
+    return <AlertBanner {...props}>{children}</AlertBanner>;
+  }
 }

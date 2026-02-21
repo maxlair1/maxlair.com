@@ -39,9 +39,5 @@ export default function DocTreeView(): React.ReactNode {
         ));
     }
 
-    return (
-        <TreeView title="DOCUMENTS" defaultValue={true}>
-            {renderTree(tree)}
-        </TreeView>
-    );
+    return renderTree(tree);
 }

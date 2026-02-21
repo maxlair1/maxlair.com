@@ -1,3 +1,7 @@
+.root {
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
   align-items: center;
@@ -8,24 +12,32 @@
   }
 }
 
+.gradient {
+  background: linear-gradient(0deg, var(--theme-background-modal-footer) 0%, var(--theme-background) 100%);
+
+  &:hover {
+    /* background: var(--theme-focused-foreground); */
+    background: linear-gradient(0deg, var(--theme-focused-foreground) 0%, var(--theme-background) 100%);
+  }
+}
+
+
 .icon {
   flex-shrink: 0;
   user-select: none;
-  cursor: pointer;
 }
 
 .content {
   min-width: 10%;
   width: 100%;
   user-select: none;
-  cursor: pointer;
   transition: 200ms ease all;
   transition-property: padding;
-  padding-left: 0ch;
+  padding-left: 1ch;
 }
 
 .active {
   .content {
-    padding-left: 1ch;
+    padding-left: 2ch;
   }
 }

@@ -3,7 +3,7 @@ import Badge from '@components/Badge';
 import AlertBanner from '../AlertBanner';
 import {findAndReplace, type FindAndReplaceTuple} from 'mdast-util-find-and-replace';
 import { useDocsContext } from "@root/contexts/DocsContext";
-import { rmExtension } from "@root/app/lib/utilities";
+import { removeExtension } from "@root/app/lib/utilities";
 
 export const MarkdownComponents = {
 
@@ -35,7 +35,7 @@ export function remarkWikis() {
     if (docIndex) {
       return {
         type: "link",
-        url: `/docs/${rmExtension(docIndex.pathRelative)}${anchor ? `#${anchorFormatted}` : ''}`,
+        url: `/docs/${removeExtension(docIndex.pathRelative)}${anchor ? `#${anchorFormatted}` : ''}`,
         children: [{ type: "text", value: displayText ?? slug }],
         data: {
           hProperties: {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import matter from 'gray-matter';
 
-import GET from '@root/api/github';
+import GET from '@root/app/api/github';
 
 export interface Doc {
     name: string;
@@ -50,4 +50,8 @@ export function useDocs() {
     }
 
     return {list, read};
+}
+
+export function useImages() {
+    
 }

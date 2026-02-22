@@ -394,3 +394,7 @@ export const findFocusableDescendant = (container: Element | null, currentFocuse
 
   return null;
 };
+
+export function rmExtension(input: string): string {
+    return input.replace(/\.[^.]+$/, "");
+}

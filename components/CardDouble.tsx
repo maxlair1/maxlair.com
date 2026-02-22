@@ -1,7 +1,7 @@
 import styles from '@components/CardDouble.module.css';
 
 import * as React from 'react';
-import * as Utilities from '@lib/utilities';
+import * as Utilities from '@root/app/lib/utilities';
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;

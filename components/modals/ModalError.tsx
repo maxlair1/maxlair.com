@@ -3,7 +3,7 @@
 import styles from '@components/modals/ModalError.module.css';
 
 import * as React from 'react';
-import * as Utilities from '@lib/utilities';
+import * as Utilities from '@root/app/lib/utilities';
 
 import { useHotkeys } from '@modules/hotkeys';
 import { useModals } from '@root/components/ref-page/ModalContext';

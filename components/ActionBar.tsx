@@ -1,7 +1,7 @@
 import styles from '@components/ActionBar.module.css';
 
 import * as React from 'react';
-import * as Utilities from '@lib/utilities';
+import * as Utilities from '@root/app/lib/utilities';
 
 import ButtonGroup from '@components/ButtonGroup';
 

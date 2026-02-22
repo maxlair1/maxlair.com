@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import * as Utilities from '@lib/utilities';
+import * as Utilities from '@root/app/lib/utilities';
 
 import styles from '@components/Input.module.css';
 

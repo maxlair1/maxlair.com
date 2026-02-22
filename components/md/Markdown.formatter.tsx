@@ -1,15 +1,13 @@
 import * as React from 'react'
 import ReactMarkdown from 'react-markdown';
-import {MarkdownComponents} from './Markdown.components';
+import {MarkdownComponents, remarkWikis} from './Markdown.components';
 import Card from '@components/Card';
 import { Suspense } from 'react';
 // plugins
 import remarkGfm from 'remark-gfm';
-import remarkWikis from '@root/lib/remarkWikis';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
-import Badge from '@components/Badge';
 
 /** GOALS:  
  *      1. Input Markdown, handle either RAW or .md files.

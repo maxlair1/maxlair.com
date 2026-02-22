@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useDocs, type Doc } from "@root/api/useDocs";
+import { useDocs, type Doc } from "@root/app/api/useGithubAPI";
 
 export interface DocTreeItem extends Doc {
     level: number;

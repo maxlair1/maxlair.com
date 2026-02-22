@@ -13,10 +13,8 @@ function getHeaders(type: 'json' | 'raw' ) {
     };  
 }
 /**
-    NOTE: Always use the format `path/to/` 
-    when defining paths.
-    Start with NO SLASH, and end with SLASH
-    UNLESS it's a file, then NO SLASH at end.
+    NOTE: 
+    NO slash at start. If directory, always END with Slash.
 */
 export default async function GET(
     type: 'json' | 'raw',

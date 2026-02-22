@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import * as Utilities from '@lib/utilities';
+import * as Utilities from '@root/app/lib/utilities';
 
 export default function useDeepEqualMemo<T>(value: T) {
   const ref = useRef<T | undefined>(undefined)

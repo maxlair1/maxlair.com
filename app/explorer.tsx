@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import Indent from '@root/components/Indent';
 import ActionBar from '@root/components/ActionBar';
-import actions from '@root/lib/actions';
+import actions from '@root/app/lib/actions';
 import DocTreeView from '@root/components/bespoke/DocTreeView';
 import Image from 'next/image';
 import HeaderImage from '../public/hero_logo.svg';
@@ -56,11 +56,13 @@ export default function Explorer(): React.ReactNode {
                 <Image src={HeaderImage} alt='Max Lair Logo' width={200}/>
             </div>
             <ActionBar items={actions}/>
+            {/* Pages */}
+            <Accordion style='GRADIENT' defaultValue title='CONTENT'>
+                {renderPages(samplePages)}
+            </Accordion>
+            {/* Github .md documents via Obsidian */}
             <Accordion style='GRADIENT' defaultValue title='DOCS'>
                 <DocTreeView />
-            </Accordion>
-            <Accordion style='GRADIENT' defaultValue title='PAGES'>
-                {renderPages(samplePages)}
             </Accordion>
         </div>
     );

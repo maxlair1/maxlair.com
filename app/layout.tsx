@@ -3,7 +3,7 @@ import * as React from 'react';
 import '@root/global.css';
 import '@root/global-fonts.css';
 import styles from '@root/app/layout.module.css';
-import { fragmentMono, instrumentSerif, newsreader } from '@root/lib/type';
+import { fragmentMono, instrumentSerif, newsreader } from '@root/app/lib/type';
 
 import Providers from '@components/Providers';
 import SidebarLayout from '@root/components/SidebarLayout';

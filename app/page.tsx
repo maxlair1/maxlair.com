@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Layout from './layout';
-import { Logo } from '@root/lib/constants';
+import { Logo } from '@root/app/lib/constants';
 import ActionListItem, { ActionListItemProps } from '@root/components/ActionListItem';
 import Grid from '@root/components/Grid';
 import Card from '@root/components/Card';

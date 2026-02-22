@@ -12,7 +12,7 @@
         "./demos/*"
       ],
       "@lib/*": [
-        "./lib/*"
+        "app/lib/*"
       ],
       "@data/*": [
         "./data/*"

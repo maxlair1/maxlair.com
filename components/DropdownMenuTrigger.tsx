@@ -2,9 +2,9 @@
 
 import styles from '@components/DropdownMenuTrigger.module.css';
 
-import * as Position from '@lib/position';
+import * as Position from '@root/app/lib/position';
 import * as React from 'react';
-import * as Utilities from '@lib/utilities';
+import * as Utilities from '@root/app/lib/utilities';
 
 import DropdownMenu from '@components/DropdownMenu';
 import OutsideElementEvent from '@components/detectors/OutsideElementEvent';

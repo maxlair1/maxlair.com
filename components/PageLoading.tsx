@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import BlockLoader from './BlockLoader';
 import BarLoader from './BarLoader';
-import { LoadingQuotes } from '@root/lib/constants';
+import { LoadingQuotes } from '@root/app/lib/constants';
 
 export interface PageLoadingProps {
     progress: number;

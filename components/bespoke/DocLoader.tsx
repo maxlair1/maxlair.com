@@ -3,12 +3,10 @@ import { usePathname } from 'next/navigation';
 
 import styles from '@components/bespoke/DocLoader.module.css';
 
-import { useDocs, type DocContent } from '@root/api/useDocs';
+import { useDocs, type DocContent } from '@root/app/api/useGithubAPI';
 import { useDocsContext } from '@root/contexts/DocsContext';
 import MarkdownFormatter from '../md/Markdown.formatter';
 import BreadCrumbs, { BreadCrumbsItem } from '../BreadCrumbs';
-import { get } from 'node:http';
-import path from 'node:path';
 
 export interface DocLoaderProps {
     docSlug: string;

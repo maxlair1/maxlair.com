@@ -3,7 +3,7 @@
 import styles from '@components/CodeBlock.module.css';
 
 import * as React from 'react';
-import * as Utilities from '@lib/utilities';
+import * as Utilities from '@root/app/lib/utilities';
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
   children?: React.ReactNode;

@@ -12,6 +12,10 @@ import TreeView from '@root/components/TreeView';
 import Divider from '@root/components/Divider';
 import Accordion from '@root/components/Accordion';
 
+import useContent from './content/useContent';
+import { ContentNode } from './content/useContent';
+
+
 interface TreePage {
     title: string;
     type: 'dir' | 'file';
@@ -30,18 +34,17 @@ const samplePages: TreePage[] = [
     ]},
 ]
 
-const renderPages = (items: TreePage[]): React.ReactNode => {
-    console.log('rendering level')
-    console.log(items)
-    const rendered:React.ReactNode = items.map((item) => {
+const renderContent = (nodes: ContentNode[]): React.ReactNode => {
+
+    const rendered:React.ReactNode = nodes.map((node) => {
         return (
-        <TreeView
-            key={item.title}
-            title={item.title}
-            isFile={item.type === "file"}
+            <TreeView
+            key={node.title}
+            title={node.title}
+            isFile={node.type === "file"}
             defaultValue
         >
-            {item.children ? renderPages(item.children) : undefined}
+            {node.children ? renderContent(node.children) : undefined}
         </TreeView>
         )
     })
@@ -49,6 +52,11 @@ const renderPages = (items: TreePage[]): React.ReactNode => {
 }
 
 export default function Explorer(): React.ReactNode {
+    const { load, tree, index, loading } = useContent();
+    
+    React.useEffect(() => {
+        console.log(tree, index, loading);
+    },[loading]);
 
     return (
         <div className="theme-override-dark">
@@ -58,7 +66,7 @@ export default function Explorer(): React.ReactNode {
             <ActionBar items={actions}/>
             {/* Pages */}
             <Accordion style='GRADIENT' defaultValue title='CONTENT'>
-                {renderPages(samplePages)}
+                {tree ? renderContent(tree) : <div>Loading...</div>}
             </Accordion>
             {/* Github .md documents via Obsidian */}
             <Accordion style='GRADIENT' defaultValue title='DOCS'>

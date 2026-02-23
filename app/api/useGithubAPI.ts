@@ -1,7 +1,7 @@
 import * as React from 'react';
 import matter from 'gray-matter';
 
-import GET from '@root/app/api/github';
+import GET from '@root/app/api/github/route';
 
 export interface Doc {
     name: string;

@@ -10,7 +10,6 @@ export default function DocTreeView(): React.ReactNode {
     const pathName= usePathname();
 
 
-
     function renderTree(items: DocTreeItem[]): React.ReactNode {
         return items.map((item) => (
             <TreeView 
@@ -21,18 +20,15 @@ export default function DocTreeView(): React.ReactNode {
                 isActive={
                     !!pathName &&
                     (() => {
-                        const relMarker = pathName.indexOf(item.pathRelative);
-                        if (relMarker === -1) return false;
-                        const currentPath = pathName.slice(relMarker + item.pathRelative.length) + item.slug;
-                        console.log("Comparing paths:", { currentPath, itemPath: item.pathRelative }, item.pathRelative === currentPath);
-                        return item.pathRelative === currentPath;
+                        console.log("Comparing paths:", { pathName, itemPath: item.pathRelative });
+                        return item.pathRelative === pathName;
                     })()
                 }
                 isLastChild={item.children === undefined && item.level >= 1}
                 children={item.children ? renderTree(item.children) : undefined}
                 onClick={() => {
                     if (item.type === "file") {
-                        router.push(`/docs/${item.pathRelative.slice(0, -3)}`);
+                        router.push(`${item.pathRelative.slice(0, -3)}`);
                     }
                 }}
             />

@@ -1,4 +1,7 @@
 import * as React from 'react';
+import meta from './meta.json' assert { type: 'json' };
+
+const metadata = meta;
 
 export default function Stuff() {
     

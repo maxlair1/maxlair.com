@@ -13,11 +13,11 @@
     background: var(--theme-focused-foreground);
   }
 
-  &:focus{
+  /* &:focus{
     outline: 0;
     border: 0;
     background: var(--theme-focused-foreground-subdued);
-  }
+  } */
 }
 
 .empty {
@@ -26,4 +26,16 @@
 
 .selected {
     background: var(--theme-focused-foreground-subdued);
+    position: relative;
+    /* &:after {
+        content: '[YOU ARE HERE]';
+        opacity: 0.5;
+        font-size: 0.75rem;
+        position: absolute;
+        right: 1ch;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        pointer-events: none;
+    } */
 }

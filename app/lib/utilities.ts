@@ -398,3 +398,12 @@ export const findFocusableDescendant = (container: Element | null, currentFocuse
 export function removeExtension(input: string): string {
     return input.replace(/\.[^.]+$/, "");
 }
+
+export function slicePathAtRoot (path: string): string {
+  const marker = '/app';
+  const index = path.indexOf(marker);
+  if (index !== -1) {
+    return path.slice(index + marker.length);
+  }
+  return path;
+}

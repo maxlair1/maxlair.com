@@ -11,9 +11,14 @@ import HeaderImage from '../public/hero_logo.svg';
 import TreeView from '@root/components/TreeView';
 import Divider from '@root/components/Divider';
 import Accordion from '@root/components/Accordion';
+import { slicePathAtRoot } from './lib/utilities';
+
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 import useContent from './content/useContent';
 import { ContentNode } from './content/useContent';
+import Link from 'next/link';
 
 
 interface TreePage {
@@ -34,43 +39,54 @@ const samplePages: TreePage[] = [
     ]},
 ]
 
-const renderContent = (nodes: ContentNode[]): React.ReactNode => {
-
-    const rendered:React.ReactNode = nodes.map((node) => {
-        return (
-            <TreeView
-            key={node.title}
-            title={node.title}
-            isFile={node.type === "file"}
-            defaultValue
-        >
-            {node.children ? renderContent(node.children) : undefined}
-        </TreeView>
-        )
-    })
-    return rendered
-}
-
 export default function Explorer(): React.ReactNode {
+    const pathname = usePathname();
+    const Router = useRouter();
     const { load, tree, index, loading } = useContent();
     
     React.useEffect(() => {
-        console.log(tree, index, loading);
     },[loading]);
+
+    const renderContent = (nodes: ContentNode[]): React.ReactNode => {
+        const rendered:React.ReactNode = nodes.map((node) => {
+            return (
+                <TreeView
+                key={node.title}
+                title={node.title}
+                isFile={node.type === "file" || node.type === "page"}
+                defaultValue
+                isActive={slicePathAtRoot(node.route ?? node.path) === pathname}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    if (node.type !== 'dir') {
+                        Router.push(node.route ?? node.path)
+                    }
+                }
+                } 
+            >
+                {node.children ? renderContent(node.children) : undefined}
+            </TreeView>
+            )
+        })
+        return rendered
+    }
+
 
     return (
         <div className="theme-override-dark">
-            <div style={{ display: 'flex', padding: '0.5rem' }}>
-                <Image src={HeaderImage} alt='Max Lair Logo' width={200}/>
-            </div>
+            <Link href="/" style={{ textDecoration: 'none' }}>
+                <div style={{ display: 'flex', alignItems: 'center', padding: '0.5rem' }}>
+                    <Image src={HeaderImage} alt='Max Lair Logo' width={200}/>
+                </div>
+            </Link>
             <ActionBar items={actions}/>
             {/* Pages */}
             <Accordion style='GRADIENT' defaultValue title='CONTENT'>
-                {tree ? renderContent(tree) : <div>Loading...</div>}
+                {tree ? renderContent(tree.local ?? []) : <div>Loading...</div>}
             </Accordion>
             {/* Github .md documents via Obsidian */}
             <Accordion style='GRADIENT' defaultValue title='DOCS'>
-                <DocTreeView />
+                {tree ? renderContent(tree.remote ?? []) : <div>Loading...</div>}
             </Accordion>
         </div>
     );

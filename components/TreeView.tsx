@@ -15,7 +15,7 @@ interface TreeViewProps {
   style?: any;
   title: string;
   isActive?: boolean;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, children, depth = 0, isFile = false, isRoot = false, isLastChild = false, style, parentLines = [], onClick, isActive = false }) => {

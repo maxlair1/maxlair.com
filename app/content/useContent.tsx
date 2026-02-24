@@ -45,6 +45,7 @@ export type Content = {
     load: (path: string, node?: ContentNode) => Promise<ContentData>; // node => full data
     tree: MergedTrees | undefined; // list directories from point
     loading: boolean;
+    images: any[] | undefined;
 }
 
 const ContentContext = React.createContext<Content | null>(null);
@@ -53,6 +54,7 @@ const ContentContext = React.createContext<Content | null>(null);
 export function ContentContextProvider({children}: {children: React.ReactNode}) {
     const [loading, setLoading] = React.useState<boolean>(false);
     const [tree, setTree] = React.useState<MergedTrees>();
+    const [ images, setImages ] = React.useState<any[] | undefined>(undefined);
     const [index, setIndex] = React.useState<ContentIndex>({
         byPath: {},
         byTitle: {},
@@ -136,8 +138,18 @@ export function ContentContextProvider({children}: {children: React.ReactNode}) 
         
         return { byTitle, byPath };
     }
+ 
+    const listImages = async (path?: string): Promise<any[] | undefined> => {
+        try {
+            const data = await GET('json', path, 'img');
+            return data;
+        } catch (err) {
+            console.error(err);
+            return undefined;
+        }
+    }
 
-    
+
     React.useEffect(() => {
         setLoading(true);
         async function init() {
@@ -145,9 +157,12 @@ export function ContentContextProvider({children}: {children: React.ReactNode}) 
             const localIndex = indexTree(localTree!);
             const remoteTree = await initRemote(); // get remote
             const remoteIndex = indexTree(remoteTree!);
+            const images = await listImages();
+
 
             setTree({local: localTree, remote: remoteTree});
             setIndex({byPath: {...localIndex.byPath, ...remoteIndex.byPath}, byTitle: {...localIndex.byTitle, ...remoteIndex.byTitle}});
+            setImages(images);
         }
         init();
     }, []);
@@ -163,7 +178,7 @@ export function ContentContextProvider({children}: {children: React.ReactNode}) 
     }
 
     return (
-        <ContentContext.Provider value={{ tree, load, index, loading }}>
+        <ContentContext.Provider value={{ tree, load, index, loading, images }}>
             {children}
         </ContentContext.Provider>
     );
@@ -174,6 +189,7 @@ export default function useContent() {
   if (!ctx) throw new Error("useContent must be used inside ContentContextProvider");
   return ctx;
 }
+
 
 //old copied stuff
 

@@ -1,6 +1,8 @@
 const GITHUB_API_BASE = "https://api.github.com/repos/"; // Ensure no '/' on end
 
-const pubPath = `_pub/docs/`; // default path to docs
+const docPath = `_pub/docs/`; // default path to docs
+const imgPath = `_pub/_img/`; // path to img dir 
+
 const owner = process.env.NEXT_PUBLIC_GITHUB_USER!;
 const repo = process.env.NEXT_PUBLIC_GITHUB_REPO!;
 const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN!;
@@ -17,12 +19,13 @@ function getHeaders(type: 'json' | 'raw' ) {
     NO slash at start. If directory, always END with Slash.
 */
 export default async function GET(
-    type: 'json' | 'raw',
-    path?: string
+    type: 'json' | 'raw' = 'json',
+    path?: string,
+    dragons: 'img' | 'docs' = 'docs'
 ) {
 
     const githubAPIPath = `
-        ${GITHUB_API_BASE}${owner}/${repo}/contents/${pubPath}${path ?? ""}
+        ${GITHUB_API_BASE}${owner}/${repo}/contents/${dragons === 'docs' ? docPath : imgPath}${path ?? ""}
     `;
 
     const response = await fetch(

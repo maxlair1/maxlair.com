@@ -42,10 +42,9 @@ const samplePages: TreePage[] = [
 export default function Explorer(): React.ReactNode {
     const pathname = usePathname();
     const Router = useRouter();
-    const { load, tree, index, loading } = useContent();
+    const { load, tree, index, loading, images } = useContent();
     
-    React.useEffect(() => {
-    },[loading]);
+    
 
     const renderContent = (nodes: ContentNode[]): React.ReactNode => {
         const rendered:React.ReactNode = nodes.map((node) => {

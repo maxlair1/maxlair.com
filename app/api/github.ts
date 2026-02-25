@@ -19,20 +19,20 @@ function getHeaders(type: 'json' | 'raw' ) {
     NO slash at start. If directory, always END with Slash.
 */
 export default async function GET(
-    type: 'json' | 'raw' = 'json',
+    accept: 'json' | 'raw' = 'json',
     path?: string,
-    dragons: 'img' | 'docs' = 'docs'
+    type: 'img' | 'docs' = 'docs'
 ) {
 
     const githubAPIPath = `
-        ${GITHUB_API_BASE}${owner}/${repo}/contents/${dragons === 'docs' ? docPath : imgPath}${path ?? ""}
+        ${GITHUB_API_BASE}${owner}/${repo}/contents/${type === 'docs' ? docPath : imgPath}${path ?? ""}
     `;
 
     const response = await fetch(
         githubAPIPath,
         {
             method: "GET",
-            headers: getHeaders(type),
+            headers: getHeaders(accept),
             cache: "no-store",
         }
     );
@@ -41,7 +41,7 @@ export default async function GET(
         throw new Error(`GitHub RAW fetch failed: ${response.status}`);
     }
 
-    if (type === 'json') {
+    if (accept === 'json') {
         return response.json();
     } else return response.text();
     

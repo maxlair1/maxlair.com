@@ -2,8 +2,8 @@ import CodeBlock from '@components/CodeBlock';
 import Badge from '@components/Badge';
 import AlertBanner from '../AlertBanner';
 import {findAndReplace, type FindAndReplaceTuple} from 'mdast-util-find-and-replace';
-import { useDocsContext } from "@root/contexts/DocsContext";
 import { removeExtension } from "@root/app/lib/utilities";
+import useContent from '@root/app/content/useContent';
 
 export const MarkdownComponents = {
 
@@ -16,26 +16,22 @@ export const MarkdownComponents = {
       // replace badge with custom inline code component
       : <Badge {...props}>{children}</Badge>;
   },
-
-  blockquote: ({node, children, ...props}) => {
-    return <AlertBanner {...props}>{children}</AlertBanner>;
-  }
 }
 
 export function remarkWikis() {
-  const { index } = useDocsContext();
+  const { index } = useContent();
 
   // https://regex101.com/r/5R0WQ1/1
   // Captures: [[slug]] [[slug#anchor]] [[slug|display]] [[slug#anchor|display]]
   const replaceNode: FindAndReplaceTuple = [
   /\[\[([^\]#|]+?)(?:#([^\]|]+?))?(?:\|([^\]]+?))?\]\]/g, 
     (match, slug, anchor, displayText) => {
-    const docIndex = index.bySlug[slug];
+    const docIndex = index.byTitle[slug];
     const anchorFormatted = String(anchor).toLowerCase().replace(/\s+/g, '-');
     if (docIndex) {
       return {
         type: "link",
-        url: `/docs/${removeExtension(docIndex.pathRelative)}${anchor ? `#${anchorFormatted}` : ''}`,
+        url: `/docs/${removeExtension(docIndex.path)}${anchor ? `#${anchorFormatted}` : ''}`,
         children: [{ type: "text", value: displayText ?? slug }],
         data: {
           hProperties: {

@@ -20,25 +20,6 @@ import useContent from './content/useContent';
 import { ContentNode } from './content/useContent';
 import Link from 'next/link';
 
-
-interface TreePage {
-    title: string;
-    type: 'dir' | 'file';
-    path?: string;
-    children?: TreePage[];
-}
-
-const samplePages: TreePage[] = [
-    { title: "Getting Started", path: "/docs/getting-started", type: "file" },
-    { title: "API Reference", path: "/docs/api-reference", type: "file" },
-    { title: "Tutorials", path: "/docs/tutorials", type: "file" },
-    { title: "FAQ", path: "/docs/faq", type: "file" },
-    { title: "Release Notes", type: "dir", children: [
-        { title: "v1.0.0", path: "/docs/release-notes/v1.0.0", type: "file" },
-        { title: "v1.1.0", path: "/docs/release-notes/v1.1.0", type: "file" },
-    ]},
-]
-
 export default function Explorer(): React.ReactNode {
     const pathname = usePathname();
     const Router = useRouter();

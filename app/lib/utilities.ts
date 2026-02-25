@@ -399,6 +399,15 @@ export function removeExtension(input: string): string {
     return input.replace(/\.[^.]+$/, "");
 }
 
+export function getExtension(input: string): string {
+  const lastDotIndex = input.lastIndexOf('.');
+
+  if (lastDotIndex !== -1 && lastDotIndex !== 0) {
+    return input.substring(lastDotIndex + 1);
+  }
+  return "";
+}
+
 export function slicePathAtRoot (path: string): string {
   const marker = '/app';
   const index = path.indexOf(marker);

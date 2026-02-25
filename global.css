@@ -145,6 +145,13 @@ ol li:before {
   content: counters(cupcake, '.') '. ';
 }
 
+blockquote {
+  border-left: 0.5ch solid var(--theme-border);
+  background: var(--theme-background-input);
+  font-style: italic;
+  padding-left: 2ch; 
+}
+
 article,
 aside,
 details,
@@ -168,6 +175,7 @@ body.theme-light {
   --theme-border: var(--color-gray-20);
   --theme-border-subdued: var(--color-gray-40-2);
   --theme-text: var(--color-black-100);
+  --theme-text-subdued: var(--color-gray-90);
   --theme-button: var(--color-black-100);
   --theme-button-text: var(--color-white);
   --theme-button-foreground: var(--color-gray-30);
@@ -580,22 +588,28 @@ body {
   --color-white-4: rgba(255, 255, 255, 0.4);
 
   --font-family-mono: var(--font-fragment-mono), Courier, monospace;
-  --font-family-serif: var(--font-instrument-serif), 'Newsreader', Georgia, Times New Roman, serif;
+  /* --font-family-serif: 'Newsreader', Georgia, Times New Roman, serif; */
+  --font-family-serif: serif;
   --font-family-sans: -apple-system, helvetica, sans-serif;
   --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
 
   .prose {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-family-serif);
     line-height: 1.5;
+    
+    p {
+      font-size: 1rem;
+      line-height: 1.25;
+      font-family: var(--font-family-sans);
+    }
+
   };
   
-  .prose p {
-    font-size: 1rem;
-  }
   
   .prose h1 {
-    font-family: var(--font-newsreader);
+    /* font-family: var(--font-newsreader); */
     font-weight: 400;
+    font-size: 2rem;
   }
   
   .prose h2 {
@@ -606,8 +620,8 @@ body {
   .prose h4,
   .prose h5,
   .prose h6 {
-    font-weight: 600;
-    text-transform: uppercase;
+    font-weight: 700;
+    /* text-transform: uppercase; */
   }
 
   --theme-text: var(--color-black-100);

@@ -1,24 +1,27 @@
 import * as React from 'react';
-import { removeExtension, slicePathAtRoot } from '@lib/utilities';
+import { removeExtension, slicePathAtRoot, getExtension } from '@lib/utilities';
 import matter from 'gray-matter';
 import GET from '@root/app/api/github';
+import { url } from 'node:inspector';
 
 
 export interface ContentNode {
     title: string;
-    path: string; // path object later
+    path: string;
     route?: string;
     source: 'local' | 'remote';
     /**
      * local: page, dir, or file stored locally, used for static content
      * remote: .md or .mdx file stored remotely, used for dynamic content that can be updated without redeploying the app
-     */
-    type: 'file' | 'dir' | 'page';
-    /**
-     * file: .md, .mdx, .txt, .png, .jpeg, and other static files.
-     * dir: standard directory, has children files or pages.
-     * page: route accessible Next.js .tsx file.
-     */
+    */
+   type: 'file' | 'dir' | 'page';
+   /**
+    * file: .md, .mdx, .txt, .png, .jpeg, and other static files.
+    * dir: standard directory, has children files or pages.
+    * page: route accessible Next.js .tsx file.
+   */
+    url?: string;
+    extension?: string;
     children?: ContentNode[] | undefined;
     hidden?: boolean;
     order?: number;
@@ -54,7 +57,7 @@ const ContentContext = React.createContext<Content | null>(null);
 export function ContentContextProvider({children}: {children: React.ReactNode}) {
     const [loading, setLoading] = React.useState<boolean>(false);
     const [tree, setTree] = React.useState<MergedTrees>();
-    const [ images, setImages ] = React.useState<any[] | undefined>(undefined);
+    const [images, setImages] = React.useState<any[] | undefined>(undefined);
     const [index, setIndex] = React.useState<ContentIndex>({
         byPath: {},
         byTitle: {},
@@ -95,11 +98,8 @@ export function ContentContextProvider({children}: {children: React.ReactNode}) 
 
         const normalizePath = (path: string): string => {
             const normalizedPath = calcRelativePath(
-                removeExtension(
-                    slicePathAtRoot(path
-                        .toLowerCase()
-                        .replace(/ /g, '%20') // replace spaces in filenames with underscores
-                    )
+                slicePathAtRoot(path
+                    .replace(/ /g, '%20') // replace spaces in filenames with underscores
                 )
             );
             return normalizedPath;
@@ -107,10 +107,12 @@ export function ContentContextProvider({children}: {children: React.ReactNode}) 
         return await GET('json', path).then((data) => {
             const tree = data.map(async (item: any) => ({
                 title: removeExtension(item.name),
+                url: item.download_url,
                 path: item.path,
                 route: `/docs/${normalizePath(item.path)}`,
                 source: 'remote',
                 type: item.type,
+                extension: getExtension(item.path),
                 children: item.type === 'dir' ? await initRemote(calcRelativePath(item.path)) : []
             }));
             return Promise.all(tree);
@@ -149,7 +151,6 @@ export function ContentContextProvider({children}: {children: React.ReactNode}) 
         }
     }
 
-
     React.useEffect(() => {
         setLoading(true);
         async function init() {
@@ -167,14 +168,28 @@ export function ContentContextProvider({children}: {children: React.ReactNode}) 
         init();
     }, []);
     
-    const load = async (path: string, node?: ContentNode): Promise<ContentData> => {
-        return { 
-            content: "",
-            frontmatter: {},
-            title: node?.title || '',
-            path, source: 'local',
-            type: 'file' 
-        };
+    const load = async (path: string, node?: ContentNode, type: string = 'doc', accept: string = 'raw'): Promise<ContentData> => {
+        // note: maybe eventually use this as the onClick for the tree item.
+        return await GET('raw', path, 'docs').then(n => {
+            const {data, content} = matter(n);
+            if (node) {
+                return {
+                    ...node,
+                    frontmatter: data,
+                    content: content,
+                };
+            } else {
+                // fallback: create minimal ContentData
+                return {
+                    title: data.title ?? removeExtension(path),
+                    path,
+                    source: 'remote',
+                    type: 'file',
+                    content,
+                    frontmatter: data,
+                };
+            }
+        });
     }
 
     return (

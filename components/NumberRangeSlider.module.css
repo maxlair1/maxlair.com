@@ -4,6 +4,10 @@
   justify-content: space-between;
 }
 
+.label {
+  color: var(--theme-text-subdued);
+}
+
 .amount {
   flex-shrink: 0;
   background: var(--theme-text);
@@ -42,7 +46,7 @@
     font-size: var(--font-size);
     width: 1ch;
     height: calc(var(--font-size) * var(--theme-line-height-base));
-    background: var(--theme-button-foreground);
+    background: var(--theme-text-subdued);
     vertical-align: bottom;
     cursor: pointer;
     border-radius: 0;

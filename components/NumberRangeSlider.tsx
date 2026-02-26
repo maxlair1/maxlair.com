@@ -9,9 +9,12 @@ interface RangerProps {
   max?: number;
   min?: number;
   step?: number;
+  suffix?: string;
+  prefix?: string;
+  label?: React.ReactNode;
 }
 
-const NumberRangeSlider: React.FC<RangerProps> = ({ defaultValue = 0, max = 5000, min = 0, step = 1 }) => {
+const NumberRangeSlider: React.FC<RangerProps> = ({ defaultValue = 0, max = 5000, min = 0, step = 1, label, suffix, prefix }) => {
   const sliderRef = React.useRef<HTMLInputElement>(null);
   const [displayValue, setDisplayValue] = React.useState<number>(defaultValue);
 
@@ -34,12 +37,15 @@ const NumberRangeSlider: React.FC<RangerProps> = ({ defaultValue = 0, max = 5000
   };
 
   return (
-    <div className={styles.root}>
-      <label className={styles.left}>
-        <div className={styles.amount}>{padValue(displayValue)}</div>
-      </label>
-      <input className={styles.slider} defaultValue={defaultValue} max={max} min={min} onChange={scrub} ref={sliderRef} role="slider" step={step} tabIndex={0} type="range" />
-    </div>
+    <>
+      {label && <label className={styles.label}>{label}</label>}
+      <div className={styles.root}>
+        <label className={styles.left}>
+          <div className={styles.amount}>{prefix}{padValue(displayValue)}{suffix}</div>
+        </label>
+        <input className={styles.slider} defaultValue={defaultValue} max={max} min={min} onChange={scrub} ref={sliderRef} role="slider" step={step} tabIndex={0} type="range" />
+      </div>
+    </>
   );
 };
 

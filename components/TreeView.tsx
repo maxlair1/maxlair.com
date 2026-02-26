@@ -16,9 +16,13 @@ interface TreeViewProps {
   title: string;
   isActive?: boolean;
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  radio?: boolean;
+  radioChecked?: boolean;
+  prepend?: React.ReactNode | string;
+  append?: React.ReactNode | string;
 }
 
-const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, children, depth = 0, isFile = false, isRoot = false, isLastChild = false, style, parentLines = [], onClick, isActive = false }) => {
+const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, children, depth = 0, isFile = false, isRoot = false, isLastChild = false, style, parentLines = [], onClick, isActive = false, radio = false, radioChecked = false, prepend, append }) => {
   const [show, setShow] = React.useState<boolean>(defaultValue);
 
   const onToggleShow = (): void => {
@@ -32,6 +36,7 @@ const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, childr
   const endPrefix = isLastChild ? '└───' : '├───';
   const prefix = `${spacing}${endPrefix}`;
   const icon = isFile ? ' ' : show ? '╦ ' : '╤ ';
+  const radioIcon = radio ? (radioChecked ? '[X] ' : '[ ] ') : '';
 
   const updatedParentLines = [...parentLines, !isLastChild];
 
@@ -40,7 +45,10 @@ const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, childr
       <div tabIndex={0} role="button" onClick={onToggleShow} className={styles.item} aria-expanded={show}>
         {prefix}
         {icon}
+        {radioIcon}
+        {prepend}
         {title}
+        {append}
       </div>
       {show && hasChildren && (
         <div>

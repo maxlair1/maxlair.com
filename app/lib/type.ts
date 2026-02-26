@@ -1,14 +1,8 @@
-import {Newsreader, Instrument_Serif, Fragment_Mono} from 'next/font/google';
+import {Fragment_Mono, Source_Serif_4} from 'next/font/google';
 
-export const newsreader = Newsreader({
+export const sourceSerif4 = Source_Serif_4({
   subsets: ['latin'],
-  variable: '--font-newsreader',
-})
-
-export const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-instrument-serif',
+  variable: '--font-source-serif-4',
 })
 
 export const fragmentMono = Fragment_Mono({

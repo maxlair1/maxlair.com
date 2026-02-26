@@ -35,7 +35,7 @@ export default function DocLoader({ path }: DocLoaderProps): React.ReactNode {
     !path
       ? <div>no doc specified</div>
       : (
-        <div className={`prose ${styles.root}`}>
+        <div className={`prose ${styles.prose} ${styles.root}`}>
             <MarkdownFormatter md={doc ?? ''} frontmatter={meta ?? undefined}/>
         </div>
       )

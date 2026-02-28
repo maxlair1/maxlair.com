@@ -54,7 +54,7 @@ export type Content = {
 const ContentContext = React.createContext<Content | null>(null);
 
 // get content from dirs, build tree, index
-export function ContentContextProvider({children}: {children: React.ReactNode}) {
+export function ContentProvider({children}: {children: React.ReactNode}) {
     const [loading, setLoading] = React.useState<boolean>(false);
     const [tree, setTree] = React.useState<MergedTrees>();
     const [images, setImages] = React.useState<any[] | undefined>(undefined);

@@ -4,6 +4,7 @@ import '@root/global.css';
 import '@root/global-fonts.css';
 import styles from '@root/app/layout.module.css';
 import { fragmentMono, sourceSerif4 } from '@root/app/lib/type';
+import { getInitialTheme } from './lib/theme.server';
 
 import Providers from '@components/Providers';
 import SidebarLayout from '@root/components/SidebarLayout';
@@ -33,11 +34,13 @@ export interface RootLayoutProps {
 }
 
 
-export default function ExploreLayout({ children }: RootLayoutProps) {
+export default async function ExploreLayout({ children }: RootLayoutProps) {
+  const initialTheme = await getInitialTheme();
+
   return (
-    <html lang="en-us">
+    <html lang="en-us" data-theme={initialTheme === 'system' ? 'light' : initialTheme}>
       <body className={`theme-light ${fragmentMono.variable} ${sourceSerif4.variable} `}>
-        <Providers>
+        <Providers theme={initialTheme}>
           <main className={styles.main}>
               <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30}>
                 <div className={styles.content}>

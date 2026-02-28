@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import { ModalProvider } from '@root/components/ref-page/ModalContext';
 import { createContext, useState, useContext } from 'react';
-import { ContentContextProvider } from '@root/app/content/useContent';
+import { ContentProvider } from '@root/app/content/useContent';
+import { ThemeProvider } from '@root/app/lib/theme.provider';
 
 const appContext = createContext({});
 
@@ -12,13 +13,15 @@ interface ProvidersProps {
   children: React.ReactNode;
 }
 
-const Providers: React.FC<ProvidersProps> = ({ children }) => {
+const Providers: React.FC<ProvidersProps & { theme: any, onThemeChange?: (theme: string) => void }> = ({ children, theme, onThemeChange }) => {
   return (
-    <ModalProvider>
-        <ContentContextProvider>
-          {children}
-        </ContentContextProvider>
-    </ModalProvider>
+    <ThemeProvider initialTheme={theme}>
+      <ModalProvider>
+          <ContentProvider>
+            {children}
+          </ContentProvider>
+      </ModalProvider>
+    </ThemeProvider>
     );
 };
 

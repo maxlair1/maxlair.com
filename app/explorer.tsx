@@ -17,7 +17,6 @@ import { useRouter } from 'next/navigation';
 import useContent from './content/useContent';
 import { ContentNode } from './content/useContent';
 import Link from 'next/link';
-import Indent from '@root/components/Indent';
 import ActionButton from '@root/components/ActionButton';
 
 export default function Explorer(): React.ReactNode {
@@ -55,7 +54,7 @@ export default function Explorer(): React.ReactNode {
                 key={node.title}
                 title={node.title}
                 isFile={node.type === "file" || node.type === "page"}
-                defaultValue
+                defaultValue={node.defaultOpen ?? true}
                 isActive={slicePathAtRoot(node.route ?? node.path) === pathname}
                 onClick={(e) => {
                     e.stopPropagation();

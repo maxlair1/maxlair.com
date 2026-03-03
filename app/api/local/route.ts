@@ -1,5 +1,5 @@
 import * as fs from 'node:fs/promises';
-import { pathToFileURL } from 'node:url';
+// import { pathToFileURL } from 'node:url';
 import path from 'path';
 import { removeExtension } from '../../lib/utilities';
 
@@ -8,6 +8,7 @@ type pageMeta = {
   description?: string,
   order?: number,
   hidden?: boolean 
+  defaultOpen?: boolean
 }
 
 async function getContentTree(dir: string) {
@@ -38,6 +39,7 @@ async function getContentTree(dir: string) {
       return {
         ...meta,
         title: meta.title ?? removeExtension(entry.name),
+        defaultOpen: meta.defaultOpen,
         path: path.join(dir, entry.name),
         route: `/${path.relative('app/', path.join(dir, entry.name)).replace(/\\/g, '/')}`,
         source: 'local',

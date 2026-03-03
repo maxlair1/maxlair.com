@@ -9,12 +9,13 @@ interface SidebarLayoutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   defaultSidebarWidth?: number;
   isShowingHandle?: boolean;
   isReversed?: boolean;
+  grabTab?: boolean;
 }
 
 const LINE_HEIGHT = 20;
 const CHARACTER_WIDTH = 9.6;
 
-const SidebarLayout: React.FC<SidebarLayoutProps> = ({ defaultSidebarWidth = 20, children, sidebar, isShowingHandle = false, isReversed = false, ...rest }) => {
+const SidebarLayout: React.FC<SidebarLayoutProps> = ({ defaultSidebarWidth = 20, children, sidebar, isShowingHandle = false, isReversed = false, grabTab = false, ...rest }) => {
   const [sidebarWidth, setSidebarWidth] = React.useState(defaultSidebarWidth);
   const handleRef = React.useRef<HTMLDivElement>(null);
 
@@ -62,16 +63,23 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({ defaultSidebarWidth = 20,
           width: `${sidebarWidth}ch`,
         }}
       >
-        {sidebar}
-      </div>
-      {isShowingHandle ? (
-        <div className={styles.handle} ref={handleRef} role="button" tabIndex={0} onMouseDown={handleMouseDown} style={isShowingHandle ? {} : { width: `0.5ch` }}>
-          <>
-            <div className={styles.line} />
-            <div className={styles.line} />
-          </>
+        <div>
+          {sidebar}
         </div>
-      ) : null}
+        {grabTab ? (
+          <div className={styles.grabTab}>
+            <p>explore</p>
+          </div>
+        ) : null}
+      </div>
+        {isShowingHandle ? (
+          <div className={styles.handle} ref={handleRef} role="button" tabIndex={0} onMouseDown={handleMouseDown} style={isShowingHandle ? {} : { width: `0.5ch` }}>
+            <>
+              <div className={styles.line} />
+              <div className={styles.line} />
+            </>
+          </div>
+        ) : null}
       <div className={styles.content}>{children}</div>
     </div>
   );

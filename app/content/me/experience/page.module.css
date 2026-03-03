@@ -1,0 +1,12 @@
+/* .header {
+    background-color: var(--color-gray-30);
+    height: 30ch;
+} */
+/* 
+.tableMain {
+    margin-top: 20ch;
+} */
+
+.gradient {
+  background: linear-gradient(0deg, var(--theme-background-modal-footer) 0%, var(--theme-background) 100%);
+}

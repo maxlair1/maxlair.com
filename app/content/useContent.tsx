@@ -26,6 +26,7 @@ export interface ContentNode {
     hidden?: boolean;
     order?: number;
     description?: string;
+    defaultOpen?: boolean;
 }
 
 export interface ContentData extends ContentNode {

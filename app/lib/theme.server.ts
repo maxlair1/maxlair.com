@@ -7,11 +7,6 @@ export async function getInitialTheme(): Promise<'light' | 'dark' | 'system'> {
   return 'system'; // tell client to resolve system preference
 }
 
-
-
-
-
-
 //OLD:
 
 // 'server only';

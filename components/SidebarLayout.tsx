@@ -2,7 +2,7 @@
 
 import styles from '@components/SidebarLayout.module.css';
 import * as React from 'react';
-import Button from './Button';
+import ActionListItem from './ActionListItem';
 
 interface SidebarLayoutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
   children?: React.ReactNode;
@@ -24,11 +24,11 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
   isShowingHandle = false, 
   isReversed = false, 
   grabTab = false, 
-  collapsed = false,
+  collapsed,
   ...rest 
 }) => {
   const [sidebarWidth, setSidebarWidth] = React.useState(defaultSidebarWidth);
-  const [isCollapsed, setIsCollapsed] = React.useState(collapsed);
+  const [isCollapsed, setIsCollapsed] = React.useState(false);
   const handleRef = React.useRef<HTMLDivElement>(null);
 
   const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -68,51 +68,53 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
   }
 
   return (
-    <div className={`${styles.root} ${isCollapsed ? styles.collapsed : ''}`} {...rest}>
-      <Button style={{position: 'absolute', margin: '1rem'}} onClick={() => setIsCollapsed(!isCollapsed)}>{isCollapsed ? 'Expand' : 'Collapse'}</Button>
-      <div
-        className={styles.sidebar}
-        style={{
-          width: `${sidebarWidth}ch`,
-        }}
-      >
-        <div>
-          {sidebar}
-        </div>
-        {grabTab ? (
+    <>
+      <div className={`${styles.root} ${isCollapsed ? styles.collapsed : ''}`} {...rest}>
+        <div
+          className={styles.sidebar}
+          style={{
+            width: `${sidebarWidth}ch`,
+          }}
+        >
+          <div>
+            {sidebar}
+          </div>
+          {grabTab ? (
           <div className={styles.grabTab}>
             <p>explore</p>
           </div>
-        ) : null}
+      ) : null}
+        </div>
+          {isShowingHandle ? (
+            <div className={styles.handle} ref={handleRef} role="button" tabIndex={0} onMouseDown={handleMouseDown} style={isShowingHandle ? {} : { width: `0.5ch` }}>
+              <>
+                <div className={styles.line} />
+              </>
+            </div>
+          ) : null}
+        <div className={styles.content}>{children}</div>
       </div>
-        {isShowingHandle ? (
-          <div className={styles.handle} ref={handleRef} role="button" tabIndex={0} onMouseDown={handleMouseDown} style={isShowingHandle ? {} : { width: `0.5ch` }}>
-            <>
-              <div className={styles.line} />
-            </>
-          </div>
-        ) : null}
-      <div className={styles.content}>{children}</div>
-    </div>
+    </>
   );
 };
 
 const sidebarContext = React.createContext<{
-  sidebar: React.ReactNode;
   collapsed: boolean;
+  toggleSidebar: () => void;
 }>({
-  sidebar: null,
   collapsed: false,
+  toggleSidebar: () => {},
 });
 
 export function SidebarProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = React.useState({
-    sidebar: null,
-    collapsed: false,
-  });
+  const [state, setState] = React.useState({collapsed: false});
+
+  const toggleSidebar = () => {
+    setState((prev) => ({ ...prev, collapsed: !prev.collapsed }));
+  };
 
   return (
-    <sidebarContext.Provider value={state}>
+    <sidebarContext.Provider value={{ ...state, toggleSidebar }}>
       {children}
     </sidebarContext.Provider>
   );

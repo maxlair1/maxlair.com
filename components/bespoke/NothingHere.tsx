@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Nothingere.module.css';
+import styles from './NothingHere.module.css';
 import Image from 'next/image';
 import constructionGif from '../../public/construct.gif';
 import constructionTextGif from '../../public/construction_text.gif';

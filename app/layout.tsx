@@ -3,6 +3,7 @@ import * as React from 'react';
 import '@root/global.css';
 import '@root/global-fonts.css';
 import styles from '@root/app/layout.module.css';
+import Button from '@components/Button';
 import { fragmentMono, sourceSerif4 } from '@root/app/lib/type';
 import { getInitialTheme } from './lib/theme.server';
 
@@ -38,10 +39,10 @@ export default async function ExploreLayout({ children }: RootLayoutProps) {
 
   return (
     <html lang="en-us" data-theme={initialTheme === 'system' ? 'light' : initialTheme}>
-      <body className={`theme-light ${fragmentMono.variable} ${sourceSerif4.variable} `}>
+      <body className={`theme-light tint-orange ${fragmentMono.variable} ${sourceSerif4.variable} `}>
         <Providers theme={initialTheme}>
           <main className={styles.main}>
-              <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30} collapsed={true} isShowingHandle={true}>
+              <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30} collapsed={true} isShowingHandle={true} grabTab>
                 <div className={styles.content}>
                   {children}
                 </div>

@@ -7,7 +7,7 @@ import { fragmentMono, sourceSerif4 } from '@root/app/lib/type';
 import { getInitialTheme } from './lib/theme.server';
 
 import Providers from '@components/Providers';
-import SidebarLayout from '@root/components/SidebarLayout';
+import SidebarLayout, { useSidebar} from '@root/components/SidebarLayout';
 import Explorer from '@root/app/explorer';
 
 export const metadata = {
@@ -33,7 +33,6 @@ export interface RootLayoutProps {
   sidebarExpanded?: boolean;
 }
 
-
 export default async function ExploreLayout({ children }: RootLayoutProps) {
   const initialTheme = await getInitialTheme();
 
@@ -42,7 +41,7 @@ export default async function ExploreLayout({ children }: RootLayoutProps) {
       <body className={`theme-light ${fragmentMono.variable} ${sourceSerif4.variable} `}>
         <Providers theme={initialTheme}>
           <main className={styles.main}>
-              <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30}>
+              <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30} collapsed={true} isShowingHandle={true}>
                 <div className={styles.content}>
                   {children}
                 </div>

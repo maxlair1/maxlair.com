@@ -3,13 +3,14 @@ import * as React from 'react';
 import '@root/global.css';
 import '@root/global-fonts.css';
 import styles from '@root/app/layout.module.css';
-import Button from '@components/Button';
 import { fragmentMono, sourceSerif4 } from '@root/app/lib/type';
 import { getInitialTheme } from './lib/theme.server';
 
 import Providers from '@components/Providers';
-import SidebarLayout, { useSidebar} from '@root/components/SidebarLayout';
+import ThemeScript from './ThemeScript';
+import SidebarLayout from '@root/components/SidebarLayout';
 import Explorer from '@root/app/explorer';
+import useTheme from './lib/theme.provider';
 
 export const metadata = {
   title: 'MaxLair Documentation',
@@ -37,12 +38,15 @@ export interface RootLayoutProps {
 export default async function ExploreLayout({ children }: RootLayoutProps) {
   const initialTheme = await getInitialTheme();
 
+  console.log('Initial theme:', initialTheme);
+
   return (
     <html lang="en-us" data-theme={initialTheme === 'system' ? 'light' : initialTheme}>
-      <body className={`theme-light tint-orange ${fragmentMono.variable} ${sourceSerif4.variable} `}>
+      <body className={`theme-${initialTheme === 'system' ? 'light' : initialTheme} ${fragmentMono.variable} ${sourceSerif4.variable} `}>
+        <ThemeScript />
         <Providers theme={initialTheme}>
           <main className={styles.main}>
-              <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30} collapsed={true} isShowingHandle={true} grabTab>
+              <SidebarLayout sidebar={<Explorer />} defaultSidebarWidth={30} grabTab>
                 <div className={styles.content}>
                   {children}
                 </div>

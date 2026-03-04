@@ -43,20 +43,6 @@ export function getDomainFromEmailWithoutAnySubdomain(email: string): string {
   return mainDomain;
 }
 
-export function onHandleAppearanceModeChange(className?: string) {
-  const body = document.body;
-
-  body.classList.forEach((existingClass) => {
-    if (existingClass.startsWith('tint-')) {
-      body.classList.remove(existingClass);
-    }
-  });
-
-  if (className) {
-    body.classList.add(className);
-  }
-}
-
 export function onHandleAppearanceChange(className?: string) {
   const body = document.body;
 

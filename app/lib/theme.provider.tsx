@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { onHandleAppearanceChange } from './utilities';
 
 const ThemeContext = React.createContext<{
   theme: 'light' | 'dark';
@@ -32,6 +33,10 @@ export function ThemeProvider({
     document.cookie = `theme=${resolvedTheme}; path=/`;
     document.documentElement.dataset.theme = resolvedTheme;
   }, [initialTheme]);
+
+  React.useEffect(() => {
+    onHandleAppearanceChange(theme === 'dark' ? 'theme-dark' : 'theme-light');
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme: setThemeState }}>

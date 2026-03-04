@@ -15,8 +15,9 @@ const actionItems = [
 ]
 
 const experienceData = [
-    { company: 'HeartFitt LLC', role: 'Head of Project & Brand', date: 'NOV 2025', description: 'Development team-- Science-backed heart rate workout software.', note: 'Logo, marketing, product design, portal development, and web development', link: 'https://hearthero.app'},
-    { company: 'Hominy Homes', role: 'UX/UI Designer', description: 'AI property management.'},
+    { company: 'Designer\'s Drink Coffee', role: 'Full-Stack Product Consultant', date: 'CUR', description: 'Development team-- Science-backed heart rate workout software.', note: 'Logo, marketing, product design, portal development, and web development', link: 'https://hearthero.app'},
+    { company: 'HeartFitt LLC', role: 'Head of Project & Brand', date: 'NOV25-> CUR', description: 'Development team-- Science-backed heart rate workout software.', note: 'Logo, marketing, product design, portal development, and web development', link: 'https://hearthero.app'},
+    { company: 'Hominy Homes', role: 'UX/UI Designer', date: 'JUL25-> OCT24', description: 'AI property management.'},
     { company: 'LMI', role: 'Product Designer', description: 'Design systems for the US Army.', link: 'https://lmi.org' },
     { company: 'FAAVIATOR', role: 'Lead Product Designer', description: 'Airspace approval app for first-responder drone deployment.', link: 'https://faaviator.com' },
     { company: 'NeuralDev AI', role: 'Lead Product Designer', description: 'AI powered notetaking and self-care apps.' },
@@ -36,7 +37,7 @@ export default function Page() {
             <ActionBar items={actionItems}></ActionBar>
                 {/* <Grid> */}
                     <Row>
-                    M.A. Lair. Updated <Badge>02-2026</Badge>
+                    M.A. Lair. Updated <Badge>MAR 2026</Badge>
                     </Row>
                     <Row>test</Row>
                 {/* </Grid> */}
@@ -46,7 +47,7 @@ export default function Page() {
             <div>
                 <Table style={{ minWidth: '50ch' }}>
                     <TableRow className={styles.gradient}>
-                        <TableColumn style={{maxWidth: '10ch'}}>DATES</TableColumn>
+                        <TableColumn>DATES</TableColumn>
                         <TableColumn>COMPANY</TableColumn>
                         <TableColumn>ROLE</TableColumn>
                         <TableColumn>DESCRIPTION</TableColumn>
@@ -56,7 +57,7 @@ export default function Page() {
                         experienceData.map((i, idx) => {
                             return (
                                 <TableRow key={idx}>
-                                    <TableColumn style={{maxWidth: '10ch'}}>{i.date}</TableColumn>
+                                    <TableColumn>{i.date}</TableColumn>
                                     <TableColumn>
                                         {i.link ? <a href={i.link} target="_blank" rel="noopener noreferrer">{i.company}</a> : i.company}
                                     </TableColumn>

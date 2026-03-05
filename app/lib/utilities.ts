@@ -381,8 +381,14 @@ export const findFocusableDescendant = (container: Element | null, currentFocuse
   return null;
 };
 
+
 export function removeExtension(input: string): string {
-    return input.replace(/\.[^.]+$/, "");
+  return input.replace(/\.[^.]+$/, "");
+}
+
+export function getParentPath(path: string): string {
+  const parts = path.split('/').filter(Boolean);
+  return parts.length > 1 ? ('/' + parts.slice(0, -1).join('/')) : '';
 }
 
 export function getExtension(input: string): string {

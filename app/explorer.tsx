@@ -104,7 +104,7 @@ export default function Explorer(): React.ReactNode {
                 </Accordion>
             </section>
             <footer className={styles.footer}>
-                <Button>{'Shoot me a message'}</Button>
+                <Button theme='SECONDARY'>{'Shoot me a message'}</Button>
             </footer>
         </div>
     );

@@ -9,6 +9,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
 
+
 /** GOALS:  
  *      1. Input Markdown, handle either RAW or .md files.
  *      2. Use ReactMarkdown for renderer
@@ -30,9 +31,8 @@ const rehypePlugins = [
 ]
 
 export default function MarkdownFormatter({ md, frontmatter, title, loaded = true }: { md: string, frontmatter?: Record<string, any>, title?: string, loaded?: boolean }): React.ReactNode {
-
     return (
-        <Suspense fallback={<div>Loading...</div>} >
+        <div className='prose'>
             <h1>{frontmatter?.title ?? title}</h1>
             <ReactMarkdown 
                 components={MarkdownComponents}
@@ -41,6 +41,6 @@ export default function MarkdownFormatter({ md, frontmatter, title, loaded = tru
             >
                 {md}
             </ReactMarkdown>
-        </Suspense>
+        </div>
     );
 }

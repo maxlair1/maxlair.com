@@ -1,12 +1,13 @@
+import * as React from 'react';
 import CodeBlock from '@components/CodeBlock';
 import Badge from '@components/Badge';
-import AlertBanner from '../AlertBanner';
 import {findAndReplace, type FindAndReplaceTuple} from 'mdast-util-find-and-replace';
 import { removeExtension } from "@root/app/lib/utilities";
 import useContent from '@root/app/content/useContent';
+import Divider from '../Divider';
+import Image from 'next/image';
 
 export const MarkdownComponents = {
-
   // Code Block and Inline using SRCL 
   code: ({node, className, children, ...props}) => {
     const match = /language-(\w+)/.exec(className || '');
@@ -16,6 +17,29 @@ export const MarkdownComponents = {
       // replace badge with custom inline code component
       : <Badge {...props}>{children}</Badge>;
   },
+  hr: () => <Divider type="GRADIENT" />,
+  img: ({node, alt, src, width, height, ...props}) => {
+    const { getImageUrl, imageIndex } = useContent();
+    const filename = src.split('/').pop() ?? '';
+    
+    console.log('Rendering image:', {src, filename, url: getImageUrl(filename), index: imageIndex});
+    if (!getImageUrl(filename)) {
+      return <span {...props}>{`Image not found: ${alt}`}</span>;
+    }
+    return (
+      // <em style={{position: 'relative', width: '100%', height: 'auto'}}>
+        <Image
+          alt={alt}
+          src={String(getImageUrl(filename)!)}
+          width={1000}
+          height={500}
+          style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+          loading='lazy'
+          {...props}
+        />
+      // </em>
+    );
+  }
 }
 
 export function remarkWikis() {

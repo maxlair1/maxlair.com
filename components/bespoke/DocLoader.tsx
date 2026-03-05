@@ -13,7 +13,8 @@ export default function DocLoader({ path }: DocLoaderProps): React.ReactNode {
     const [loading, setLoading] = React.useState(false);
     const [doc, setDoc] = React.useState<string>();
     const [meta, setMeta] = React.useState<Record<string, any> | undefined>(undefined);
-    const { load } = useContent();
+    const [images, setImages] = React.useState<any[] | undefined>(undefined);
+    const { load, index } = useContent();
 
     React.useEffect(() => {
         async function loadDoc() {
@@ -28,7 +29,6 @@ export default function DocLoader({ path }: DocLoaderProps): React.ReactNode {
           .catch(err => console.error("Error rendering markdown:", err));
         }
         loadDoc();
-        
       }, [path]);
       
   return (

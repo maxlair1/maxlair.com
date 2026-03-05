@@ -159,6 +159,8 @@ body.theme-light {
   --theme-button-background: var(--color-gray-20);
   --theme-focused-foreground: var(--color-daybreak);
   --theme-focused-foreground-subdued: var(--color-daybreak-10-5);
+  --theme-gradient: linear-gradient(0deg, var(--theme-background-modal-footer) 0%, var(--theme-background) 100%);
+  --theme-gradient-hover: linear-gradient(0deg, var(--theme-focused-foreground) 0%, var(--theme-background) 100%);
   --theme-INVERT-overlay: var(--color-black-100-4);
   --theme-INVERT-background: var(--color-black-100);
   --theme-INVERT-background-modal: var(--color-gray-80);
@@ -177,8 +179,8 @@ body.theme-light {
 
 body.theme-dark {
   --theme-overlay: var(--color-black-100-4);
-  --theme-background: var(--color-black-100);
-  --theme-background-modal: var(--color-gray-80);
+  --theme-background: var(--color-black-daybreak-100);
+  --theme-background-modal: var(--color-gray-90);
   --theme-background-modal-footer: var(--color-gray-70);
   --theme-background-input: var(--color-gray-60);
   --theme-border: var(--color-gray-80);
@@ -189,7 +191,9 @@ body.theme-dark {
   --theme-button-foreground: var(--color-gray-90);
   --theme-button-background: var(--color-gray-80);
   --theme-focused-foreground: var(--color-daybreak);
-  --theme-INVERT-focused-foreground-subdued: var(--color-daybreak-10-5);
+  --theme-focused-foreground-subdued: var(--color-daybreak-10-5);
+  --theme-gradient: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
+  --theme-gradient-hover: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-focused-foreground) 100%);
   --theme-INVERT-overlay: var(--color-black-100-4);
   --theme-INVERT-background: var(--color-white);
   --theme-INVERT-background-modal: var(--color-gray-20);
@@ -342,21 +346,60 @@ body {
   --color-white-4: rgba(255, 255, 255, 0.4);
 
   --font-family-mono: var(--font-fragment-mono), Courier, monospace;
-  /* --font-family-serif: 'Newsreader', Georgia, Times New Roman, serif; */
-  --font-family-serif: serif;
+  --font-family-serif: serif, Georgia, Times New Roman, serif;
   --font-family-sans: -apple-system, helvetica, sans-serif;
   --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
 
-  .prose {
+  --theme-text: var(--color-black-100);
+  --theme-line-height-base: 1.125;
+  --font-size: 16px;
 
+  --z-index-page: 1;
+  --z-index-page-select: 3;
+  --z-index-page-tooltips: 4;
+  --z-index-page-popover: 5;
+  --z-index-page-dropdown-menus: 6;
+  --z-index-page-modals: 10;
+
+  background: var(--theme-background);
+  color: var(--theme-text);
+  font-family: var(--font-family);
+  line-height: calc(var(--theme-line-height-base) * 1rem);
+
+  font-size: var(--font-size);
+  font-optical-sizing: auto;
+  text-rendering: geometricPrecision;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums lining-nums;
+
+  &::-webkit-scrollbar {
+    background: transparent;
+    height: calc(var(--theme-line-height-base) * 1rem);
+    width: 1ch;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--theme-background);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--theme-border);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-border);
+  }
+}
+
+.prose {
     h1 {
-      font-family: var(--font-family-serif);
+      font-family: serif !important;
       font-weight: 200;
       font-size: 2.25rem;
     }
 
     h2 {
-      font-family: var(--font-family-serif);
+      font-family: serif;
       font-weight: 200;
       font-size: 1.75rem;
       line-height: 2;
@@ -401,45 +444,4 @@ body {
       padding-left: 2ch; 
       font-family: var(--font-family-serif);
     }
-  };
-
-  --theme-text: var(--color-black-100);
-  --theme-line-height-base: 1.125;
-  --font-size: 16px;
-
-  --z-index-page: 1;
-  --z-index-page-select: 3;
-  --z-index-page-tooltips: 4;
-  --z-index-page-popover: 5;
-  --z-index-page-dropdown-menus: 6;
-  --z-index-page-modals: 10;
-
-  background: var(--theme-background);
-  color: var(--theme-text);
-  font-family: var(--font-family);
-  line-height: calc(var(--theme-line-height-base) * 1rem);
-
-  font-size: var(--font-size);
-  font-optical-sizing: auto;
-  text-rendering: geometricPrecision;
-  font-weight: 400;
-  font-variant-numeric: tabular-nums lining-nums;
-
-  &::-webkit-scrollbar {
-    background: transparent;
-    height: calc(var(--theme-line-height-base) * 1rem);
-    width: 1ch;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: var(--theme-background);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--theme-border);
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: var(--theme-border);
-  }
 }

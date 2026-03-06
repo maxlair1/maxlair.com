@@ -35,6 +35,8 @@ export function ThemeProvider({
   }, [initialTheme]);
 
   React.useEffect(() => {
+    document.cookie = `theme=${theme}; path=/`;
+    document.documentElement.dataset.theme = theme;
     onHandleAppearanceChange(theme === 'dark' ? 'theme-dark' : 'theme-light');
   }, [theme]);
 

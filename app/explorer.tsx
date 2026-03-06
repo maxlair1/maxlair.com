@@ -5,7 +5,7 @@ import * as React from 'react';
 import styles from './explorer.module.css';
 
 import ActionBar, { ActionBarItem } from '@root/components/ActionBar';
-import Logo from '@components/bespoke/logo';
+import Logo from '@root/components/bespoke/Logo';
 import TreeView from '@root/components/TreeView';
 import NumberRangeSlider from '@root/components/NumberRangeSlider';
 import Accordion from '@root/components/Accordion';
@@ -40,6 +40,7 @@ export default function Explorer(): React.ReactNode {
 
     const renderContent = (nodes: ContentNode[]): React.ReactNode => {
         const rendered:React.ReactNode = nodes.map((node) => {
+            if (['png', 'jpeg', 'jpg', 'gif'].includes(node.extension ?? '') || node.title.startsWith('_')) return;
             return (
                 <TreeView
                 key={node.title}
@@ -88,7 +89,8 @@ export default function Explorer(): React.ReactNode {
                         <TreeView radio radioChecked={theme === 'light'} title='Light' isFile={true} defaultValue onClick={() => setTheme('light')}/>
                         <TreeView radio radioChecked={theme === 'dark'} title='Dark' isFile={true} defaultValue onClick={() => setTheme('dark')}/>
                     </TreeView>
-                    <TreeView title='Accessibility'>
+                    <TreeView title='Clear Cookies' isFile={true} onClick={() => { document.cookie = ''; }}/>
+                    {/* <TreeView title='Accessibility'>
                         <TreeView radio title='Supress Animations' isFile/>
                     </TreeView>
                     <TreeView title='Appearance'>
@@ -100,11 +102,11 @@ export default function Explorer(): React.ReactNode {
                             step={1}
                             suffix='px'
                         />
-                    </TreeView>
+                    </TreeView> */}
                 </Accordion>
             </section>
             <footer className={styles.footer}>
-                <Button theme='SECONDARY'>{'Shoot me a message'}</Button>
+                {/* <Button theme='SECONDARY'>{'Shoot me a message'}</Button> */}
             </footer>
         </div>
     );

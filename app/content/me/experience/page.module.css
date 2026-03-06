@@ -8,5 +8,5 @@
 } */
 
 .gradient {
-  background: linear-gradient(0deg, var(--theme-background-modal-footer) 0%, var(--theme-background) 100%);
+  background: var(--theme-gradient)
 }

@@ -10,7 +10,6 @@ import Providers from '@components/Providers';
 import ThemeScript from './ThemeScript';
 import SidebarLayout from '@root/components/SidebarLayout';
 import Explorer from '@root/app/explorer';
-import useTheme from './lib/theme.provider';
 
 export const metadata = {
   title: 'MaxLair Documentation',

@@ -6,13 +6,7 @@ import TableRow from '@root/components/TableRow';
 import Table from '@root/components/Table';
 import BarProgress from '@root/components/BarProgress';
 import Row from '@root/components/Row';
-import Grid from '@root/components/Grid';
 import Badge from '@root/components/Badge';
-
-const actionItems = [
-    {body: 'Experience'},
-    {body: 'Search'},
-]
 
 const experienceData = [
     { company: 'Designer\'s Drink Coffee', role: 'Full-Stack Product Consultant', date: 'CUR', description: 'Development team-- Science-backed heart rate workout software.', note: 'Logo, marketing, product design, portal development, and web development', link: 'https://hearthero.app'},
@@ -27,20 +21,18 @@ const experienceData = [
 
 const educationData = [
     { title: 'CS50 @ Harvard University', progressPercentage: 50, desc: 'Intro to CompSci, focusing on C and Python.'},
-    { title: 'Google UX Professional Certificate', progressPercentage: 40, desc: 'Foundations of design, typography, and branding.'},
+    { title: 'Google UX Professional Certificate', progressPercentage: 40, desc: 'Equitable design-thinking for enterprise.'},
     { title: 'BFA in Graphic Design', progressPercentage: 100, desc: 'Foundations of design, typography, and branding.'},
 ]
 
 export default function Page() {
     return (
         <>
-            <ActionBar items={actionItems}></ActionBar>
-                {/* <Grid> */}
-                    <Row>
-                    M.A. Lair. Updated <Badge>MAR 2026</Badge>
-                    </Row>
-                    <Row>test</Row>
-                {/* </Grid> */}
+            <Row>
+            M.A. Lair. Updated <Badge>MAR 2026</Badge>
+            </Row>
+            <br/>
+            <br/>
 
             <div className={styles.header}>
             </div>

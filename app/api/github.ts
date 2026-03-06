@@ -1,7 +1,6 @@
 const GITHUB_API_BASE = "https://api.github.com/repos/"; // Ensure no '/' on end
 
-const docPath = `_pub/docs/`; // default path to docs
-const imgPath = `_pub/_img/`; // path to img dir 
+const pubPath = `_pub/`; // root path for all content
 
 const owner = process.env.NEXT_PUBLIC_GITHUB_USER!;
 const repo = process.env.NEXT_PUBLIC_GITHUB_REPO!;
@@ -20,14 +19,10 @@ function getHeaders(type: 'json' | 'raw' ) {
 */
 export default async function GET(
     accept: 'json' | 'raw' = 'json',
-    path?: string,
-    type: 'img' | 'docs' = 'docs'
+    path?: string
 ) {
-
-    const githubAPIPath = `
-        ${GITHUB_API_BASE}${owner}/${repo}/contents/${type === 'docs' ? docPath : imgPath}${path ?? ""}
-    `;
-
+    // Always fetch from _pub root, optionally append path
+    const githubAPIPath = `${GITHUB_API_BASE}${owner}/${repo}/contents/${pubPath}${path ?? ""}`;
     const response = await fetch(
         githubAPIPath,
         {
@@ -36,13 +31,10 @@ export default async function GET(
             cache: "no-store",
         }
     );
-
     if (!response.ok) {
         throw new Error(`GitHub RAW fetch failed: ${response.status}`);
     }
-
     if (accept === 'json') {
         return response.json();
     } else return response.text();
-    
 }

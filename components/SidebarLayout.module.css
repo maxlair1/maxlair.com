@@ -63,7 +63,6 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding-left: 2ch;
 }
 
 .grabTab {
@@ -72,9 +71,11 @@
 
   width: var(--w);
   height: var(--h);
-  background-color: var(--color-daybreak);
+  background: var(--theme-gradient-90);
+  border: solid 2px var(--theme-border);
+  border-radius: 0 4px 4px 0;
   color: var(--color-gray-100);
-  padding: 1ch;
+  padding: 0.5ch;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   z-index: 999;
@@ -82,7 +83,8 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--color-daybreak-10);
+    /* background-color: var(--color-daybreak-10); */
+    background: var(--theme-gradient-hover-90);
   }
 
 }

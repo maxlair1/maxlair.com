@@ -19,9 +19,6 @@ export default function Page() {
     ] 
     return (
         <div>
-            <br/>
-            <br/>
-            <br/>
             <Row>
                 <ul>
                     {things.map((thing, index) => (

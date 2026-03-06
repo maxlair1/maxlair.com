@@ -160,7 +160,9 @@ body.theme-light {
   --theme-focused-foreground: var(--color-daybreak);
   --theme-focused-foreground-subdued: var(--color-daybreak-10-5);
   --theme-gradient: linear-gradient(0deg, var(--theme-background-modal-footer) 0%, var(--theme-background) 100%);
+  --theme-gradient-90: linear-gradient(90deg, var(--theme-background-modal-footer) 0%, var(--theme-background) 100%);
   --theme-gradient-hover: linear-gradient(0deg, var(--theme-focused-foreground) 0%, var(--theme-background) 100%);
+  --theme-gradient-hover-90: linear-gradient(90deg, var(--theme-focused-foreground) 0%, var(--theme-background) 100%);
   --theme-INVERT-overlay: var(--color-black-100-4);
   --theme-INVERT-background: var(--color-black-100);
   --theme-INVERT-background-modal: var(--color-gray-80);
@@ -193,7 +195,9 @@ body.theme-dark {
   --theme-focused-foreground: var(--color-daybreak);
   --theme-focused-foreground-subdued: var(--color-daybreak-10-5);
   --theme-gradient: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
+  --theme-gradient-90: linear-gradient(90deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
   --theme-gradient-hover: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-focused-foreground) 100%);
+  --theme-gradient-hover-90: linear-gradient(90deg, var(--theme-background) 0%, var(--theme-focused-foreground) 100%);
   --theme-INVERT-overlay: var(--color-black-100-4);
   --theme-INVERT-background: var(--color-white);
   --theme-INVERT-background-modal: var(--color-gray-20);
@@ -346,7 +350,7 @@ body {
   --color-white-4: rgba(255, 255, 255, 0.4);
 
   --font-family-mono: var(--font-fragment-mono), Courier, monospace;
-  --font-family-serif: serif, Georgia, Times New Roman, serif;
+  --font-family-serif: serif, Georgia, Times New Roman;
   --font-family-sans: -apple-system, helvetica, sans-serif;
   --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
 
@@ -392,56 +396,24 @@ body {
 }
 
 .prose {
-    h1 {
-      font-family: serif !important;
-      font-weight: 200;
-      font-size: 2.25rem;
-    }
-
-    h2 {
-      font-family: serif;
-      font-weight: 200;
-      font-size: 1.75rem;
-      line-height: 2;
-    }
-
-    h3, h4, h5, h6 {
-      font-family: var(--font-family-sans);
-      font-weight: 600;
-    }
-    
-    p {
-      font-family: var(--font-family-sans);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-block: 8px 16px;
-    }
-
-    ul, ol {
-      font-family: var(--font-family-sans);
-      line-height: 0.75;
-    }
-
-    a {
-      color: var(--color-blue-70);
-      line-height: inherit;
-
-      &:hover {
-        color: var(--color-blue-90);
-      }
-
-      /* &:focus {
-        background: var(--theme-focused-foreground);
-        color: var(--theme-text);
-        outline: 0;
-      } */
-    }
-    
-    blockquote {
-      border: 0.1ch solid var(--color-blue-30);
-      background: var(--color-blue-10);
-      font-style: italic;
-      padding-left: 2ch; 
-      font-family: var(--font-family-serif);
-    }
+  font-family: var(--font-family-sans);
+  line-height: calc(var(--theme-line-height-base) + 0.5);
+  
+  h1 {
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+    font-size: 1.8rem;
+    border-bottom: 1px solid var(--theme-border);
+  }
+  h2 {
+    font-size: 1.5rem;
+    font-family: var(--font-family-serif);
+    font-weight: 300;
+    border-bottom: 1px solid var(--theme-border);
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    list-style-position: outside;
+  }
 }

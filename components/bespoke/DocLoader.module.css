@@ -1,8 +1,13 @@
 .root {
-    max-width: 100ch;
+    max-width: 80ch;
     display: flex;
     flex-direction: column;
     padding: 1rem;
+}
+
+.raw {
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 

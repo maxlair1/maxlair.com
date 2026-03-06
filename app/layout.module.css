@@ -4,6 +4,7 @@
   flex-direction: column;
   flex: 1;
   min-height: 0;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -11,7 +12,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow: hidden;
   
   &::before {
     content: '';

@@ -68,6 +68,7 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
           className={styles.sidebar}
           style={{
             width: `${sidebarWidth}ch`,
+            backgroundColor: 'transparent',
           }}
         >
           {sidebar}

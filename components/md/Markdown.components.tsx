@@ -6,6 +6,7 @@ import { removeExtension } from "@root/app/lib/utilities";
 import useContent from '@root/app/content/useContent';
 import Divider from '../Divider';
 import Image from 'next/image';
+import ListItem from '../ListItem';
 
 export const MarkdownComponents = {
   // Code Block and Inline using SRCL 
@@ -39,7 +40,9 @@ export const MarkdownComponents = {
         />
       // </em>
     );
-  }
+  },
+  ul: ({node, children, ...props}) => <ul {...props} style={{paddingLeft: '1.5em'}}>{children}</ul>,
+  li: ({node, children, ...props}) => <ListItem {...props} style={{marginBottom: '0.5em'}}>{children}</ListItem>,
 }
 
 export function remarkWikis() {

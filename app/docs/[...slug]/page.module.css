@@ -1,0 +1,71 @@
+.root {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    min-height: 0;
+}
+
+.content {
+    flex: 2;
+    min-height: 0;
+    display: flex;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex-direction: column;
+}
+
+.gallery {
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex: 1;
+    min-width: 20ch;
+    flex-direction: column;
+}
+
+.gallery ol {
+    list-style: none;
+    counter-reset: cupcake;
+    padding-left: 0;
+}
+
+.gallery li {
+    display: flex;
+    width: 100%;
+    &::before {
+        content: counters(cupcake, '.') '. ';
+        counter-increment: cupcake;
+    }
+}
+
+.gallery li span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: start;
+}
+
+.gallery .title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}   
+
+.gallery .trailing {
+    flex-grow: 1;
+    text-align: right;
+    display: flex;
+
+    &::before {
+        content: '';
+        border-bottom: 2px dotted #AAA;
+        flex:1;
+        margin: 0 10px;
+    }
+}

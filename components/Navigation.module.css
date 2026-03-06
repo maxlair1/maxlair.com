@@ -3,6 +3,9 @@
   align-items: center;
   justify-content: space-between;
   background: var(--theme-border);
+  top: 0;
+  margin-inline: 1.5ch;
+  width: auto
 }
 
 .logo {

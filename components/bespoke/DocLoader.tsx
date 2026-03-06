@@ -36,7 +36,10 @@ export default function DocLoader({ path }: DocLoaderProps): React.ReactNode {
       ? <div>no doc specified</div>
       : (
         <div className={`prose ${styles.prose} ${styles.root}`}>
-            <MarkdownFormatter md={doc ?? ''} frontmatter={meta ?? undefined}/>
+            {/* <MarkdownFormatter md={doc ?? ''} frontmatter={meta ?? undefined}/> */}
+            <pre className={styles.raw}>
+                {doc}
+            </pre>
         </div>
       )
   );

@@ -3,6 +3,7 @@ import { removeExtension, slicePathAtRoot, getExtension } from '@lib/utilities';
 import matter from 'gray-matter';
 import GET from '@root/app/api/github';
 import { url } from 'node:inspector';
+import { title } from 'node:process';
 
 
 export interface ContentNode {
@@ -22,21 +23,27 @@ export interface ContentNode {
     route?: string;
     url?: string;
     extension?: string;
-    children?: ContentNode[] | undefined;
     hidden?: boolean;
     order?: number;
     description?: string;
     defaultOpen?: boolean;
-}
-
-export interface ContentData extends ContentNode {
-    content: string; // for file nodes, the actual markdown content
-    frontmatter?: Record<string, any>;
+    children?: ContentNode[] | undefined;
 }
 
 export interface ContentIndex {
     byPath: Record<string, ContentNode>;
     byTitle: Record<string, ContentNode>;
+}
+
+export interface MarkdownData extends ContentNode {
+    content: string; // for file nodes, the actual markdown content
+    frontmatter?: Record<string, any>;
+}
+
+export interface ImageData  {
+    title: string;
+    url: string;
+    project: string;
 }
 
 export interface MergedTrees {
@@ -46,44 +53,29 @@ export interface MergedTrees {
 
 export interface Content {
     index: ContentIndex; // lookup and nav
-    load: (path: string, node?: ContentNode) => Promise<ContentData>; // node => full data
+    load: (path: string, node?: ContentNode) => Promise<MarkdownData>; // node => full data
     tree: MergedTrees | undefined; // list directories from point
     loading: boolean;
-    imageIndex: { name: string, url: string }[];
-    getImageUrl: (filename: string) => string | undefined;
-}
-
-export interface ImageIndex {
-    byFilename: Record<string, Image>;
-    byProject: Record<string, Image[]>;
-}
-
-export interface Image extends ContentNode {
-    /**
-     * AVAILABLE RESPONSE FIELDS
-     * {
-        "name": "image.png",
-        "path": "assets/image.png",
-        "sha": "abcdef1234567890abcdef1234567890abcdef12",
-        "size": 2048,
-        "url": "https://api.github.com/repos/octocat/Hello-World/contents/assets/image.png",
-        "html_url": "https://github.com/octocat/Hello-World/blob/main/assets/image.png",
-        "download_url": "https://raw.githubusercontent.com/octocat/Hello-World/main/assets/image.png",
-        "type": "file",
-        "content": "
-     */
-    download_url?: string;
-    project?: string; //parent dir if not root of _img
-    size: number;
+    images: ImageData[];
 }
 
 const ContentContext = React.createContext<Content | null>(null);
+
+/**
+ * Steps to retrieve content
+ * 1. GET recursively from Github
+ * 2. Map to ContentNode
+ * 3. Index Tree
+ * 4. In Init, sort by dir and file, and then by file extension into full items. Dir stays as Node
+ * 
+ */
+
 
 // get content from dirs, build tree, index
 export function ContentProvider({children}: {children: React.ReactNode}) {
     const [loading, setLoading] = React.useState<boolean>(false);
     const [tree, setTree] = React.useState<MergedTrees>();
-    const [imageIndex, setImageIndex] = React.useState<{ name: string, url: string }[]>([]);
+    const [images, setImages] = React.useState<ImageData[]>();
     const [index, setIndex] = React.useState<ContentIndex>({
         byPath: {},
         byTitle: {},
@@ -109,10 +101,10 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
 
     
     // uses api/github.ts
-    async function initRemote(path?: string):Promise<ContentNode[]> {
+    async function initRemote(path?: string):Promise<{tree: ContentNode[]; images: ImageData[]}> {
 
         const calcRelativePath = (fullPath: string) => {
-            const marker = "_pub/docs/";
+            const marker = "_pub/";
             const index = fullPath.indexOf(marker);
             return index >= 0
                 ? fullPath.slice(index + marker.length)
@@ -127,9 +119,9 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
             );
             return normalizedPath;
         }
+
         return await GET('json', path).then(async (data) => {
-            const filtered = data.filter((item: any) => !(item.type === 'dir' && item.name.startsWith('_')));
-            const tree = await Promise.all(filtered.map(async (item: any): Promise<ContentNode> => {
+            const tree = await Promise.all(data.map(async (item: any): Promise<ContentNode> => {
                 return {
                     title: removeExtension(item.name),
                     url: item.download_url,
@@ -138,10 +130,27 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
                     source: 'remote',
                     type: item.type,
                     extension: getExtension(item.path),
-                    children: item.type === 'dir' ? await initRemote(calcRelativePath(item.path)) : []
+                    children: item.type === 'dir' ? await initRemote(calcRelativePath(item.path)).then(res => res.tree) : []
                 };
             }));
-            return tree;
+            
+            const images: ImageData[] = [];
+            const collectImages = (nodes: ContentNode[]) => {
+                for (const node of nodes) {
+                    if (node.extension && ['png', 'jpg', 'jpeg', 'gif'].includes(node.extension)) {
+                        images.push({
+                            title: node.title,
+                            url: node.url!,
+                            project: node.path.split('/')[0],
+                        });
+                    }
+                    if (node.children) collectImages(node.children);
+                }
+            };
+            collectImages(tree);
+            
+            console.log('Remote tree initialized:', {tree, images});
+            return {tree, images};
         });
     }
     //returns tree: ContentNode[]
@@ -166,53 +175,26 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
         
         return { byTitle, byPath };
     }
- 
-
-    // Fetch all images from _img and build index
-    const fetchImageIndex = React.useCallback(async () => {
-        try {
-            const images = await GET('json', '', 'img');
-            const index = images
-                .filter((item: any) => item.type === 'file')
-                .map((item: any) => ({
-                    name: item.name,
-                    url: item.download_url
-                }));
-            setImageIndex(index);
-        } catch (err) {
-            console.error('Failed to fetch image index:', err);
-        }
-    }, []);
-
-    React.useEffect(() => {
-        fetchImageIndex();
-    }, [fetchImageIndex]);
-
-    // Helper to get image URL by filename
-    const getImageUrl = React.useCallback((filename: string) => {
-        const found = imageIndex.find(img => img.name === filename);
-        return found ? found.url : undefined;
-    }, [imageIndex]);
 
     React.useEffect(() => {
         setLoading(true);
         async function init() {
             const localTree = await initLocal(); // get local
             const localIndex = indexTree(localTree!);
-            const remoteTree = await initRemote(); // get remote
+            const {tree: remoteTree, images} = await initRemote(); // get remote
             const remoteIndex = indexTree(remoteTree!);
-            await fetchImageIndex();
+            
 
             setTree({local: localTree, remote: remoteTree});
             setIndex({byPath: {...localIndex.byPath, ...remoteIndex.byPath}, byTitle: {...localIndex.byTitle, ...remoteIndex.byTitle}});
-            // setImages(images);
+            setImages(images);
         }
         init();
     }, []);
     
-    const load = async (path: string, node?: ContentNode, type: string = 'doc', accept: string = 'raw'): Promise<ContentData> => {
+    const load = async (path: string, node?: ContentNode, type: string = 'doc', accept: string = 'raw'): Promise<MarkdownData> => {
         // note: maybe eventually use this as the onClick for the tree item.
-        return await GET('raw', path, 'docs').then(n => {
+        return await GET('raw', path).then(n => {
             const {data, content} = matter(n);
             if (node) {
                 return {
@@ -240,8 +222,7 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
             load,
             index,
             loading,
-            imageIndex,
-            getImageUrl,
+            images: images ?? [],
         }}>
             {children}
         </ContentContext.Provider>

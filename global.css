@@ -92,6 +92,10 @@ body {
   margin: 0;
 }
 
+a, link {
+  text-decoration: none;
+}
+
 ul {
   list-style-position: inside;
   list-style-type: '▪';
@@ -213,6 +217,23 @@ body.theme-dark {
   --theme-INVERT-button-background: var(--color-gray-20);
   --theme-INVERT-focused-foreground: var(--color-daybreak);
   --theme-INVERT-focused-foreground-subdued: var(--color-daybreak-10-5);
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 0.5ch;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-background-input);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: var(--theme-button-foreground); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-focused-foreground); 
 }
 
 html,
@@ -375,24 +396,6 @@ body {
   text-rendering: geometricPrecision;
   font-weight: 400;
   font-variant-numeric: tabular-nums lining-nums;
-
-  &::-webkit-scrollbar {
-    background: transparent;
-    height: calc(var(--theme-line-height-base) * 1rem);
-    width: 1ch;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: var(--theme-background);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--theme-border);
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: var(--theme-border);
-  }
 }
 
 .prose {

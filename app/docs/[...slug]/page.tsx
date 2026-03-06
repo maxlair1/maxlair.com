@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Image from 'next/image';
 import styles from './page.module.css';
 import DocLoader from '@root/components/bespoke/DocLoader';
 import Navigation from "@components/Navigation";
@@ -10,12 +11,17 @@ import Row from '@root/components/Row';
 import Link from 'next/link';
 function Gallery() {
     const { images } = useContent();
+    const [src, setSrc] = React.useState<string | undefined>();
 
     return (
         <div className={styles.gallery}>
-            <ol>
+            <div style={{textAlign:'center', padding:'1ch'}}>
+                {src ? <Image src={src} fill style={{objectFit: 'contain'}} alt={src}/> : 'select image'}
+            </div>
+            <br/>
+            <ul>
                 {images.map((img, idx) => (
-                    <li key={idx}>
+                    <li key={idx} onClick={() => setSrc(img.url)}>
                         <span className={styles.title}>
                             {img.title}
                         </span>
@@ -24,7 +30,7 @@ function Gallery() {
                         </span>
                     </li>
                 ))}
-            </ol>
+            </ul>
         </div>    
     )
 }
@@ -58,7 +64,7 @@ function RemoteLayout({ children }: { children: React.ReactNode }) {
 
 export default function letsRead({ params }: { params: Promise<{ slug: string[] }> }) {
     const { slug } = React.use(params);
-    const path = slug.join('/');
+    const path = `docs/${slug.join('/')}`;
 
     return (
         <RemoteLayout>

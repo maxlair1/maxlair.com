@@ -126,7 +126,7 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
                     title: removeExtension(item.name),
                     url: item.download_url,
                     path: item.path,
-                    route: `/docs/${normalizePath(item.path)}`,
+                    route: `/${normalizePath(item.path)}`,
                     source: 'remote',
                     type: item.type,
                     extension: getExtension(item.path),
@@ -192,7 +192,7 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
         init();
     }, []);
     
-    const load = async (path: string, node?: ContentNode, type: string = 'doc', accept: string = 'raw'): Promise<MarkdownData> => {
+    const load = async (path: string, node?: ContentNode): Promise<MarkdownData> => {
         // note: maybe eventually use this as the onClick for the tree item.
         return await GET('raw', path).then(n => {
             const {data, content} = matter(n);

@@ -1,41 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import Image from 'next/image';
 import styles from './page.module.css';
 import DocLoader from '@root/components/bespoke/DocLoader';
 import Navigation from "@components/Navigation";
 import ActionBar from "@components/ActionBar";
+import Gallery from "@components/bespoke/Gallery";
 import useContent from '@root/app/content/useContent';
-import Row from '@root/components/Row';
-import Link from 'next/link';
-function Gallery() {
-    const { images } = useContent();
-    const [src, setSrc] = React.useState<string | undefined>();
 
-    return (
-        <div className={styles.gallery}>
-            <div style={{textAlign:'center', padding:'1ch'}}>
-                {src ? <Image src={src} fill style={{objectFit: 'contain'}} alt={src}/> : 'select image'}
-            </div>
-            <br/>
-            <ul>
-                {images.map((img, idx) => (
-                    <li key={idx} onClick={() => setSrc(img.url)}>
-                        <span className={styles.title}>
-                            {img.title}
-                        </span>
-                        <span className={styles.trailing}>
-                            <Link href={img.url} target="_blank">[VIEW]</Link>
-                        </span>
-                    </li>
-                ))}
-            </ul>
-        </div>    
-    )
-}
 
 function RemoteLayout({ children }: { children: React.ReactNode }) {
+    const { images } = useContent();
     const actions = [
         {
             body: "SHARE",
@@ -55,7 +30,7 @@ function RemoteLayout({ children }: { children: React.ReactNode }) {
                 <div className={styles.content}>
                     {children}
                 </div>
-                <Gallery />
+                <Gallery images={images} />
             </div>
             {/* <Footer /> */}
         </div>

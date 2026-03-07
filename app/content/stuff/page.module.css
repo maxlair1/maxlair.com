@@ -1,0 +1,34 @@
+.root {
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: row;
+    padding: 1ch;
+}
+
+.gallery {
+    display: flex;
+    flex: 0;
+}
+
+.stuff {
+    height: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
+}
+
+.item {
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+    aspect-ratio: 1 / 1;
+}
+
+.imageWrapper {
+    position: relative;
+    height: 50px;
+    cursor: pointer;
+}
+
+
+

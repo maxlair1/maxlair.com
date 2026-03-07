@@ -6,9 +6,6 @@ export default function LocalLayout({ children }: { children: React.ReactNode })
         {
             body: "SHARE",
         },
-        // {
-        //     body: "GALLERY",
-        // }
     ];
     
   return (
@@ -17,7 +14,6 @@ export default function LocalLayout({ children }: { children: React.ReactNode })
         <Navigation>
             <ActionBar items={actions}/>
         </Navigation>
-        <br/>
         {children}
     </div>
   );

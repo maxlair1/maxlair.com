@@ -167,6 +167,8 @@ body.theme-light {
   --theme-gradient-90: linear-gradient(90deg, var(--theme-background-modal-footer) 0%, var(--theme-background) 100%);
   --theme-gradient-hover: linear-gradient(0deg, var(--theme-focused-foreground) 0%, var(--theme-background) 100%);
   --theme-gradient-hover-90: linear-gradient(90deg, var(--theme-focused-foreground) 0%, var(--theme-background) 100%);
+  --theme-link: #0000EE;
+  --theme-link-visited: #551A8B;
   --theme-INVERT-overlay: var(--color-black-100-4);
   --theme-INVERT-background: var(--color-black-100);
   --theme-INVERT-background-modal: var(--color-gray-80);
@@ -202,6 +204,8 @@ body.theme-dark {
   --theme-gradient-90: linear-gradient(90deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
   --theme-gradient-hover: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-focused-foreground) 100%);
   --theme-gradient-hover-90: linear-gradient(90deg, var(--theme-background) 0%, var(--theme-focused-foreground) 100%);
+  --theme-link: #5656ee;
+  --theme-link-visited: #8f3de0;
   --theme-INVERT-overlay: var(--color-black-100-4);
   --theme-INVERT-background: var(--color-white);
   --theme-INVERT-background-modal: var(--color-gray-20);
@@ -217,6 +221,13 @@ body.theme-dark {
   --theme-INVERT-button-background: var(--color-gray-20);
   --theme-INVERT-focused-foreground: var(--color-daybreak);
   --theme-INVERT-focused-foreground-subdued: var(--color-daybreak-10-5);
+}
+
+a {
+  color: var(--theme-link);
+  &:visited {
+    color: var(--theme-link-visited);
+  }
 }
 
 /* scrollbar */

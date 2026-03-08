@@ -2,15 +2,12 @@
 
 import * as React from 'react';
 import styles from './page.module.css';
-import DocLoader from '@root/components/bespoke/DocLoader';
+import MarkdownFormatter from '@root/components/md/MarkdownFormatter';
 import Navigation from "@components/Navigation";
 import ActionBar from "@components/ActionBar";
-import Gallery from "@components/bespoke/Gallery";
-import useContent from '@root/app/content/useContent';
 
 
 function RemoteLayout({ children }: { children: React.ReactNode }) {
-    const { images } = useContent();
     const actions = [
         {
             body: "SHARE",
@@ -22,16 +19,10 @@ function RemoteLayout({ children }: { children: React.ReactNode }) {
 
     return (
         <div className={styles.root}>
-            {/* <Navigation logoHref="/" logoTarget="_self" logo={<Logo type="icon" fill="var(--theme-focused-foreground)"/>}> */}
-            <Navigation className={styles.header}>
+            {/* <Navigation className={styles.header}>
                 <ActionBar items={actions} />
-            </Navigation>
-            <div className={styles.wrapper}>
-                <div className={styles.content}>
-                    {children}
-                </div>
-                <Gallery images={images} />
-            </div>
+            </Navigation> */}
+            {children}
             {/* <Footer /> */}
         </div>
     );
@@ -43,7 +34,7 @@ export default function letsRead({ params }: { params: Promise<{ slug: string[] 
 
     return (
         <RemoteLayout>
-            <DocLoader path={path} />
+            <MarkdownFormatter path={path} />
         </RemoteLayout>
     );
 

@@ -5,19 +5,3 @@
     flex-direction: column;
     overflow: hidden;
 }
-
-.wrapper {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    min-height: 0;
-}
-
-.content {
-    flex: 2;
-    min-height: 0;
-    display: flex;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    flex-direction: column;
-}

@@ -20,10 +20,10 @@ export const MarkdownComponents = {
   },
   hr: () => <Divider type="GRADIENT" />,
   img: ({node, alt, src, width, height, ...props}) => {
-    const { getImageUrl, imageIndex } = useContent();
-    const filename = src.split('/').pop() ?? '';
+    const { images } = useContent();
+    const filename = src.split('/').pop()?.trim() ?? '';
+    const getImageUrl = (filename: string) => images.find(img => img.filename === filename)?.url;
     
-    console.log('Rendering image:', {src, filename, url: getImageUrl(filename), index: imageIndex});
     if (!getImageUrl(filename)) {
       return <span {...props}>{`Image not found: ${alt}`}</span>;
     }
@@ -42,7 +42,7 @@ export const MarkdownComponents = {
     );
   },
   ul: ({node, children, ...props}) => <ul {...props} style={{paddingLeft: '1.5em'}}>{children}</ul>,
-  li: ({node, children, ...props}) => <ListItem {...props} style={{marginBottom: '0.5em'}}>{children}</ListItem>,
+  li: ({node, children, ...props}) => <ListItem {...props}>{children}</ListItem>,
 }
 
 export function remarkWikis() {

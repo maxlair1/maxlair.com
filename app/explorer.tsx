@@ -21,6 +21,7 @@ import Link from 'next/link';
 import ActionButton from '@root/components/ActionButton';
 import useTheme from './lib/theme.provider';
 import Button from '@root/components/Button';
+import RadioButtonGroup from '@root/components/RadioButtonGroup';
 
 export default function Explorer(): React.ReactNode {
     const pathname = usePathname();
@@ -63,6 +64,13 @@ export default function Explorer(): React.ReactNode {
         return rendered
     }
 
+    if (loading) {
+        return (
+            <div className={styles.root}>
+                <BlockLoader mode={2}/>
+            </div>
+        )
+    }
 
     return (
         <div className={styles.root}>
@@ -84,7 +92,7 @@ export default function Explorer(): React.ReactNode {
                     {tree ? renderContent(tree.remote ?? []) : <BlockLoader mode={1}/>}
                 </Accordion>
 
-                <Accordion style='GRADIENT' title='PREFERENCES' defaultValue>
+                <Accordion style='GRADIENT' title='PREFERENCES'>
                     <TreeView title='Color Mode' isFile={false} defaultValue>
                         <TreeView radio radioChecked={theme === 'light'} title='Light' isFile={true} defaultValue onClick={() => setTheme('light')}/>
                         <TreeView radio radioChecked={theme === 'dark'} title='Dark' isFile={true} defaultValue onClick={() => setTheme('dark')}/>

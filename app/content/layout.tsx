@@ -10,10 +10,9 @@ export default function LocalLayout({ children }: { children: React.ReactNode })
     
   return (
     <div>
-        {/* <Navigation logoHref="/" logoTarget="_self" logo={<Logo type="icon" fill="var(--theme-focused-foreground)"/>}> */}
-        <Navigation>
+        {/* <Navigation>
             <ActionBar items={actions}/>
-        </Navigation>
+        </Navigation> */}
         {children}
     </div>
   );

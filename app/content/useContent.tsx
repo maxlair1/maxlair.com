@@ -2,26 +2,24 @@ import * as React from 'react';
 import { removeExtension, slicePathAtRoot, getExtension } from '@lib/utilities';
 import matter from 'gray-matter';
 import GET from '@root/app/api/github';
-import { url } from 'node:inspector';
-import { title } from 'node:process';
-
 
 export interface ContentNode {
     title: string;
+    filename: string;
     path: string;
+    url: string;
     source: 'local' | 'remote';
     /**
      * local: page, dir, or file stored locally, used for static content
      * remote: .md or .mdx file stored remotely, used for dynamic content that can be updated without redeploying the app
     */
-   type: 'file' | 'dir' | 'page';
-   /**
-    * file: .md, .mdx, .txt, .png, .jpeg, and other static files.
-    * dir: standard directory, has children files or pages.
-    * page: route accessible Next.js .tsx file.
-   */
+    type: 'file' | 'dir' | 'page';
+    /**
+        * file: .md, .mdx, .txt, .png, .jpeg, and other static files.
+        * dir: standard directory, has children files or pages.
+        * page: route accessible Next.js .tsx file.
+    */
     route?: string;
-    url?: string;
     extension?: string;
     hidden?: boolean;
     order?: number;
@@ -41,9 +39,11 @@ export interface MarkdownData extends ContentNode {
 }
 
 export interface ImageData  {
+    filename: string;
     title: string;
     url: string;
-    project: string;
+    project?: string;
+    size?: number;
 }
 
 export interface MergedTrees {
@@ -67,7 +67,6 @@ const ContentContext = React.createContext<Content | null>(null);
  * 2. Map to ContentNode
  * 3. Index Tree
  * 4. In Init, sort by dir and file, and then by file extension into full items. Dir stays as Node
- * 
  */
 
 
@@ -124,6 +123,7 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
             const tree = await Promise.all(data.map(async (item: any): Promise<ContentNode> => {
                 return {
                     title: removeExtension(item.name),
+                    filename: item.name,
                     url: item.download_url,
                     path: item.path,
                     route: `/${normalizePath(item.path)}`,
@@ -137,11 +137,19 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
             const images: ImageData[] = [];
             const collectImages = (nodes: ContentNode[]) => {
                 for (const node of nodes) {
-                    if (node.extension && ['png', 'jpg', 'jpeg', 'gif'].includes(node.extension)) {
+                    const marker = "_pub/_img/";
+                    const projectDir = (() => {
+                        if (!node.path.includes(marker)) return undefined;
+                        const rest = node.path.split(marker)[1] ?? undefined;
+                        const idx = rest?.lastIndexOf('/');
+                        return idx && idx > 0 ? rest?.slice(0, idx) : undefined;
+                    })();
+                    if (node.extension && ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(node.extension)) {
                         images.push({
                             title: node.title,
-                            url: node.url!,
-                            project: node.path.split('/')[0],
+                            filename: node.filename,
+                            url: node.url,
+                            project: projectDir,
                         });
                     }
                     if (node.children) collectImages(node.children);
@@ -205,8 +213,10 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
             } else {
                 // fallback: create minimal ContentData
                 return {
-                    title: data.title ?? removeExtension(path),
-                    path,
+                    title: data.title,
+                    filename: data.filename,
+                    url: data.url,
+                    path: data.path,
                     source: 'remote',
                     type: 'file',
                     content,

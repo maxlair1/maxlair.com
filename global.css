@@ -230,6 +230,10 @@ a {
   }
 }
 
+p {
+  margin-bottom: 1ch;
+}
+
 caption {
   font-size: 0.875rem;
   color: var(--theme-text-subdued);

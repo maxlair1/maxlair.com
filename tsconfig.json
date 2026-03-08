@@ -65,5 +65,5 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
-  ]
+, "app/lib/imageToPixel.js"  ]
 }

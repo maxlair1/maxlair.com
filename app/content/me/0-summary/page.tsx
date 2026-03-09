@@ -3,6 +3,7 @@ import styles from './page.module.css';
 
 import Brands from './brands';
 import Link from 'next/link';
+import FeaturedCard from '@root/components/bespoke/FeaturedCard';
 
 const fillColor = 'var(--theme-foreground)'
 
@@ -21,6 +22,9 @@ export default function Page() {
                 <section>
                     <Brands containerStyle={styles.brandsContainer} itemHeight={'2ch'} />
                 </section>
+                <div>
+                    <FeaturedCard title='Learn More About Me' src='/sheesh.gif' description='test description'></FeaturedCard>
+                </div>
             </div>
         </>
     );

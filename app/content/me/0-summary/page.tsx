@@ -23,7 +23,7 @@ export default function Page() {
                     <Brands containerStyle={styles.brandsContainer} itemHeight={'2ch'}/>
                 </section>
                 <div>
-                    <FeaturedCard title='Learn More About Me' src={<img src="/ordered-dither.png" alt="Sheesh" width={200}/>} description='test description'></FeaturedCard>
+                    <FeaturedCard title='Learn More About Me' src="/statue.jpg" description='test description'></FeaturedCard>
                 </div>
             </div>
         </>

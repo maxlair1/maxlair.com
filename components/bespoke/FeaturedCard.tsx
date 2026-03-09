@@ -10,7 +10,7 @@ import styles from './FeaturedCard.module.css';
 interface FeaturedCardProps {
     title: string;
     description: string;
-    src: React.ReactNode;
+    src: string;
     dithered?: boolean;
     href?: string;
     hue?: string;

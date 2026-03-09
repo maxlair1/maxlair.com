@@ -97,7 +97,6 @@ const Hominy = (props: SVGProps<SVGSVGElement>) => (
 const Matchset = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 104 20"
@@ -116,7 +115,6 @@ const Matchset = (props: SVGProps<SVGSVGElement>) => (
 const MarchOfDimes = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 36 26"
@@ -135,7 +133,6 @@ const MarchOfDimes = (props: SVGProps<SVGSVGElement>) => (
 const Stafast = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 57 14"
@@ -154,7 +151,6 @@ const Stafast = (props: SVGProps<SVGSVGElement>) => (
 const TennisChannel = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 59 18"
@@ -173,7 +169,6 @@ const TennisChannel = (props: SVGProps<SVGSVGElement>) => (
 const ThinkTank = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 72 19"

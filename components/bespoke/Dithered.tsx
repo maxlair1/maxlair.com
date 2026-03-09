@@ -1,22 +1,25 @@
 import * as React from 'react';
+import Image from 'next/image';
 
 // core package
 import * as itp from '@root/app/lib/imageToPixel';
 
 interface DitheredProps {
-    src: React.ReactNode;
+    src: string;
     alt: string;
 }
 
 export default function Dithered({ src, alt }: DitheredProps): React.ReactNode {
     const [processing, setProcessing ] = React.useState(true);
     const [dithered, setDithered] = React.useState(null);
+    const imgRef = React.useRef<HTMLImageElement>(null);
 
     React.useEffect(() => {
         async function dither() {
+            if (!imgRef.current) return;
             setProcessing(true);
             await itp.pixelate({
-                image: src,             // Accepts HTML canvas, image elements, or q5/p5.js image objects
+                image: imgRef.current,             // Accepts HTML canvas, image elements, or q5/p5.js image objects
                 width: 128,                  // Set pixelation width
                 dither: 'Floyd-Steinberg',   // Dithering method ('Floyd-Steinberg', 'Ordered','2x2 Bayer', '4x4 Bayer',`Clustered 4x4` or `atkinson`)
                 strength: 20,                // Dithering strength (0-100)
@@ -29,7 +32,7 @@ export default function Dithered({ src, alt }: DitheredProps): React.ReactNode {
                 ],
                 resolution: 'original'       // Use 'original' for full resolution, or 'pixel' for pixelated size
             }).then((result) => {
-                setDithered(result);
+                setDithered(result.toDataURL());
             }).catch((error) => {
                 console.error('Error during dithering:', error);
             }).finally(() => {
@@ -39,11 +42,7 @@ export default function Dithered({ src, alt }: DitheredProps): React.ReactNode {
         dither();
     }, [src])
 
-    return (
-        <>
-            {processing ? 'Processing...' : (
-                <img src={dithered!} alt={alt} />
-            )}
-        </>
-    )
+    return processing ? 
+        (<img ref={imgRef} src={src} alt={alt} />)
+        : (<Image src={dithered!} alt={alt} fill={true} style={{objectFit: 'cover'}} loading='eager'/>);
 }

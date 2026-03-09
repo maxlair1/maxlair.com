@@ -4,7 +4,7 @@
     max-width: 80ch;
     margin: 0 auto;
     padding: 2rem;
-    gap: 2ch;
+    gap: 4ch;
 }
 
 .brandsContainer {
@@ -16,4 +16,12 @@
     svg {
         width: auto;
     }
+}
+
+.featuredContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2ch;
+    margin-top: 2ch;
+
 }

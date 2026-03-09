@@ -22,9 +22,12 @@ export default function Page() {
                 <section>
                     <Brands containerStyle={styles.brandsContainer} itemHeight={'2ch'}/>
                 </section>
-                <div>
-                    <FeaturedCard title='Learn More About Me' src="/statue.jpg" description='test description'></FeaturedCard>
+                <div className={styles.featuredContainer}>
+                    <FeaturedCard title='Learn More About Me' src="/statue.jpg" dithered/>
+                    <FeaturedCard title='Learn More About Me' src="/temple.jpg" dithered/>
+                    <FeaturedCard title='Learn More About Me' src="/column.jpg" dithered/>
                 </div>
+                <p>Outside of work, I enjoy cooking, gaming, and spending time with my dog, Miso.</p>
             </div>
         </>
     );

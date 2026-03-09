@@ -185,14 +185,6 @@ body.theme-light {
   --theme-INVERT-focused-foreground: var(--color-daybreak);
   --theme-INVERT-focused-foreground-subdued: var(--color-daybreak-10-5);
   --theme-INVERT-focused-foreground-whisper: var(--color-daybreak-50);
-  --theme-dither-bg:             #f8f9fa;
-  --theme-dither-sidebar:        #e4e5e8;
-  --theme-dither-border:         #cccccc;
-  --theme-dither-text-main:      #18181a;
-  --theme-dither-text-secondary: #404041;
-  --theme-dither-highlight:      #ed7d31;
-  --theme-dither-accent-blue:    #3a80f5;
-  --theme-dither-accent-purple:  #bb86fc;
 }
 
 body.theme-dark {
@@ -210,7 +202,7 @@ body.theme-dark {
   --theme-button-background: var(--color-gray-80);
   --theme-focused-foreground: var(--color-daybreak);
   --theme-focused-foreground-subdued: var(--color-daybreak-10-5);
-  --theme-focused-foreground-whisper: var(--color-daybreak-50);
+  --theme-focused-foreground-whisper: var(--color-daybreak-1);
   --theme-gradient: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
   --theme-gradient-90: linear-gradient(90deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
   --theme-gradient-hover: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-focused-foreground) 100%);
@@ -232,15 +224,7 @@ body.theme-dark {
   --theme-INVERT-button-background: var(--color-gray-20);
   --theme-INVERT-focused-foreground: var(--color-daybreak);
   --theme-INVERT-focused-foreground-subdued: var(--color-daybreak-10-5);
-  --theme-INVERT-focused-foreground-whisper: var(--color-daybreak-1);
-  --theme-dither-bg:             #18181a;
-  --theme-dither-sidebar:        #222224;
-  --theme-dither-border:         #404041;
-  --theme-dither-text-main:      #fafbfa;
-  --theme-dither-text-secondary: #bfc2c7;
-  --theme-dither-highlight:      #ed7d31;
-  --theme-dither-accent-blue:    #4ebfff;
-  --theme-dither-accent-purple:  #887aff;
+  --theme-INVERT-focused-foreground-whisper: var(--color-daybreak-1); 
 }
 
 a {

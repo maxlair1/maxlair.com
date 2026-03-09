@@ -157,7 +157,6 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
             };
             collectImages(tree);
             
-            console.log('Remote tree initialized:', {tree, images});
             return {tree, images};
         });
     }

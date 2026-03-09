@@ -17,7 +17,7 @@
 .label {
     padding: 1ch;
     padding-bottom: 4ch;
-    background-color: var(--theme-focused-foreground-whisper);
+    background: var(--theme-focused-foreground-whisper);
 
     p {
         text-transform: uppercase;

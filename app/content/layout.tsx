@@ -9,7 +9,7 @@ export default function LocalLayout({ children }: { children: React.ReactNode })
     ];
     
   return (
-    <div>
+    <div style={{height: '100dvh', display: 'flex', flexDirection: 'column', position: 'relative', overflowX: 'scroll'}}>
         {/* <Navigation>
             <ActionBar items={actions}/>
         </Navigation> */}

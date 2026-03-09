@@ -9,26 +9,25 @@ import styles from './FeaturedCard.module.css';
 
 interface FeaturedCardProps {
     title: string;
-    description: string;
     src: string;
+    description?: string;
     dithered?: boolean;
     href?: string;
-    hue?: string;
+    // hue?: string;
 }
 
-export default function FeaturedCard({ title, description, src, dithered, href, hue }: FeaturedCardProps) {
+export default function FeaturedCard({ title, description, src, dithered, href }: FeaturedCardProps) {
     const router = useRouter();
     
     return (
-            <div className={styles.card} onClick={() => router.replace(href ?? '')}>
-                <div className={styles.image}>
-                    <Dithered src={src} alt={title} />
-                    {/* <Image src={src} alt={title} fill={true} style={{objectFit: 'cover'}} loading='eager'/> */}
-                </div>
-                <div className={styles.label}>
-                    <p>{title}</p>
-                    <small>{description}</small>
-                </div>
+        <div className={styles.card} onClick={() => router.replace(href ?? '')}>
+            <div className={styles.image}>
+                {dithered ? <Dithered src={src} alt={title} /> : <Image src={src} alt={title} fill={true} style={{objectFit: 'cover'}} loading='eager'/>}
             </div>
+            <div className={styles.label}>
+                <p>{title}</p>
+                {description && <small>{description}</small>}
+            </div>
+        </div>
     );
 }

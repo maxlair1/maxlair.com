@@ -1,20 +1,28 @@
 .card {
-    background-color: var(--theme-background-modal);
-    max-width: 20ch;
+    /* background-color: var(--theme-background-modal); */
+    max-width: 30ch;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    cursor: pointer;
+    border: 1px solid var(--theme-focused-foreground);
 }
 
 .image {
     width: 100%;
-    height: 200px;
-    background-color: red;
+    height: 250px;
     position: relative;
 }
 
 .label {
     padding: 1ch;
+    padding-bottom: 4ch;
+    background-color: var(--theme-focused-foreground-whisper);
 
-    h3 
-    {
-        font-family: var(--font-family-serif);
+    p {
+        text-transform: uppercase;
+    }
+    small {
+        color: var(--theme-text-subdued);
     }
 }

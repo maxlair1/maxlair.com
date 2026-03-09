@@ -163,6 +163,7 @@ body.theme-light {
   --theme-button-background: var(--color-gray-20);
   --theme-focused-foreground: var(--color-daybreak);
   --theme-focused-foreground-subdued: var(--color-daybreak-10-5);
+  --theme-focused-foreground-whisper: var(--color-daybreak-1);
   --theme-gradient: linear-gradient(0deg, var(--theme-background-modal-footer) 0%, var(--theme-background) 100%);
   --theme-gradient-90: linear-gradient(90deg, var(--theme-background-modal-footer) 0%, var(--theme-background) 100%);
   --theme-gradient-hover: linear-gradient(0deg, var(--theme-focused-foreground) 0%, var(--theme-background) 100%);
@@ -183,6 +184,7 @@ body.theme-light {
   --theme-INVERT-button-background: var(--color-gray-80);
   --theme-INVERT-focused-foreground: var(--color-daybreak);
   --theme-INVERT-focused-foreground-subdued: var(--color-daybreak-10-5);
+  --theme-INVERT-focused-foreground-whisper: var(--color-daybreak-50);
 }
 
 body.theme-dark {
@@ -200,6 +202,7 @@ body.theme-dark {
   --theme-button-background: var(--color-gray-80);
   --theme-focused-foreground: var(--color-daybreak);
   --theme-focused-foreground-subdued: var(--color-daybreak-10-5);
+  --theme-focused-foreground-whisper: var(--color-daybreak-50);
   --theme-gradient: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
   --theme-gradient-90: linear-gradient(90deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
   --theme-gradient-hover: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-focused-foreground) 100%);
@@ -221,6 +224,7 @@ body.theme-dark {
   --theme-INVERT-button-background: var(--color-gray-20);
   --theme-INVERT-focused-foreground: var(--color-daybreak);
   --theme-INVERT-focused-foreground-subdued: var(--color-daybreak-10-5);
+  --theme-INVERT-focused-foreground-whisper: var(--color-daybreak-1);
 }
 
 a {

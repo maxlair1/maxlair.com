@@ -12,4 +12,8 @@
     flex-wrap: wrap;
     gap: 3ch;
     margin-top: 2ch;
+
+    svg {
+        width: auto;
+    }
 }

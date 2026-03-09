@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './page.module.css';
 
-import Brands from './brands';
+import Brands from './Brands';
 import Link from 'next/link';
 import FeaturedCard from '@root/components/bespoke/FeaturedCard';
 
@@ -20,10 +20,10 @@ export default function Page() {
 
                 <p>Learn more about my experience and skills <Link href="/content/me/experience">here</Link></p>
                 <section>
-                    <Brands containerStyle={styles.brandsContainer} itemHeight={'2ch'} />
+                    <Brands containerStyle={styles.brandsContainer} itemHeight={'2ch'}/>
                 </section>
                 <div>
-                    <FeaturedCard title='Learn More About Me' src='/sheesh.gif' description='test description'></FeaturedCard>
+                    <FeaturedCard title='Learn More About Me' src={<img src="/ordered-dither.png" alt="Sheesh" width={200}/>} description='test description'></FeaturedCard>
                 </div>
             </div>
         </>

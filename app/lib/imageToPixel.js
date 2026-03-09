@@ -144,7 +144,7 @@ export async function pixelate(options) {
  * @param {string} type - The Bayer matrix type ('2x2', '4x4', '8x8').
  * @returns {Array<Array<number>>} - The selected Bayer matrix.
  */
-function getBayerMatrix(type) {
+export function getBayerMatrix(type) {
     switch (type) {
         case '2x2':
             return [
@@ -186,7 +186,7 @@ function getBayerMatrix(type) {
  * @param {HTMLCanvasElement} canvas - The canvas to convert.
  * @returns {p5.Image|HTMLCanvasElement} - The converted p5.Image or the original canvas.
  */
-function canvasToP5Image(canvas) {
+export function canvasToP5Image(canvas) {
     if (typeof p5 !== 'undefined') {
         const tempImage = createImage(canvas.width, canvas.height);
         tempImage.drawingContext.drawImage(canvas, 0, 0, canvas.width, canvas.height);
@@ -198,7 +198,7 @@ function canvasToP5Image(canvas) {
 /**
  * Convert an HTMLCanvasElement to a Q5.Image if Q5 is available.
  */
-function canvasToQ5Image(canvas) {
+export function canvasToQ5Image(canvas) {
     if (typeof Q5 !== 'undefined' && typeof Q5.Image !== 'undefined') {
         const tempImage = new Q5.Image(canvas.width, canvas.height);
         tempImage.ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
@@ -211,7 +211,7 @@ function canvasToQ5Image(canvas) {
  * @param {p5.Graphics} p5Graphics - The p5.Graphics object.
  * @returns {Promise<HTMLCanvasElement>} - A promise that resolves to an HTMLCanvasElement.
  */
-function convertP5GraphicsToCanvas(p5Graphics) {
+export function convertP5GraphicsToCanvas(p5Graphics) {
     return new Promise((resolve) => {
         const canvasElement = document.createElement('canvas');
         canvasElement.width = p5Graphics.width;
@@ -229,7 +229,7 @@ function convertP5GraphicsToCanvas(p5Graphics) {
  * @returns {Promise<HTMLImageElement>} - A promise that resolves to an HTMLImageElement.
  */
 
-function loadOriginalImage(src) {
+export function loadOriginalImage(src) {
     return new Promise((resolve, reject) => {
         try {
             // Directly resolve if the source is an HTMLImageElement
@@ -306,7 +306,7 @@ function loadOriginalImage(src) {
 }
 
 let cachedPalette = { name: null, colors: null };
-function fetchPalette(paletteName) {
+export function fetchPalette(paletteName) {
     const paletteUrl = `https://lospec.com/palette-list/${paletteName}.json`;
     if (cachedPalette.name === paletteName) { return Promise.resolve(cachedPalette.colors); }
     return fetch(paletteUrl)
@@ -328,13 +328,13 @@ function fetchPalette(paletteName) {
 
 }
 
-function hexToRgb(hex) {
+export function hexToRgb(hex) {
     hex = hex.replace('#', '');
     const bigint = parseInt(hex, 16);
     return [bigint >> 16 & 255, bigint >> 8 & 255, bigint & 255];
 }
 
-function applyPalette(imageData, paletteColors) {
+export function applyPalette(imageData, paletteColors) {
     const data = imageData.data;
     for (let i = 0; i < data.length; i += 4) {
         const color = [data[i], data[i + 1], data[i + 2]];
@@ -344,7 +344,7 @@ function applyPalette(imageData, paletteColors) {
         data[i + 2] = b;
     }
 }
-function atkinsonDithering(imageData, width, height, strength, paletteColors) {
+export function atkinsonDithering(imageData, width, height, strength, paletteColors) {
     const data = imageData.data;
     const errorBuffer = new Float32Array(data.length);
 
@@ -386,7 +386,7 @@ function atkinsonDithering(imageData, width, height, strength, paletteColors) {
     return imageData;
 }
 
-function floydSteinbergDithering(imageData, width, height, strength, paletteColors) {
+export function floydSteinbergDithering(imageData, width, height, strength, paletteColors) {
     const data = imageData.data;
     const errorBuffer = new Float32Array(data.length);
 
@@ -426,7 +426,7 @@ function floydSteinbergDithering(imageData, width, height, strength, paletteColo
     return imageData;
 }
 
-function orderedDithering(imageData, width, height, strength, paletteColors, bayerMatrix) {
+export function orderedDithering(imageData, width, height, strength, paletteColors, bayerMatrix) {
     const data = imageData.data;
     const matrixSize = bayerMatrix.length;
 
@@ -454,7 +454,7 @@ function orderedDithering(imageData, width, height, strength, paletteColors, bay
     return imageData;
 }
 
-function distributeError(buffer, x, y, quantError, factor, width, height) {
+export function distributeError(buffer, x, y, quantError, factor, width, height) {
     if (x < 0 || x >= width || y < 0 || y >= height) return;
     const idx = (y * width + x) * 4;
     buffer[idx] += quantError[0] * factor;
@@ -462,7 +462,7 @@ function distributeError(buffer, x, y, quantError, factor, width, height) {
     buffer[idx + 2] += quantError[2] * factor;
 }
 
-function findClosestPaletteColor(color, palette) {
+export function findClosestPaletteColor(color, palette) {
     let closestColor = palette[0];
     let closestDistance = colorDistance(color, closestColor);
 
@@ -477,7 +477,7 @@ function findClosestPaletteColor(color, palette) {
     return closestColor;
 }
 
-function colorDistance(color1, color2) {
+export function colorDistance(color1, color2) {
     // Use Euclidean distance
     const rDiff = color1[0] - color2[0];
     const gDiff = color1[1] - color2[1];

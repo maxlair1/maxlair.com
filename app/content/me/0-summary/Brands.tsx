@@ -97,6 +97,7 @@ const Hominy = (props: SVGProps<SVGSVGElement>) => (
 const Matchset = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 104 20"
@@ -115,6 +116,7 @@ const Matchset = (props: SVGProps<SVGSVGElement>) => (
 const MarchOfDimes = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 36 26"
@@ -133,6 +135,7 @@ const MarchOfDimes = (props: SVGProps<SVGSVGElement>) => (
 const Stafast = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 57 14"
@@ -151,6 +154,7 @@ const Stafast = (props: SVGProps<SVGSVGElement>) => (
 const TennisChannel = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 59 18"
@@ -169,6 +173,7 @@ const TennisChannel = (props: SVGProps<SVGSVGElement>) => (
 const ThinkTank = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="true"
     width='100%'
     height='100%'
     viewBox="0 0 72 19"
@@ -188,14 +193,13 @@ const brands = [Army, Cedarville, HeartFitt, Faaviator, Hominy, Matchset, MarchO
 
 type BrandsProps = {
     containerStyle: string;
-    itemWidth?: any;
     itemHeight?: any;
 };
 
-export default function Brands({containerStyle, itemWidth = 'auto', itemHeight = 'auto'}: BrandsProps) {
+export default function Brands({containerStyle, itemHeight = 'auto'}: BrandsProps) {
   return (
     <div className={containerStyle}>
-     {brands.map((SVG, idx) => <SVG key={idx} width={itemWidth} height={itemHeight}/>)}
+     {brands.map((SVG, idx) => <SVG key={idx} height={itemHeight} style={{display: 'inline-block'}}/>)}
     </div>
   )
 }

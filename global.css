@@ -238,6 +238,44 @@ p {
   margin-bottom: 1ch;
 }
 
+.hatnote {
+  margin-left: 2ch;
+}
+
+h2 {
+  margin-bottom: 1.5ch;
+}
+
+kbd {
+  --kbd-color-background: var(--theme-background-input);
+  --kbd-color-border:     var(--theme-border);
+  --kbd-color-text:       var(--theme-text);
+
+  background-color: var(--kbd-color-background);
+  color: var(--kbd-color-text);
+
+  border-radius: 4px;
+  border: 1px solid var(--kbd-color-border);
+  box-shadow: 0 2px 0 1px var(--kbd-color-border);
+  cursor: default;
+  font-size: calc(var(--font-size) * 0.8);
+  line-height: 1;
+  text-align: center;
+  padding: 2px 5px;
+  position: relative;
+  top: -1px;
+
+  &:hover {
+    box-shadow: 0 1px 0 0.5px var(--kbd-color-border);
+    top: 1px;
+  }
+}
+
+small {
+  font-size: calc(var(--font-size) * 0.75);
+  color: var(--theme-text-subdued);
+}
+
 caption {
   font-size: 0.875rem;
   color: var(--theme-text-subdued);

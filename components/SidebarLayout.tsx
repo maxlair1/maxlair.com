@@ -2,7 +2,7 @@
 
 import styles from '@components/SidebarLayout.module.css';
 import * as React from 'react';
-import ActionListItem from './ActionListItem';
+import { useHotkeys } from '@root/modules/hotkeys';
 
 interface SidebarLayoutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
   children?: React.ReactNode;
@@ -29,6 +29,16 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
 }) => {
   const [sidebarWidth, setSidebarWidth] = React.useState(defaultSidebarWidth);
   const [isCollapsed, setIsCollapsed] = React.useState(false);
+
+  useHotkeys('SHIFT+E', () => {
+    setIsCollapsed((prev) => !prev);
+  });
+
+  // React.useEffect(() => {
+  //   console.log('Sidebar collapsed state:', isCollapsed);
+  //   localStorage.setItem('sidebarState', !isCollapsed ? 'collapsed' : 'expanded');
+  // }, [isCollapsed]);
+
   const handleRef = React.useRef<HTMLDivElement>(null);
 
   const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -52,7 +62,7 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
 
   const GrabTab = (
     <div style={{borderRadius: '20px'}}>
-        <div className={styles.grabTab} onClick={()=> setIsCollapsed(!isCollapsed)}>
+        <div className={styles.grabTab} onClick={()=> setIsCollapsed((prev) => !prev)}>
           <p>explore</p>
         </div>
     </div>

@@ -72,11 +72,12 @@
   width: var(--w);
   height: var(--h);
   background: var(--theme-gradient-90);
-  border: solid 1px var(--theme-border);
+  border: solid 2px var(--theme-border);
   border-left: 0px;
   border-radius: 0 4px 4px 0;
   color: var(--theme-text);
   padding: 0.5ch;
+  padding-top: 1ch;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   z-index: 999;

@@ -1,67 +1,40 @@
-import * as React from 'react';
-import Layout from './layout';
-import { Logo } from '@root/app/lib/constants';
-import ActionListItem, { ActionListItemProps } from '@root/components/ActionListItem';
-import Grid from '@root/components/Grid';
-import Card from '@root/components/Card';
-import Image from 'next/image';
+import React from 'react';
+import styles from './page.module.css';
 
+import Brands from './Brands';
+import Link from 'next/link';
+import FeaturedCard from '@root/components/bespoke/FeaturedCard';
 
-const styles = {
-    content: {
-        display: 'flex',
-        flex: '1',
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-}
+const fillColor = 'var(--theme-foreground)'
 
-const someActions: ActionListItemProps[] = [
-    {
-        children: 'View Resume or CV',
-        icon: '+',
-    },
-    {
-        children: 'Check out Designers Drink Coffee',
-        icon: '+',
-        href: 'https://designersdrink.coffee/',
-    },
-    {
-        children: 'Contact Me',
-        icon: '+',
-    },
-    {
-        children: 'Test Anchor Link',
-        icon: '+',
-        href: '/docs/testDir/testDir2/test5#block-elements',
-    },
-];
+export default function Page() {
+    return (
+        <>
+            <div className={styles.container}>
+                <h2>hello</h2>
+                <p>Click "Explore" on the left, or use <kbd>SHIFT+E</kbd> to open navigation.</p>
+                <p>I'm a systems-driven <Link href="#">full-stack product designer</Link>, and <Link href='#'>developer</Link> from Dayton, OH.
+                Currently lead product designer and shareholder at <Link href="https://hearthero.app/">HeartFitt</Link>. 
+                Founder of design consultancy, <Link href="https://designersdrinkcoffee.com/">Designers Drink Coffee</Link>, 
+                primarily focused on design systems and product development. I enjoy solving complex design challenges with recursive
+                solutions.</p>
 
-const Content = (
-    <>
-        <div style={styles.content}>
-            <div style={{textAlign: 'center'}} >
-                <pre style={{ margin: 0, fontFamily: 'monospace', color: 'var(--theme-focused)' }}>
-                    {/* <code>
-                        {Logo.map(row => row.join('')).join('\n')}
-                    </code> */}
-                    <Image loading='eager' src="/ordered_dither.png" alt="Description" width={200} height={200} />
-                </pre>
-                <Grid>
-                    <Card title={'START HERE'} mode="left">
-                        {/* some actions! */}       
-                        {someActions.map((action, index) => (
-                            <ActionListItem key={index} {...action} />
-                        ))}
-                    </Card>
-                </Grid>
+                <p>Learn more about my experience and skills <Link href="/content/me/experience">here</Link></p>
+
+                <br/>
+
+                <section>
+                    <Brands containerStyle={styles.brandsContainer} itemHeight={'2ch'}/>
+                </section>
+                
+                <br/>
+
+                <div className={styles.featuredContainer}>
+                    <FeaturedCard title='Learn More About Me' src="/statue.jpg" dithered/>
+                    <FeaturedCard title='Learn More About Me' src="/temple.jpg" dithered/>
+                    <FeaturedCard title='Learn More About Me' src="/column.jpg" dithered/>
+                </div>
             </div>
-        </div>
-    </>
-)
-
-
-export default function Welcome() {
-  return Content;
+        </>
+    );
 }

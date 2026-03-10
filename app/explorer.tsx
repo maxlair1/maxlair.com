@@ -20,8 +20,6 @@ import { ContentNode } from './content/useContent';
 import Link from 'next/link';
 import ActionButton from '@root/components/ActionButton';
 import useTheme from './lib/theme.provider';
-import Button from '@root/components/Button';
-import RadioButtonGroup from '@root/components/RadioButtonGroup';
 
 export default function Explorer(): React.ReactNode {
     const pathname = usePathname();
@@ -31,7 +29,7 @@ export default function Explorer(): React.ReactNode {
     
     const actions: ActionBarItem[] = [
         {
-            hotkey:'CTRL+E',
+            hotkey:'SHIFT+E',
             body: "TOGGLE EXPLORER",
         },
         {

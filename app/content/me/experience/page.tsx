@@ -7,6 +7,7 @@ import Table from '@root/components/Table';
 import BarProgress from '@root/components/BarProgress';
 import Row from '@root/components/Row';
 import Badge from '@root/components/Badge';
+import Link from 'next/link';
 
 const experienceData = [
     { company: 'Designer\'s Drink Coffee', role: 'Full-Stack Product Consultant', date: 'CUR', description: 'Development team-- Science-backed heart rate workout software.', note: 'Logo, marketing, product design, portal development, and web development', link: 'https://hearthero.app'},
@@ -20,8 +21,8 @@ const experienceData = [
 ]
 
 const educationData = [
-    { title: 'CS50 @ Harvard University', progressPercentage: 50, desc: 'Intro to CompSci, focusing on C and Python.'},
-    { title: 'Google UX Professional Certificate', progressPercentage: 40, desc: 'Equitable design-thinking for enterprise.'},
+    { title: 'CS50 @ Harvard University', progressPercentage: 50, desc: 'Intro to CompSci, focusing on C and Python.', link: 'https://cs50.harvard.edu/x/2026/' },
+    { title: 'Google UX Professional Certificate', progressPercentage: 40, desc: 'Equitable design-thinking for enterprise.', link: 'https://grow.google/certificates/ux-design/' },
     { title: 'BFA in Graphic Design', progressPercentage: 100, desc: 'Foundations of design, typography, and branding.'},
 ]
 
@@ -75,7 +76,7 @@ export default function Page() {
                         educationData.map((i, idx) => {
                             return (
                                 <TableRow key={idx}>
-                                    <TableColumn>{i.title}</TableColumn>
+                                    <TableColumn>{i.link ? <Link href={i.link} target="_blank" rel="noopener noreferrer">{i.title}</Link> : i.title}</TableColumn>
                                     <TableColumn>
                                         <BarProgress progress={i.progressPercentage}></BarProgress>
                                     </TableColumn>

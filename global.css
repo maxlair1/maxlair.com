@@ -242,9 +242,14 @@ p {
   margin-left: 2ch;
 }
 
-h2 {
-  margin-bottom: 1.5ch;
+.pixelated {
+  image-rendering: -webkit-optimize-contrast; 
+  image-rendering: crisp-edges;               
+  image-rendering: pixelated;                 
 }
+
+h1 {margin-bottom: 2ch}
+h2 {margin-bottom: 1.5ch}
 
 kbd {
   --kbd-color-background: var(--theme-background-input);
@@ -272,7 +277,7 @@ kbd {
 }
 
 small {
-  font-size: calc(var(--font-size) * 0.75);
+  font-size: calc(var(--font-size) * 0.95);
   color: var(--theme-text-subdued);
 }
 
@@ -339,6 +344,7 @@ body {
   --color-daybreak-50: rgba(161, 67, 0, 1);
   --color-daybreak-60: rgba(141, 59, 0, 1);
   --color-daybreak-70: rgba(121, 50, 0, 1);
+  --color-daybreak-alt: rgb(158, 105, 66);
   --color-daybreak-70-3: rgba(121, 50, 0, 0.3);
   --color-daybreak-80: rgba(102, 42, 0, 1);
   --color-daybreak-90: rgba(82, 34, 0, 1);
@@ -432,7 +438,7 @@ body {
   --color-white-2: rgba(255, 255, 255, 0.2);
   --color-white-4: rgba(255, 255, 255, 0.4);
 
-  --font-family-mono: var(--font-fragment-mono), Courier, monospace;
+  --font-family-mono: var(--font-source-code-pro), monospace;
   --font-family-serif: serif, Georgia, Times New Roman;
   --font-family-sans: -apple-system, helvetica, sans-serif;
   --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;

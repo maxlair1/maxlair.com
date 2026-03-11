@@ -5,7 +5,7 @@
     flex-direction: column;
     flex: 1;
     cursor: pointer;
-    border: 1px solid var(--theme-focused-foreground);
+    border: 1px solid var(--theme-border);
 }
 
 .image {
@@ -17,7 +17,7 @@
 .label {
     padding: 1ch;
     padding-bottom: 4ch;
-    background: var(--theme-focused-foreground-whisper);
+    background-color: var(--theme-background-input);
 
     p {
         text-transform: uppercase;
@@ -25,4 +25,5 @@
     small {
         color: var(--theme-text-subdued);
     }
+ 
 }

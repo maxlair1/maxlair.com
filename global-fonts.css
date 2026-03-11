@@ -2,8 +2,6 @@ body.font-use-fragment-mono {
   --font-family-mono: var(--font-fragment-mono), monospace;
 }
 
-body.font-use-newsreader {
-  --font-family-source-serif: var(--font-newsreader), serif;
+body.font-use-anonymous-pro {
+  --font-family-mono: var(--font-anonymous-pro), monospace;
 }
-
-

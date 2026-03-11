@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Image from 'next/image';
+import * as Utilities from '@lib/utilities';
 
 // core package
 import * as itp from '@root/app/lib/imageToPixel';
@@ -8,37 +9,34 @@ interface DitheredProps {
     src: string;
     alt: string;
     onProcessed?: () => void;
+    color: [r:number,g:number,b:number];
 }
 
-export default function Dithered({ src, alt, onProcessed }: DitheredProps): React.ReactNode {
+export default function Dithered({ src, alt, onProcessed, color }: DitheredProps): React.ReactNode {
     const [processing, setProcessing ] = React.useState(true);
+    const [imgLoaded, setImgLoaded] = React.useState(false);
     const [cached, setCached] = React.useState<string>('');
-    const [dithered, setDithered] = React.useState(null);
+    const [dithered, setDithered] = React.useState<string | null>(null);
     const imgRef = React.useRef<HTMLImageElement>(null);
 
-    const generatePalette = (color: string): string[] => {
-        function hexToRgb(hex) {
-            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-            return result ? {
-                r: parseInt(result[1], 16),
-                g: parseInt(result[2], 16),
-                b: parseInt(result[3], 16)
-            } : null;
-        }  
+    function generateTintShadePalette(baseRgb: [number, number, number]): string[] {
+    const [r, g, b] = baseRgb;
+    const { h: baseHue, s: baseSat, l: baseLight } = Utilities.rgbToHsl(r, g, b);
 
-        console.log(`Parsed color ${color} to RGB:`, hexToRgb(color)); 
-        const palette = [];
-        return palette;
-    }
-
+    // Use increments above and below baseLight, clamped between 0 and 1
     const palette = [
-        '#ed8641',
-        '#ffe1ce',
-        '#f6b082',
-        '#ed7d31',
-        '#321501',
-        // '#3a80f5',
+        Utilities.hslToHex(baseHue, baseSat, Math.max(baseLight - 0.25, 0)), // darkest
+        Utilities.hslToHex(baseHue, baseSat, Math.max(baseLight - 0.15, 0)),
+        Utilities.hslToHex(baseHue, baseSat, Math.max(baseLight - 0.05, 0)),
+        Utilities.hslToHex(baseHue, baseSat, baseLight),                     // base
+        Utilities.hslToHex(baseHue, baseSat, Math.min(baseLight + 0.05, 1)),
+        Utilities.hslToHex(baseHue, baseSat, Math.min(baseLight + 0.15, 1)),
+        Utilities.hslToHex(baseHue, baseSat, Math.min(baseLight + 0.25, 2)), // brightest
     ];
+
+    console.log("Generated palette:", palette);
+    return palette;
+}
 
     function getCacheKey(src: string): string {
         let hash = 0;
@@ -51,47 +49,48 @@ export default function Dithered({ src, alt, onProcessed }: DitheredProps): Reac
     }
 
     React.useEffect(() => {
-        generatePalette('#ed8641');
+        if (!src) return;
         const key = getCacheKey(src);
         const cachedImage = localStorage.getItem(key);
         if (cachedImage) {
             setCached(cachedImage);
             return;
         }
-
-        async function dither() {
-            if (!imgRef.current) return;
+        // Wait for image to load
+        if (!imgLoaded || !imgRef.current) return;
+        async function dither(baseColor) {
             setProcessing(true);
-            console.log(palette);
             await itp.pixelate({
-                image: imgRef.current,             // Accepts HTML canvas, image elements, or q5/p5.js image objects
-                width: 120,                  // Set pixelation width
-                dither: 'Ordered',   // Dithering method ('Floyd-Steinberg', 'Ordered','2x2 Bayer', '4x4 Bayer',`Clustered 4x4` or `atkinson`)
-                strength: 5,                // Dithering strength (0-100)
-                // palette: 'rgbg-36',        // Optional: Lospec palette slug (depends on Lospec API availability)
-                palette: palette,
-                resolution: 'original'       // Use 'original' for full resolution, or 'pixel' for pixelated size
+                image: imgRef.current,
+                width: 125,
+                dither: 'Ordered',
+                strength: 6,
+                palette: generateTintShadePalette(baseColor),
+                resolution: 'pixelated'
             }).then((result) => {
                 setDithered(result.toDataURL());
-                console.log('Dithering successful');
                 localStorage.setItem(key, result.toDataURL());
-                console.log('Image cached in localStorage:', result.toDataURL());
             }).catch((error) => {
                 console.error('Error during dithering:', error);
             }).finally(() => {
                 setProcessing(false);
                 onProcessed && onProcessed();
             });
-        };
-        dither();
+        }
+        dither(color);
+    }, [src, imgLoaded]);
 
-    }, [src])
-
+    if (!src) return null;
     if (cached) {
-        return <Image src={cached} alt={alt} fill={true} style={{objectFit: 'cover'}} loading='eager'/>;
+        return <Image src={cached} alt={alt} fill={true} style={{objectFit: 'cover'}} loading='eager' className='pixelated' unoptimized={true}/>;
     }
-
-    return processing ? 
-        (<img ref={imgRef} src={src} alt={alt} style={{display: 'none'}}/>)
-        : (<Image src={dithered!} alt={alt} fill={true} style={{objectFit: 'cover'}} loading='eager'/>);
+    // Only render <img> if src is valid
+    if (processing) {
+        return <img ref={imgRef} src={src} alt={alt} style={{display: 'none'}} onLoad={() => setImgLoaded(true)} />;
+    }
+    // Only render <Image> if dithered is valid
+    if (dithered) {
+        return <Image src={dithered} alt={alt} fill={true} style={{objectFit: 'cover'}} loading='eager' className='pixelated' unoptimized={true}/>;
+    }
+    return null;
 }

@@ -15,7 +15,12 @@ export default function Page() {
         'Being style agnostic, and embodying the vision of my client.',
         'Making the best couch forts for my Daughter.',
         'Being the most optimistic guy in the room',
-        'Prioritize experience over convenience.'
+        'Prioritize experience over convenience.',
+        '',
+        'Minimal imported libraries',
+        'Prioritize open-source tool use',
+        'Only using AI when I already know the solution. Keeps me learning.'
+
     ] 
     return (
         <div>

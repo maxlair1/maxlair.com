@@ -4,6 +4,8 @@
     max-width: 80ch;
     margin: 0 auto;
     padding: 2rem;
+    gap: 2rem;
+    margin-top: 10ch;
 }
 
 .brandsContainer {
@@ -23,4 +25,13 @@
     gap: 2ch;
     margin-top: 2ch;
 
+}
+
+.gt {
+    color: var(--theme-text-subdued);
+    font-weight: 600;
+}
+
+.tip {
+    color: var(--color-daybreak-30);
 }

@@ -32,18 +32,29 @@
     background-color: var(--bg-secondary);
 }
 
-.prose {
+.prose h1 {
+  font-family: var(--font-family-serif);
+  font-weight: 400;
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--theme-border);
+  margin-bottom: 3ch;
+}
+
+.prose p {
+  /* needs to be readable */
+  line-height: calc(var(--theme-line-height-base) * 1.25) !important;
+}
+
+
+
+
+
+
+/* .prose {
   font-family: var(--font-family-sans);
   line-height: calc(var(--theme-line-height-base) + 0.5);
 
   
-  h1 {
-    font-family: var(--font-family-serif);
-    font-weight: 400;
-    font-size: 1.8rem;
-    border-bottom: 1px solid var(--theme-border);
-    margin-bottom: 3ch;
-  }
   h2 {
     font-size: 1.5rem;
     font-family: var(--font-family-serif);
@@ -57,11 +68,10 @@
     list-style-position: outside;
   }
   p {
-    font-family: var(--font-family-sans);
-    margin: 8px, 0, 16px;
+    margin: 8px 0 16px;
     width: 100%;
   }
-}
+} */
 
 
 

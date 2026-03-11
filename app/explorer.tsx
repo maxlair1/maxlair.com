@@ -65,7 +65,7 @@ export default function Explorer(): React.ReactNode {
     if (loading) {
         return (
             <div className={styles.root}>
-                <BlockLoader mode={2}/>
+                <BlockLoader mode={1}/>
             </div>
         )
     }
@@ -78,11 +78,11 @@ export default function Explorer(): React.ReactNode {
                         <Logo></Logo>
                     </header>
                 </Link>
-                <ActionBar items={actions}/>
-                <ActionButton>{'<- Back to Welcome'}</ActionButton>
+                {/* <ActionBar items={actions}/> */}
+                {/* <ActionButton>{'<- Back to Welcome'}</ActionButton> */}
 
                 <Accordion style='GRADIENT' defaultValue title='CONTENT'>
-                    <TreeView title='Home' isFile={true} defaultValue isActive={pathname === '/'} onClick={() => Router.push('/')}/>
+                    <TreeView title='Welcome' isFile={true} defaultValue isActive={pathname === '/'} onClick={() => Router.push('/')}/>
                     {tree ? renderContent(tree.local ?? []) : <BlockLoader mode={1} />}
                 </Accordion>
 

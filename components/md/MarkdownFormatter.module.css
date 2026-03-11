@@ -5,6 +5,7 @@
     flex-direction: row;
     justify-content: space-between;
     overflow: hidden;
+    margin-top: 10ch;
 }
 
 .content {
@@ -17,13 +18,13 @@
     width: 100%;
     padding-top: 2rem;
     margin-left: 2ch;
-    
-    .justified {
-        max-width: 80ch;
-        margin-inline: auto;
-    }
-}
 
+  }
+
+.root header {
+  margin-bottom: 4ch;
+}
+  
 .gallery {
     flex: 1;
     display: flex;
@@ -32,13 +33,13 @@
     background-color: var(--bg-secondary);
 }
 
-.prose h1 {
+/* .prose h1 {
   font-family: var(--font-family-serif);
   font-weight: 400;
   font-size: 1.8rem;
   border-bottom: 1px solid var(--theme-border);
   margin-bottom: 3ch;
-}
+} */
 
 .prose p {
   /* needs to be readable */

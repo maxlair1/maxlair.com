@@ -12,7 +12,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 3ch;
-    margin-top: 2ch;
+    margin-block: 1ch;
 
     svg {
         width: auto;
@@ -30,8 +30,4 @@
 .gt {
     color: var(--theme-text-subdued);
     font-weight: 600;
-}
-
-.tip {
-    color: var(--color-daybreak-30);
 }

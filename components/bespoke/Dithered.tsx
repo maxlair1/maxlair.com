@@ -62,8 +62,8 @@ export default function Dithered({ src, alt, onProcessed, color }: DitheredProps
             setProcessing(true);
             await itp.pixelate({
                 image: imgRef.current,
-                width: 125,
-                dither: 'Ordered',
+                width: 200,
+                dither: '4x4 Bayer',
                 strength: 6,
                 palette: generateTintShadePalette(baseColor),
                 resolution: 'pixelated'

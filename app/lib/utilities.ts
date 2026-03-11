@@ -384,11 +384,6 @@ export const findFocusableDescendant = (container: Element | null, currentFocuse
   return null;
 };
 
-//get local color var
-function getLocalCSSVar() {
-  return { "--my-css-var": 10 } as React.CSSProperties;
-}
-
 //color shit
 export function hslToRgb(h:number, s:number, l:number): [r:number, g:number, b:number]  {
   h /= 360;
@@ -502,4 +497,25 @@ export function slicePathAtRoot (path: string): string {
     return path.slice(index + marker.length);
   }
   return path;
+}
+
+export function getCurrentSlug(url: string): string {
+  const path = url.split('?')[0].split('#')[0]; // Remove query/hash
+  const segments = path.split('/').filter(Boolean);
+  if (segments.length === 0) return '';
+  const last = segments[segments.length - 1];
+  return removeExtension(last);
+}
+
+export function capitalizeFirst(text: string): string {
+  if (!text) return '';
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+export function titleCase(text: string): string {
+  if (!text) return '';
+  return text
+    .split(' ')
+    .map(word => capitalizeFirst(word.toLowerCase()))
+    .join(' ');
 }

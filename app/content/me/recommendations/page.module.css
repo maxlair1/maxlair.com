@@ -1,0 +1,4 @@
+.txt object {
+    color: var(--theme-text);
+    background-color: var(--theme-INVERT-background);
+}

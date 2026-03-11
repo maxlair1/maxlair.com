@@ -26,3 +26,9 @@
 .footer {
     display: flex;
 }
+
+.treeContainer {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-height: 40vh;
+}

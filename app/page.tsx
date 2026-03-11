@@ -3,13 +3,22 @@ import styles from './page.module.css';
 
 import Brands from '../components/bespoke/Brands';
 import Link from 'next/link';
-import FeaturedCard from '@root/components/bespoke/FeaturedCard';
-import ActionListItem from '@root/components/ActionListItem';
+import FeaturedCard from '@components/bespoke/FeaturedCard';
+import ActionListItem from '@components/ActionListItem';
+import Card from '@components/Card';
 
 export default function Page() {
+
     return (
         <>
             <div className={`${styles.container}`}>
+                <section>
+                    <Card>
+                        This site is still a work in progress. Please be patient &lt;3.
+                        <br/>
+                        <Link href="https://old.maxlair.com" >Old Portfolio</Link>
+                    </Card>
+                </section>
                 <section>
                     <h2>hello</h2>
                     <aside className={styles.tip}>&nbsp;<strong style={{opacity: 0.5, fontWeight: 800}}>&gt;</strong> Click "Explore" on the left, or use <kbd>SHIFT+E</kbd> to open navigation.</aside>
@@ -43,7 +52,7 @@ export default function Page() {
                         <FeaturedCard href='/' title='Welcome to my new Portfolio' description='03/10/2026' src="/dayton.jpg" dithered color='daybreak'/>
                         {/* <FeaturedCard title='Learn More About Me' src="/temple.jpg" dithered color='green'/>s */}
                     </div>
-                    <h4>Snacks</h4>
+                    {/* <h4>Snacks</h4> */}
                 </section>
             </div>
         </>

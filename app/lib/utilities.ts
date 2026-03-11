@@ -500,7 +500,7 @@ export function slicePathAtRoot (path: string): string {
 }
 
 export function getCurrentSlug(url: string): string {
-  const path = url.split('?')[0].split('#')[0]; // Remove query/hash
+  const path = url.replaceAll('%20', ' ').split('?')[0].split('#')[0]; // Remove query/hash
   const segments = path.split('/').filter(Boolean);
   if (segments.length === 0) return '';
   const last = segments[segments.length - 1];

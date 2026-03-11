@@ -1,7 +1,9 @@
-.root {
-    position: relative;
-    min-height: 100dvh;
+.container {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    max-width: 80ch;
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 2rem;
+    margin-top: 10ch;
 }

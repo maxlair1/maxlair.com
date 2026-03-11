@@ -119,6 +119,25 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
             return normalizedPath;
         }
 
+        // const listImages = async ({
+        //     path = "_pub/_img/"
+        // }: { path?: string } = {}): ImageData[] => {
+        //     const normPath = ("_pub/_img" + (path ? path : "/"));
+        //     const data = await GET('json', normPath)
+        //     const retrieve = async (childDir: string) => {
+        //         data.map((i: any) => {
+        //             return
+        //                 title: node.title,
+        //                 filename: node.filename,
+        //                 url: node.url,
+        //                 project: projectDir,
+        //             });
+        //         });
+        //         if (node.children) retrieve(node.children);
+        //         }
+        //     };
+        // }
+
         return await GET('json', path).then(async (data) => {
             const tree = await Promise.all(data.map(async (item: any): Promise<ContentNode> => {
                 return {

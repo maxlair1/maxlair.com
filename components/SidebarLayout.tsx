@@ -96,7 +96,6 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
   }
 
   return (
-    <>
       <div className={`${styles.root} ${isCollapsed ? styles.collapsed : ''}`} {...rest}>
         <div
           className={styles.sidebar}
@@ -118,11 +117,8 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
         <div>
           {grabTab ? GrabTab : null}
         </div>
-        <React.Suspense fallback={<Loading />}>
-          <div className={styles.content}>{children}</div>
-        </React.Suspense>
+        <div className={styles.content}>{children}</div>
       </div>
-    </>
   );
 };
 

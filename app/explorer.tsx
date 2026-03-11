@@ -62,58 +62,57 @@ export default function Explorer(): React.ReactNode {
         return rendered
     }
 
-    if (loading) {
-        return (
-            <div className={styles.root}>
-                <BlockLoader mode={1}/>
-            </div>
-        )
-    }
+    // if (loading) {
+    //     return (
+    //         <div className={styles.root}>
+    //             <BlockLoader mode={1}/>
+    //         </div>
+    //     )
+    // }
 
     return (
-        <div className={styles.root}>
-            <section className={styles.trees}>
-                <Link href="/">
-                    <header className={styles.header}>
-                        <Logo></Logo>
-                    </header>
-                </Link>
-                {/* <ActionBar items={actions}/> */}
-                {/* <ActionButton>{'<- Back to Welcome'}</ActionButton> */}
+        <React.Suspense fallback={(
+            <div className={styles.root}>
+                <BlockLoader mode={1}/>
+            </div> 
+        )}>
+            <div className={styles.root}>
+                <section className={styles.trees}>
+                    <Link href="/">
+                        <header className={styles.header}>
+                            <Logo></Logo>
+                        </header>
+                    </Link>
+                    {/* <ActionBar items={actions}/> */}
+                    {/* <ActionButton>{'<- Back to Welcome'}</ActionButton> */}
 
-                <Accordion style='GRADIENT' defaultValue title='CONTENT'>
-                    <TreeView title='Welcome' isFile={true} defaultValue isActive={pathname === '/'} onClick={() => Router.push('/')}/>
-                    {tree ? renderContent(tree.local ?? []) : <BlockLoader mode={1} />}
-                </Accordion>
+                    <Accordion style='GRADIENT' defaultValue title='CONTENT'>
+                        <div className={styles.treeContainer}>
+                            <TreeView title='Welcome' isFile={true} defaultValue isActive={pathname === '/'} onClick={() => Router.push('/')}/>
+                            {tree ? renderContent(tree.local ?? []) : <BlockLoader mode={1} />}
+                        </div>
+                    </Accordion>
 
-                <Accordion style='GRADIENT' defaultValue title='DOCS'>
-                    {tree ? renderContent(tree.remote ?? []) : <BlockLoader mode={1}/>}
-                </Accordion>
+                    <Accordion style='GRADIENT' defaultValue title='DOCS'>
+                        <div className={styles.treeContainer}>
+                            {tree ? renderContent(tree.remote?.find((n, idx) => n.title === 'docs')?.children ?? []) : <BlockLoader mode={1}/>}
+                        </div>
+                    </Accordion>
 
-                <Accordion style='GRADIENT' title='PREFERENCES'>
-                    <TreeView title='Color Mode' isFile={false} defaultValue>
-                        <TreeView radio radioChecked={theme === 'light'} title='Light' isFile={true} defaultValue onClick={() => setTheme('light')}/>
-                        <TreeView radio radioChecked={theme === 'dark'} title='Dark' isFile={true} defaultValue onClick={() => setTheme('dark')}/>
-                    </TreeView>
-                    <TreeView title='Clear Cookies' isFile={true} onClick={() => { document.cookie = ''; }}/>
-                    {/* <TreeView title='Accessibility'>
-                        <TreeView radio title='Supress Animations' isFile/>
-                    </TreeView>
-                    <TreeView title='Appearance'>
-                        <NumberRangeSlider 
-                            label='Font Size'
-                            defaultValue={16}
-                            min={12}
-                            max={24}
-                            step={1}
-                            suffix='px'
-                        />
-                    </TreeView> */}
-                </Accordion>
-            </section>
-            <footer className={styles.footer}>
-                {/* <Button theme='SECONDARY'>{'Shoot me a message'}</Button> */}
-            </footer>
-        </div>
+                    <Accordion style='GRADIENT' title='PREFERENCES'>
+                        <div className={styles.treeContainer}>
+                            <TreeView title='Color Mode' isFile={false} defaultValue>
+                                <TreeView radio radioChecked={theme === 'light'} title='Light' isFile={true} defaultValue onClick={() => setTheme('light')}/>
+                                <TreeView radio radioChecked={theme === 'dark'} title='Dark' isFile={true} defaultValue onClick={() => setTheme('dark')}/>
+                            </TreeView>
+                            <TreeView title='Clear Cookies' isFile={true} onClick={() => { document.cookie = ''; }}/>
+                        </div>
+                    </Accordion>
+                </section>
+                <footer className={styles.footer}>
+                    {/* <Button theme='SECONDARY'>{'Shoot me a message'}</Button> */}
+                </footer>
+            </div>
+        </React.Suspense>
     );
 }

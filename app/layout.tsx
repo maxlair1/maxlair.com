@@ -11,6 +11,7 @@ import Providers from '@components/Providers';
 import ThemeScript from './ThemeScript';
 import SidebarLayout from '@root/components/SidebarLayout';
 import Explorer from '@root/app/explorer';
+import Loading from './loading';
 
 export const metadata = {
   title: 'MaxLair Documentation',
@@ -35,7 +36,7 @@ export interface RootLayoutProps {
   sidebarExpanded?: boolean;
 }
 
-export default async function ExploreLayout({ children }: RootLayoutProps) {
+export default async function ExploreLayout({ children }: RootLayoutProps) {  
   const initialTheme = await getInitialTheme();
 
   console.log('Initial theme:', initialTheme);

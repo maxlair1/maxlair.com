@@ -3,6 +3,7 @@
 import styles from '@components/SidebarLayout.module.css';
 import * as React from 'react';
 import { useHotkeys } from '@root/modules/hotkeys';
+import PageLoading from '@root/components/PageLoading';
 
 interface SidebarLayoutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
   children?: React.ReactNode;
@@ -68,6 +69,13 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
     </div>
   );
 
+  const Loading = (): React.ReactElement => {
+    return (
+      <div className={styles.loading}>
+        <PageLoading progress={50} />
+      </div>
+    );
+  };
 
   if (isReversed) {
     return (
@@ -110,7 +118,9 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
         <div>
           {grabTab ? GrabTab : null}
         </div>
-        <div className={styles.content}>{children}</div>
+        <React.Suspense fallback={<Loading />}>
+          <div className={styles.content}>{children}</div>
+        </React.Suspense>
       </div>
     </>
   );

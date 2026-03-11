@@ -12,12 +12,6 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    background-image: linear-gradient(var(--theme-background-modal) 1px, transparent 1px), linear-gradient(90deg, var(--theme-background-modal) 1px, transparent 1px);
-    background-size: 19px 19px;
-  }
+  overflow: auto;
 }
 

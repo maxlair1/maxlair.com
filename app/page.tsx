@@ -7,24 +7,10 @@ import FeaturedCard from '@root/components/bespoke/FeaturedCard';
 import ActionList, { ActionListItemProps } from '@root/components/ActionListItem';
 import ActionListItem from '@root/components/ActionListItem';
 
-const fillColor = 'var(--theme-foreground)'
-
-const quickLinks: ActionListItemProps[] = [
-    {
-        icon: '>',
-        children: "Explore Site",
-        href: "/explore"
-    },
-    {
-        icon: '!',
-        children: "PANIC!",
-    }
-]
-
 export default function Page() {
     return (
         <>
-            <div className={styles.container}>
+            <div className={`${styles.container}`}>
                 <section>
                     <h2>hello</h2>
                     <p className={styles.tip}>&nbsp;<strong style={{opacity: 0.5, fontWeight: 800}}>&gt;</strong> Click "Explore" on the left, or use <kbd>SHIFT+E</kbd> to open navigation.</p>

@@ -10,6 +10,7 @@ Live at [maxlair.com](https://maxlair.com)
 
 ### Todo/Roadmap:
 - [ ] Add `grabTab` tool-tip using `<ToolTip/>`
+- [ ] Research the `:target` CSS modifier and its significance
 - [ ] touch grass
 
 >[!NOTE]

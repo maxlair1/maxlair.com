@@ -12,6 +12,7 @@ Live at [maxlair.com](https://maxlair.com)
 - [ ] Add `grabTab` tool-tip using `<ToolTip/>`
 - [ ] Research the `:target` CSS modifier and its significance
 - [ ] Implement `<ProseLayout>` for consistent reading content
+- [ ] Add super secret bg for ultrawides...
 - [ ] touch grass
 
 >[!NOTE]

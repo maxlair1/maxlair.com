@@ -1,5 +1,16 @@
-### Todo:
-- [ ] Add "Touch grass" route...
+## Welcome to my personal website! 
+Live at [maxlair.com](https://maxlair.com)
+>[!TIP]
+>Old website still available at [old.maxlair.com](https://old.maxlair.com)
 
-#### Inspo
-https://frappe.io/careers
+### Social Links
+> "pssst... Max, you need to add these"
+
+### 
+
+### Todo/Roadmap:
+- [ ] Add `grabTab` tool-tip using `<ToolTip/>`
+- [ ] touch grass
+
+>[!NOTE]
+>Missing something? Might be in the [GitHub Project](https://github.com/users/maxlair1/projects/3)

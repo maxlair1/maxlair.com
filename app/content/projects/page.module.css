@@ -1,0 +1,25 @@
+.featuredContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 500px;
+    width: 300px;
+
+    position: relative;
+    background-color: var(--theme-background-modal);
+
+    .imageContainer {
+        display: flex;
+        height: 75%;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        
+        .image {
+            padding-inline: 10ch;
+            object-fit: cover;
+            object-position: top;
+        }
+    }
+}

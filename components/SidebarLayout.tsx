@@ -62,7 +62,7 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
   };
 
   const GrabTab = (
-    <div style={{borderRadius: '20px'}}>
+    <div style={{borderRadius: '20px'}} className={styles.grabTabContainer}>
         <div className={styles.grabTab} onClick={()=> setIsCollapsed((prev) => !prev)}>
           <p>explore</p>
         </div>
@@ -106,17 +106,15 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
           <div>
             {sidebar}
           </div>
+        {grabTab ? GrabTab : null}
         </div>
-          {isShowingHandle ? (
-            <div className={styles.handle} ref={handleRef} role="button" tabIndex={0} onMouseDown={handleMouseDown} style={isShowingHandle ? {} : { width: `0.5ch` }}>
-              <>
-                <div className={styles.line} />
-              </>
-            </div>
-          ) : null}
-        <div>
-          {grabTab ? GrabTab : null}
-        </div>
+        {isShowingHandle ? (
+          <div className={styles.handle} ref={handleRef} role="button" tabIndex={0} onMouseDown={handleMouseDown} style={isShowingHandle ? {} : { width: `0.5ch` }}>
+            <>
+              <div className={styles.line} />
+            </>
+          </div>
+        ) : null}
         <div className={styles.content}>{children}</div>
       </div>
   );

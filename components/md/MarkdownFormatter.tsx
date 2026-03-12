@@ -11,12 +11,10 @@ import useContent, { ImageData as ContentImageData } from '@root/app/content/use
 import rehypeRaw from 'rehype-raw'
 import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm';
-import Gallery from '@components/bespoke/Gallery';
+// import Gallery from '@components/bespoke/Gallery';
 import Avatar from '@components/Avatar';
 import Indent from '../Indent';
 import BlockLoader from '../BlockLoader';
-// import PageLoading from '@components/PageLoading';
-// import rehypeRaw from 'rehype-raw';
 
 import portrait from '@root/public/portrait.png'
 
@@ -29,24 +27,25 @@ import portrait from '@root/public/portrait.png'
  *      5. Additionally use remark-gfm, and rehype-raw, as well as remark-wiki-link-plus. Save these as an array for easy import.
  */
 
-export interface DocLoaderProps {
+export interface MarkdownFormatterProps {
     path?: string; // root of the `/_pub/docs/` directory in the GitHub repo
     onDoc?: () => void;
     onDocLoading?: () => void;
 }
 
-export default function MarkdownFormatter({ path }: DocLoaderProps): React.ReactNode {
+export default function MarkdownFormatter({ path }: MarkdownFormatterProps): React.ReactNode {
     const { load, images: allImages } = useContent();
     const pathname = usePathname();
     const [images, setImages] = React.useState<ContentImageData[]>([]);
     const [file, setFile] = React.useState<string>();
     const [frontmatter, setFrontmatter] = React.useState<Record<string, any> | undefined>(undefined);
+    const [loading, setLoading] = React.useState<boolean>(true);
     
     React.useEffect(() => {
         if (!path) return;
         (async () => {
+            setLoading(true);
             try {
-                setLoading(true);
                 const f = await load(path);
                 console.log(f);
                 setFile(f.content);
@@ -61,35 +60,33 @@ export default function MarkdownFormatter({ path }: DocLoaderProps): React.React
                 setLoading(false);
             }
         })();
-      }, [path, allImages]);
+    }, [path, allImages]);
       
     return (
-            <React.Suspense fallback={<span className={styles.loading}><BlockLoader mode={1}/> Loading...</span>}>
-                <div className={`${styles.root} readableLineLength`}>
-                    <article className={`${styles.content} ${styles.prose}`}>
-                        <header>
-                            <h1>{frontmatter?.title ?? Utilities.titleCase(Utilities.getCurrentSlug(pathname))}</h1>
-                            {frontmatter ? <Avatar src={portrait.src}>
-                                <Indent>
-                                    MAX LAIR
-                                    {frontmatter!.date ? <><br />{frontmatter!.date}</> : null}
-                                </Indent>
-                            </Avatar> : null}
-                        </header>
-                        <ReactMarkdown
-                            components={MarkdownComponents}
-                            remarkPlugins={[remarkParse, remarkGfm, remarkWikis]}
-                            rehypePlugins={[rehypeSlug, rehypeAutolinkHeadings, rehypeRaw]}
-                        >
-                            {file}
-                        </ReactMarkdown>
-                    </article>
-                    {images.length > 0 && frontmatter?.gallery ? (
-                        <div className={styles.gallery}>
-                            <Gallery images={images} />
-                        </div>
-                    ) : null}
-                </div>
-            </React.Suspense>
+        loading ? 
+        (<span className={styles.loading}>
+            <BlockLoader mode={1}/>
+            Loading...
+        </span>)
+        : (
+            <article className={styles.prose}>
+                <hgroup className={styles.header}>
+                    <h1>{frontmatter?.title ?? Utilities.titleCase(Utilities.getCurrentSlug(pathname))}</h1>
+                    {frontmatter ? <Avatar src={portrait.src}>
+                        <Indent>
+                            MAX LAIR
+                            {frontmatter!.date ? <><br />{frontmatter!.date}</> : null}
+                        </Indent>
+                    </Avatar> : null}
+                </hgroup>
+                <ReactMarkdown
+                    components={MarkdownComponents}
+                    remarkPlugins={[remarkParse, remarkGfm, remarkWikis]}
+                    rehypePlugins={[rehypeSlug, rehypeAutolinkHeadings, rehypeRaw]}
+                >
+                    {file}
+                </ReactMarkdown>
+            </article>
+            )
     );
 }

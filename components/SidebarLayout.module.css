@@ -5,6 +5,7 @@
   justify-content: space-between;
   white-space: pre-wrap;
   min-height: 0;
+  position: relative;
 }
 
 .sidebar {
@@ -12,7 +13,6 @@
   background-color: var(--theme-background-modal);
   flex-shrink: 0;
   width: 20ch;
-  /* overflow-y: auto; */
   display: flex;
   flex-direction: column;
   transition: all 0.2s ease;
@@ -97,7 +97,6 @@
   padding-top: 1ch;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  z-index: 999;
   position: relative;
   cursor: pointer;
 
@@ -105,7 +104,19 @@
     /* background-color: var(--color-daybreak-10); */
     background: var(--theme-gradient-hover-90);
   }
+  
+}
 
+.grabTabContainer {
+  z-index: 999;
+  position: absolute;
+  transform-origin: left top;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .collapsed .sidebar {

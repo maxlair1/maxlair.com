@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import styles from './Gallery.module.css';
 import Image from 'next/image';
@@ -6,6 +8,10 @@ import { type ImageData } from '@root/app/content/useContent';
 
 export default function Gallery({ images, open = true }: { images: ImageData[], open?: boolean }): React.JSX.Element {
     const [src, setSrc] = React.useState<string | undefined>();
+
+    /**TODO:
+     * Display Gallery based on router params.
+     */
 
     return (
         <div className={styles.root}>

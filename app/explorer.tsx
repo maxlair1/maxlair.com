@@ -77,7 +77,7 @@ export default function Explorer(): React.ReactNode {
             </div> 
         )}>
             <div className={styles.root}>
-                <section className={styles.trees}>
+                <nav className={styles.trees}>
                     <Link href="/">
                         <header className={styles.header}>
                             <Logo></Logo>
@@ -108,9 +108,10 @@ export default function Explorer(): React.ReactNode {
                             <TreeView title='Clear Cookies' isFile={true} onClick={() => { document.cookie = ''; }}/>
                         </div>
                     </Accordion>
-                </section>
+                </nav>
                 <footer className={styles.footer}>
-                    {/* <Button theme='SECONDARY'>{'Shoot me a message'}</Button> */}
+                    <small>{new Date().getFullYear()} &copy; Copywrite Max Lair</small>
+                    <br/>
                 </footer>
             </div>
         </React.Suspense>

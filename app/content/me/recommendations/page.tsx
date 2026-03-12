@@ -10,7 +10,7 @@ import TableColumn from '@root/components/TableColumn'
 import Table from '@root/components/Table'
 import BlockLoader from '@root/components/BlockLoader'
 import TableRow from '@root/components/TableRow';
-
+import ContentLayout from '@components/bespoke/ContentLayout';
 
 interface RecommendationItem {
     src: string,
@@ -54,7 +54,7 @@ export default function Page(): React.ReactElement {
     }, []);
 
     return (
-        <>
+        <ContentLayout readableLineLength={false}>
             <h2>recommendations</h2>
             <p>During my career, I have recieved some really kind words from my peers, supervisors, and mentors.</p>
             {recommendations.map((rec, key) => {
@@ -84,7 +84,7 @@ export default function Page(): React.ReactElement {
                     }
                 />
             })}
-        </>
+        </ContentLayout>
     )
 
 }

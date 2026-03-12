@@ -3,8 +3,8 @@
 import * as React from 'react';
 import styles from './page.module.css';
 import MarkdownFormatter from '@root/components/md/MarkdownFormatter';
-import Gallery from '@root/components/bespoke/Gallery';
-import useContent, { ImageData as ContentImageData } from '@root/app/content/useContent';
+// import Gallery from '@root/components/bespoke/Gallery';
+// import useContent, { ImageData as ContentImageData } from '@root/app/content/useContent';
 import ContentLayout from '@components/bespoke/ContentLayout';
 
 export default function letsRead({ params }: { params: Promise<{ slug: string[] }> }) {

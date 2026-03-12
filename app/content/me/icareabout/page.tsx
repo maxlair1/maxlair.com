@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Row from '@root/components/Row';
 import ListItem from '@root/components/ListItem';
+import ContentLayout from '@root/components/bespoke/ContentLayout';
 
 
 export default function Page() {
@@ -23,14 +24,12 @@ export default function Page() {
 
     ] 
     return (
-        <div>
-            <Row>
+            <ContentLayout bleed={false}>
                 <ul>
                     {things.map((thing, index) => (
                         <ListItem key={index}>{thing}</ListItem>
                     ))}
                 </ul>
-            </Row>
-        </div>
+            </ContentLayout>
     )
 }

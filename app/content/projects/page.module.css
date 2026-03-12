@@ -1,25 +1,73 @@
+.root {
+    max-width: 300px;
+    min-width: 200px;
+}
+
 .featuredContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 
-    height: 500px;
-    width: 300px;
+    height: clamp(320px, 80vw, 450px);
+    width: 100%;
 
-    position: relative;
     background-color: var(--theme-background-modal);
 
+    header {
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .appicon {
+        margin: 1rem;
+    }
+    
     .imageContainer {
         display: flex;
-        height: 75%;
-        width: 100%;
+        height: 50%;
+        width: 70%;
         overflow: hidden;
         position: relative;
-        
-        .image {
-            padding-inline: 10ch;
+        justify-self: center;
+        align-items: middle;
+
+        .image .cover {
             object-fit: cover;
-            object-position: top;
+            object-position: center top;
+        }
+        
+        .image .contain {
+            object-fit: contain;
+            object-position: center;
         }
     }
+}
+
+.notice {
+    background-color: var(--theme-INVERT-background);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: var(--theme-INVERT-text);
+    & > * {
+        margin: 1ch 1ch;
+    }
+    p {
+        color: var(--theme-INVERT-text);
+    }
+
+    .highlight {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+.featured {
+    display: grid;
+    grid-gap: 1ch;
+    grid-auto-flow: column;
 }

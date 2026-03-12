@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import styles from './page.module.css';
 
@@ -5,22 +7,28 @@ import Brands from '../components/bespoke/Brands';
 import Link from 'next/link';
 import FeaturedCard from '@components/bespoke/FeaturedCard';
 import ActionListItem from '@components/ActionListItem';
-import Card from '@components/Card';
 import ContentLayout from '@root/components/bespoke/ContentLayout';
+import Button from '@root/components/Button';
+import { AsciiLogo } from './lib/constants';
 
-export default function Page() {
-
+export default function Page() {    
     return (
-        <ContentLayout className={styles.container} readableLineLength>
+        <ContentLayout className={styles.container}>
             <section>
-                <Card>
-                    This site is still a work in progress. Please be patient &lt;3.
-                    <br/>
-                    <Link href="https://old.maxlair.com">Old Portfolio</Link>
-                </Card>
+                <div className={styles.notice} role='alert'>  
+                    <p>This site is still a work in progress. Please be patient &lt;3.</p>
+                    <Link href="https://old.maxlair.com">
+                        <Button theme='SECONDARY' aria-label='Old Site' style={{maxWidth: '200px'}} onClick={() => localStorage.clear()}>Old Site</Button>
+                    </Link>
+                </div>
             </section>
             <section>
-                <h2>hello</h2>
+                <pre className={styles.logo} role='logo'>
+                    {AsciiLogo}
+                </pre>
+            </section>
+            <section>
+                {/* <h2>hello</h2> */}
                 <aside className={styles.tip}>&nbsp;<strong style={{opacity: 0.5, fontWeight: 800}}>&gt;</strong> Click "Explore" on the left, or use <kbd>SHIFT+E</kbd> to open navigation.</aside>
                 <p>I'm a systems-driven <Link href="#">full-stack product designer</Link>, and <Link href='#'>developer</Link> from Dayton, OH.
                 Currently lead product designer and shareholder at <Link href="https://hearthero.app/">HeartFitt</Link>. 
@@ -33,17 +41,19 @@ export default function Page() {
                 <Brands containerStyle={styles.brandsContainer} itemHeight={'2ch'}/>
             </section>
 
+            <hr className={styles.escape} />
+
             <section>
                 <h3>Stuff to do</h3>
                 <ul>
-                    <ActionListItem href='/content/experience' icon={`⭢`}>Learn more about my experience and skills</ActionListItem>
+                    <ActionListItem href='/content/experience' icon={`⭢`}>View my experience and skills</ActionListItem>
                     <ActionListItem href='/docs/thoughts' icon={`⭢`}>Read some of my thoughts</ActionListItem>
                     <ActionListItem href='/content/snacks' icon={`⭢`}>Check out Snacks</ActionListItem>
                     <ActionListItem href='/docs/projects#featured' icon={`⭢`}>View design case studies</ActionListItem>
                     <ActionListItem href='/content/stuff' icon={`⭢`}>All the stuff</ActionListItem>
+                    <br/>
+                    <ActionListItem href='https://github.com/maxlair1/maxlair.com' icon={`>_`}>Check out the source code</ActionListItem>
                 </ul>
-                <br/>
-                <ActionListItem href='https://github.com/maxlair1/maxlair.com' icon={`>_`}>Check out the source code</ActionListItem>
             </section>
             
             <br/>

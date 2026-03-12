@@ -21,7 +21,19 @@
 
 }
 
-.gt {
-    color: var(--theme-text-subdued);
-    font-weight: 600;
+.notice {
+    background-color: var(--theme-INVERT-background);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & > * {
+        color: var(--theme-INVERT-text);
+        margin: 1ch 1ch;
+    }
+}
+
+.logo {
+    font-size: clamp(0.28125rem, 0.0078rem + 0.875vw, 0.5rem);;
+    line-height: 1;
+    container-name: logo
 }

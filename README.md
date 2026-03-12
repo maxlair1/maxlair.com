@@ -12,6 +12,7 @@ Live at [maxlair.com](https://maxlair.com)
 - [ ] Add `grabTab` tool-tip using `<ToolTip/>`
 - [ ] Research the `:target` CSS modifier and its significance
 - [ ] Implement `<ProseLayout>` for consistent reading content
+- [ ] Implement [infinite marquee](https://stackoverflow.com/questions/78912182/how-can-i-make-an-infinite-scrolling-marquee-i-cant-get-my-items-to-repeat) 
 - [ ] Add super secret bg for ultrawides...
 - [ ] touch grass
 

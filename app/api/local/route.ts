@@ -57,7 +57,7 @@ async function getContentTree(dir: string) {
 
 export async function GET() {
   try {
-    const tree = await getContentTree('app/content');
+    const tree = await getContentTree(path.join(process.cwd(), 'app/content'));
     return Response.json({ tree });
   } catch (err) {
     console.error(err);

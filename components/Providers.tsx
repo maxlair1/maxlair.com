@@ -6,7 +6,6 @@ import { ModalProvider } from '@root/components/ref-page/ModalContext';
 import { createContext, useState, useContext } from 'react';
 import { ContentProvider } from '@root/app/content/useContent';
 import { ThemeProvider } from '@root/app/lib/theme.provider';
-import { SidebarProvider } from './SidebarLayout';
 
 const appContext = createContext({});
 
@@ -19,9 +18,7 @@ const Providers: React.FC<ProvidersProps & { theme: any, onThemeChange?: (theme:
     <ThemeProvider initialTheme={theme}>
       <ModalProvider>
           <ContentProvider>
-            <SidebarProvider>
-              {children}
-            </SidebarProvider>
+            {children}
           </ContentProvider>
       </ModalProvider>
     </ThemeProvider>

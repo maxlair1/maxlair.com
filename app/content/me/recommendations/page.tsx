@@ -34,7 +34,7 @@ function FetchLetter({ src }: { src: string }): React.ReactElement {
     React.useEffect(() => {
         console.log('Fetching recommendation letter from:', src);
         try {
-            const data = fetch(src)
+            fetch(src)
               .then(res => res.text())
               .then(setContent);
         } catch (err) {
@@ -54,7 +54,7 @@ export default function Page(): React.ReactElement {
     }, []);
 
     return (
-        <ContentLayout readableLineLength={false}>
+        <ContentLayout bleed={false}>
             <h2>recommendations</h2>
             <p>During my career, I have recieved some really kind words from my peers, supervisors, and mentors.</p>
             {recommendations.map((rec, key) => {

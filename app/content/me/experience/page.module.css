@@ -10,3 +10,14 @@
 .gradient {
   background: var(--theme-gradient)
 }
+
+.brandsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3ch;
+    margin-block: 1ch;
+
+    svg {
+        width: auto;
+    }
+}

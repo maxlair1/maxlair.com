@@ -9,6 +9,7 @@ import Row from '@root/components/Row';
 import Badge from '@root/components/Badge';
 import Link from 'next/link';
 import ContentLayout from '@components/bespoke/ContentLayout';
+import Brands from '@components/bespoke/Brands';
 
 const experienceData = [
     { company: 'Designer\'s Drink Coffee', role: 'Full-Stack Product Consultant', date: 'CUR', description: 'Development team-- Science-backed heart rate workout software.', note: 'Logo, marketing, product design, portal development, and web development', link: 'https://hearthero.app'},
@@ -29,7 +30,7 @@ const educationData = [
 
 export default function Page() {
     return (
-        <ContentLayout readableLineLength={false}>
+        <ContentLayout bleed={false}>
             <Row>
             M.A. Lair. Updated <Badge>MAR 2026</Badge>
             </Row>
@@ -90,6 +91,8 @@ export default function Page() {
                 </Table>
             </div>
             <br />
+            {/* Add startups and metrics */}
+            <Brands containerStyle={styles.brandsContainer} itemHeight={'2ch'}/>
         </ContentLayout>
     )
 }

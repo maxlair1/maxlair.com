@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { removeExtension, slicePathAtRoot, getExtension } from '@lib/utilities';
 import matter from 'gray-matter';
-import GET from '@root/app/api/github';
+import GET from '@root/app/github';
 
 export interface ContentNode {
     title: string;

@@ -1,9 +1,21 @@
 'use client';
+import * as React from 'react';
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import styles from '@components/SidebarLayout.module.css';
-import * as React from 'react';
+
 import { useHotkeys } from '@root/modules/hotkeys';
 import PageLoading from '@root/components/PageLoading';
+
+/** GOALS FOR STATE PERSISTENCE + SHARING:
+ * 1. Use params first and foremost. On load of route, check params, and adjust state accordingly.
+ * 2. If params are not present, check for local preferences (localStorage). This allows for state persistence across sessions, but not sharing.
+ * 3. If neither params nor local preferences are present, use default state.
+ * 
+ * When normal navigation and interaction occurs, update params and local preferences in sync. 
+ * This ensures that the URL always reflects the current state, allowing for easy sharing, 
+ * while also maintaining user preferences for future visits.
+ */
 
 interface SidebarLayoutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
   children?: React.ReactNode;
@@ -17,6 +29,8 @@ interface SidebarLayoutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
 
 const LINE_HEIGHT = 20;
 const CHARACTER_WIDTH = 9.6;
+const SIDEBAR_KEY = 'sidebar';
+const LS_KEY = 'sidebar';
 
 const SidebarLayout: React.FC<SidebarLayoutProps> = ({ 
   defaultSidebarWidth = 20, 
@@ -28,19 +42,68 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
   collapsed,
   ...rest 
 }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  
+  const sidebarParam = searchParams.get("sidebar");
+  const isCollapsedFromURL = sidebarParam === "collapsed" ? true : sidebarParam === "expanded" ? false : undefined;
+
   const [sidebarWidth, setSidebarWidth] = React.useState(defaultSidebarWidth);
-  const [isCollapsed, setIsCollapsed] = React.useState(false);
-
-  useHotkeys('SHIFT+E', () => {
-    setIsCollapsed((prev) => !prev);
-  });
-
-  // React.useEffect(() => {
-  //   console.log('Sidebar collapsed state:', isCollapsed);
-  //   localStorage.setItem('sidebarState', !isCollapsed ? 'collapsed' : 'expanded');
-  // }, [isCollapsed]);
-
+  const [isCollapsed, setIsCollapsed] = React.useState<boolean | undefined>(isCollapsedFromURL);
   const handleRef = React.useRef<HTMLDivElement>(null);
+
+  
+  React.useEffect(() => {
+    if (isCollapsed !== undefined) return;
+
+    if (isCollapsedFromURL !== undefined) {
+      setIsCollapsed(isCollapsedFromURL);
+    } else {
+      const saved = localStorage.getItem(LS_KEY);
+      setIsCollapsed(saved === "collapsed" ? true : saved === "expanded" ? false : true);
+    }
+  }, [searchParams]);
+
+  React.useEffect(() => {
+    if (isCollapsed === undefined) return;
+
+    const value = isCollapsed ? "collapsed" : "expanded";
+
+    localStorage.setItem(LS_KEY, value);
+
+    const params = new URLSearchParams(searchParams.toString());
+    if (isCollapsed) {
+      params.set(SIDEBAR_KEY, "collapsed");
+    } else {
+      params.delete(SIDEBAR_KEY);
+    }
+
+    const newQuery = params.toString();
+    const currentQuery = searchParams.toString();
+
+    if (newQuery !== currentQuery) {
+      router.replace(`${pathname}?${newQuery}`, { scroll: false });
+    }
+  }, [isCollapsed, pathname, router]);
+
+  const toggleSidebar = React.useCallback(() => {
+    setIsCollapsed((prev) => !prev);
+  }, []);
+  
+  useHotkeys('SHIFT+E', toggleSidebar);
+  
+  if (isCollapsed === undefined) return null; // error if undefined
+  
+  
+  const GrabTab = (
+    <div style={{borderRadius: '20px'}} className={styles.grabTabContainer}>
+        <div className={styles.grabTab} onClick={toggleSidebar}>
+          <p>explore</p>
+        </div>
+    </div>
+  );
+
 
   const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     const startX = event.clientX;
@@ -61,13 +124,6 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
     document.addEventListener('mouseup', onMouseUp);
   };
 
-  const GrabTab = (
-    <div style={{borderRadius: '20px'}} className={styles.grabTabContainer}>
-        <div className={styles.grabTab} onClick={()=> setIsCollapsed((prev) => !prev)}>
-          <p>explore</p>
-        </div>
-    </div>
-  );
 
   const Loading = (): React.ReactElement => {
     return (
@@ -119,35 +175,5 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
       </div>
   );
 };
-
-const sidebarContext = React.createContext<{
-  collapsed: boolean;
-  toggleSidebar: () => void;
-}>({
-  collapsed: false,
-  toggleSidebar: () => {},
-});
-
-export function SidebarProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = React.useState({collapsed: false});
-
-  const toggleSidebar = () => {
-    setState((prev) => ({ ...prev, collapsed: !prev.collapsed }));
-  };
-
-  return (
-    <sidebarContext.Provider value={{ ...state, toggleSidebar }}>
-      {children}
-    </sidebarContext.Provider>
-  );
-}
-
-export function useSidebar() {
-  const ctx = React.useContext(sidebarContext);
-  if (!ctx) {
-    throw new Error('useSidebar must be used within a SidebarProvider');
-  }
-  return ctx;
-}
-
+          
 export default SidebarLayout;

@@ -3,7 +3,6 @@
 import * as React from 'react';
 import styles from './page.module.css';
 
-import Brands from '../components/bespoke/Brands';
 import Link from 'next/link';
 import FeaturedCard from '@components/bespoke/FeaturedCard';
 import ActionListItem from '@components/ActionListItem';
@@ -36,12 +35,6 @@ export default function Page() {
                 primarily focused on design systems and product development. I enjoy solving complex design challenges with recursive
                 solutions.</p>
             </section>
-
-            <section>
-                <Brands containerStyle={styles.brandsContainer} itemHeight={'2ch'}/>
-            </section>
-
-            <hr className={styles.escape} />
 
             <section>
                 <h3>Stuff to do</h3>

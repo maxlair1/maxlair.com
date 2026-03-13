@@ -102,6 +102,7 @@ export default function Explorer(): React.ReactNode {
                             </TreeView>
                             <TreeView title='Projects' isFile defaultValue isActive={pathname === '/content/projects'} onClick={() => Router.push('/content/projects')}/>
                             <TreeView title='Snacks' isFile defaultValue isActive={pathname === '/content/snacks'} onClick={() => Router.push('/content/snacks')}/>
+                            <TreeView title='Stuff' isFile defaultValue isActive={pathname === '/content/stuff'} onClick={() => Router.push('/content/stuff')}/>
                         </div>
                     </Accordion>
 

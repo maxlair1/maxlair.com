@@ -88,8 +88,20 @@ export default function Explorer(): React.ReactNode {
 
                     <Accordion style='GRADIENT' defaultValue title='CONTENT'>
                         <div className={styles.treeContainer}>
-                            <TreeView title='Welcome' isFile={true} defaultValue isActive={pathname === '/'} onClick={() => Router.push('/')}/>
-                            {tree ? renderContent(tree.local ?? []) : <BlockLoader mode={1} />}
+                            {/* 
+                            * NOTE: I was going to do this reading directores with NODE, However it just doesnt makes sense.
+                            * I'll just hardcode the local content for now, and maybe later add dynamic reading when I use a DB
+                            */}
+                            {/* {tree ? renderContent(tree.local ?? []) : <BlockLoader mode={1} />} */}
+                            <TreeView title='Welcome' isFile defaultValue isActive={pathname === '/'} onClick={() => Router.push('/')}/>
+                            <TreeView title='Me' defaultValue>
+                                <TreeView title='Experience' isFile isActive={pathname === '/content/me/experience'} onClick={() => Router.push('/content/me/experience')}/>
+                                <TreeView title='I care about...' isFile isActive={pathname === '/content/me/icareabout'} onClick={() => Router.push('/content/me/icareabout')}/>
+                                <TreeView title='Recommendations' isFile isActive={pathname === '/content/me/recommendations'} onClick={() => Router.push('/content/me/recommendations')}/>
+                                <TreeView title='Stack' isFile isActive={pathname === '/content/me/stack'} onClick={() => Router.push('/content/me/stack')}/>
+                            </TreeView>
+                            <TreeView title='Projects' isFile defaultValue isActive={pathname === '/content/projects'} onClick={() => Router.push('/content/projects')}/>
+                            <TreeView title='Snacks' isFile defaultValue isActive={pathname === '/content/snacks'} onClick={() => Router.push('/content/snacks')}/>
                         </div>
                     </Accordion>
 

@@ -2,9 +2,13 @@ const GITHUB_API_BASE = "https://api.github.com/repos/";
 
 const pubPath = "_pub/";
 
-const owner = process.env.GITHUB_USER!;
-const repo  = process.env.GITHUB_REPO!;
-const token = process.env.GITHUB_TOKEN!;
+const owner = process.env.NEXT_PUBLIC_GITHUB_USER!;
+const repo  = process.env.NEXT_PUBLIC_GITHUB_REPO!;
+const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN!;
+
+export async function getStaticProps() {
+  
+}
 
 function getHeaders(type: "json" | "raw") {
   return {

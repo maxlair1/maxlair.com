@@ -8,11 +8,16 @@ const withMDX = createMDX({
 const nextConfig = {
   devIndicators: false,
   images: {
-    remotePatterns: [new URL('https://raw.githubusercontent.com'), new URL('https://github.com')], // allow images from GitHub
+    remotePatterns: [{hostname: 'raw.githubusercontent.com'}, {hostname: 'github.com'}], // allow images from GitHub
   },
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   outputFileTracingIncludes: {
     '/**': ['./app/content/**/*']
+  },
+  env: {
+    GITHUB_USER: process.env.GITHUB_USER,
+    GITHUB_REPO: process.env.GITHUB_REPO,
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
   }
 }
 

@@ -8,7 +8,7 @@ const withMDX = createMDX({
 const nextConfig = {
   devIndicators: false,
   images: {
-    domains: ['raw.githubusercontent.com', 'github.com'], // allow images from GitHub
+    remotePatterns: [new URL('https://raw.githubusercontent.com'), new URL('https://github.com')], // allow images from GitHub
   },
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 }

@@ -7,13 +7,13 @@ import styles from './ContentLayout.module.css'
 import * as Utilities from '@lib/utilities';
 // import useImages, {ImageData, ContentImageData} from "@root/app/content/useContent";
 
-export default function ContentLayout({ children, className, bleed = true, showGallery = false }: { children: React.ReactNode, showGallery?: boolean, className?: string, bleed?: boolean }): React.JSX.Element {
+export default function ContentLayout({ children, className, bleed = true, showGallery = false, style }: { children: React.ReactNode, showGallery?: boolean, className?: string, bleed?: boolean, style?: React.CSSProperties }): React.JSX.Element {
     // const { list } = useImages();
     // const [images, setImages] = React.useState<ContentImageData[]>([]);
           
 
     return (
-        <div className={styles.root}>
+        <div className={styles.root} style={style}>
             <div className={styles.content}>
                 <article className={Utilities.classNames(styles.article, className, bleed ? styles.bleed : '')}>
                     {children}

@@ -27,7 +27,7 @@
 
 .bleed {
     padding-top: 10ch;
-    section { 
+    & > section {
         width: 100%;
         max-width: 90ch; 
         margin: 0 auto;

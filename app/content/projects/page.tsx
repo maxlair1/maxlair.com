@@ -5,6 +5,7 @@ import * as React from 'react';
 import styles from './page.module.css';
 import ContentLayout from '@components/bespoke/ContentLayout';
 import FeaturedProject, { type Project } from '@components/bespoke/FeaturedProject';
+import Section from '@root/components/Section';
 
 
 export default function Page(): React.ReactElement {
@@ -28,12 +29,11 @@ export default function Page(): React.ReactElement {
     ]
 
     return (
-        <ContentLayout bleed={false}>
-            <header style={{width: '100%', textAlign: 'left'}}>
-                <h1>Projects</h1>
-            </header>
+        <ContentLayout bleed>
 
-            <section>
+
+            <Section escaped>
+                <h2>featured</h2>
                 <div className={styles.featured}>
                     {Projects.map((project, index) => {
                         return (
@@ -41,7 +41,8 @@ export default function Page(): React.ReactElement {
                         )
                     })}
                 </div>
-            </section>
+            </Section>
+                
         </ContentLayout>
     )
 }

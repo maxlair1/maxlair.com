@@ -1,9 +1,10 @@
 import NothingHere from "@components/bespoke/NothingHere";
+import ContentLayout from "@root/components/bespoke/ContentLayout";
 
 export default function NotFound() {
     return (
-        <div>
+        <ContentLayout>
             <NothingHere type="not-found" />
-        </div>
+        </ContentLayout>
     );
 }

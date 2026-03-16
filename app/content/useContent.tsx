@@ -205,14 +205,15 @@ export function ContentProvider({children}: {children: React.ReactNode}) {
     React.useEffect(() => {
         setLoading(true);
         async function init() {
-            const localTree = await initLocal(); // get local
-            const localIndex = indexTree(localTree!);
+            // const localTree = await initLocal(); // get local
+            // const localIndex = indexTree(localTree!);
             const {tree: remoteTree, images} = await initRemote(); // get remote
             const remoteIndex = indexTree(remoteTree!);
             
 
-            setTree({local: localTree, remote: remoteTree});
-            setIndex({byPath: {...localIndex.byPath, ...remoteIndex.byPath}, byTitle: {...localIndex.byTitle, ...remoteIndex.byTitle}});
+            setTree({remote: remoteTree});
+            // setIndex({byPath: {...localIndex.byPath, ...remoteIndex.byPath}, byTitle: {...localIndex.byTitle, ...remoteIndex.byTitle}});
+            setIndex({byPath: {...remoteIndex.byPath}, byTitle: {...remoteIndex.byTitle}});
             setImages(images);
         }
         init();

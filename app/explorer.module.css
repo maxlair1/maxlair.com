@@ -28,7 +28,7 @@
 }
 
 .treeContainer {
-    overflow-x: auto;
+    /* overflow-x: auto; */
     overflow-y: hidden;
     max-height: 40vh;
 }

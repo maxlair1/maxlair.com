@@ -6,6 +6,8 @@ import styles from '@components/SidebarLayout.module.css';
 
 import { useHotkeys } from '@root/modules/hotkeys';
 import PageLoading from '@root/components/PageLoading';
+import * as Utilities from '@lib/utilities';
+import { CssVariable } from 'next/dist/compiled/@next/font';
 
 /** GOALS FOR STATE PERSISTENCE + SHARING:
  * 1. Use params first and foremost. On load of route, check params, and adjust state accordingly.
@@ -51,6 +53,8 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
 
   const [sidebarWidth, setSidebarWidth] = React.useState(defaultSidebarWidth);
   const [isCollapsed, setIsCollapsed] = React.useState<boolean | undefined>(isCollapsedFromURL);
+  const [isMobile, setMobile] = React.useState(false);
+  const [windowWidth, windowHeight] = useWindowSize();
   const handleRef = React.useRef<HTMLDivElement>(null);
 
   
@@ -91,6 +95,27 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
     setIsCollapsed((prev) => !prev);
   }, []);
   
+  function useWindowSize() {
+    const [size, setSize] = React.useState([0, 0]);
+    React.useLayoutEffect(() => {
+      function updateSize() {
+        setSize([window.innerWidth, window.innerHeight]);
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  }
+
+  React.useEffect(()=> {
+    const breakpoint = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-tablet').trim().replace('px', ''), 10);
+    if (windowWidth < breakpoint) {
+      console.log('got variable,' + breakpoint);
+      setMobile(true);
+    }
+  }, [windowWidth, windowHeight]);
+
   useHotkeys('SHIFT+E', toggleSidebar);
   
   if (isCollapsed === undefined) return null; // error if undefined
@@ -103,6 +128,7 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
         </div>
     </div>
   );
+
 
 
   const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -152,18 +178,25 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
   }
 
   return (
-      <div className={`${styles.root} ${isCollapsed ? styles.collapsed : ''}`} {...rest}>
+    <div className={`${styles.root} ${isCollapsed ? styles.collapsed : ''}`} {...rest}>
         <div
           className={styles.sidebar}
-          style={{
-            width: `${sidebarWidth}ch`,
-          }}
+          style={
+            {
+              width: `${sidebarWidth}ch`,
+            }
+          }
         >
           <div>
             {sidebar}
           </div>
         {grabTab ? GrabTab : null}
         </div>
+        {isMobile && isCollapsed === false
+         ? (
+         <div className={styles.overlay} role='overlay' onClick={toggleSidebar}></div>
+        )
+          : null}
         {isShowingHandle ? (
           <div className={styles.handle} ref={handleRef} role="button" tabIndex={0} onMouseDown={handleMouseDown} style={isShowingHandle ? {} : { width: `0.5ch` }}>
             <>

@@ -20,22 +20,13 @@ import { ContentNode } from './content/useContent';
 import Link from 'next/link';
 import ActionButton from '@root/components/ActionButton';
 import useTheme from './lib/theme.provider';
+import ButtonGroup from '@root/components/ButtonGroup';
 
 export default function Explorer(): React.ReactNode {
     const pathname = usePathname();
     const Router = useRouter();
     const { tree, loading } = useContent();
     const { theme, setTheme } = useTheme();
-    
-    const actions: ActionBarItem[] = [
-        {
-            hotkey:'SHIFT+E',
-            body: "TOGGLE EXPLORER",
-        },
-        {
-            body: "PANIC!",
-        }
-    ];
 
     const renderContent = (nodes: ContentNode[]): React.ReactNode => {
         const rendered:React.ReactNode = nodes.map((node) => {
@@ -62,14 +53,6 @@ export default function Explorer(): React.ReactNode {
         return rendered
     }
 
-    // if (loading) {
-    //     return (
-    //         <div className={styles.root}>
-    //             <BlockLoader mode={1}/>
-    //         </div>
-    //     )
-    // }
-
     return (
         <React.Suspense fallback={(
             <div className={styles.root}>
@@ -83,8 +66,14 @@ export default function Explorer(): React.ReactNode {
                             <Logo></Logo>
                         </header>
                     </Link>
-                    {/* <ActionBar items={actions}/> */}
-                    {/* <ActionButton>{'<- Back to Welcome'}</ActionButton> */}
+                    <ButtonGroup items={
+                        [
+                            { body: 'Download Resume', onClick: () => window.open('/MAX_LAIR_RESUME_2026.pdf', '_blank') },
+                            // Maybe add ability to save how many times this is clicked, maybe with new API db
+                            { body: 'LinkedIn', onClick: () => window.open('https://www.linkedin.com/in/maxlair/', '_blank') },
+                            { body: 'GitHub', onClick: () => window.open('https://github.com/maxlair1', '_blank') },
+                        ]
+                    }/> 
 
                     <Accordion style='GRADIENT' defaultValue title='CONTENT'>
                         <div className={styles.treeContainer}>

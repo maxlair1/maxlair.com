@@ -9,10 +9,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: 'PRIMARY' | 'SECONDARY';
   isDisabled?: boolean;
   children?: React.ReactNode;
+  size?: 'md' | 'sm';
 }
 
-const Button: React.FC<ButtonProps> = ({ theme = 'PRIMARY', isDisabled, children, ...rest }) => {
-  let classNames = Utilities.classNames(styles.root, styles.primary);
+const Button: React.FC<ButtonProps> = ({ theme = 'PRIMARY', isDisabled, size = 'md', children, ...rest }) => {
+  let classNames = Utilities.classNames(styles.root, styles.primary, styles[size]);
 
   if (theme === 'SECONDARY') {
     classNames = Utilities.classNames(styles.root, styles.secondary);

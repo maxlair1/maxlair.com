@@ -3,6 +3,7 @@ import * as React from 'react';
 import Row from '@root/components/Row';
 import ListItem from '@root/components/ListItem';
 import ContentLayout from '@root/components/bespoke/ContentLayout';
+import Section from '@root/components/Section';
 
 
 export default function Page() {
@@ -24,12 +25,14 @@ export default function Page() {
 
     ] 
     return (
-            <ContentLayout bleed={false}>
-                <ul>
-                    {things.map((thing, index) => (
-                        <ListItem key={index}>{thing}</ListItem>
-                    ))}
-                </ul>
+            <ContentLayout>
+                <Section>
+                    <ul>
+                        {things.map((thing, index) => (
+                            <ListItem key={index}>{thing}</ListItem>
+                        ))}
+                    </ul>
+                </Section>
             </ContentLayout>
     )
 }

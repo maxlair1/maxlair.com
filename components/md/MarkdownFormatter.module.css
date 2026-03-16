@@ -6,6 +6,7 @@
 .prose p {
   /* needs to be readable */
   line-height: calc(var(--theme-line-height-base) * 1.25) !important;
+  /* font-family: var(--font-family-sans); */
 }
 
 .loading {

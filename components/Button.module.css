@@ -9,13 +9,22 @@
   font-family: var(--font-family-mono);
   width: 100%;
   font-size: var(--font-size);
-  line-height: calc(var(--theme-line-height-base) * 2em);
-  min-height: calc(var(--theme-line-height-base) * (var(--font-size) * 2));
-  padding: 0 2ch 0 2ch;
   white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: 200ms ease all;
+}
+
+.sm {
+  padding: 0 1ch 0 1ch;
+  line-height: calc(var(--theme-line-height-base) * 1.75em);
+  min-height: calc(var(--theme-line-height-base) * (var(--font-size) * 1.75));
+}
+
+.md {
+  padding: 0 2ch 0 2ch;
+  line-height: calc(var(--theme-line-height-base) * 2em);
+  min-height: calc(var(--theme-line-height-base) * (var(--font-size) * 2));
 }
 
 .primary {

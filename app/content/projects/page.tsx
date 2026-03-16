@@ -12,27 +12,25 @@ export default function Page(): React.ReactElement {
 
     const Projects: Project[] = [
         {title: 'Dedoro', appicon: '/doro_appicon.png', date: '2024-05-01', screen: '/doro_screen.png', screenType: 'mobile', highlights: [
-            {title: 'yeet.', icon: '$'},
-            {title: 'yeet.', icon: '&'},
-            {title: 'yeet.', icon: '@'},
+            {title: 'User controlled\nreward system', icon: '⚝'},
+            {title: 'yeet.', icon: '⚝'},
+            {title: 'yeet.', icon: '⚝'},
         ]},
         {title: 'Local Bean', appicon: '/bean_appicon.png', date: '2024-05-01', screen: '/bean_screen.png', screenType: 'mobile', highlights: [
-            {title: 'yeet.', icon: '$'},
-            {title: 'yeet.', icon: '&'},
-            {title: 'yeet.', icon: '@'},
+            {title: 'yeet.', icon: '⚝'},
+            {title: 'yeet.', icon: '⚝'},
+            {title: 'yeet.', icon: '⚝'},
         ]},
         {title: 'Grokadok', appicon: '/grok_appicon.png', date: '2024-05-01', screen: '/grok_screen.png', screenType: 'web', highlights: [
-            {title: 'yeet.', icon: '$'},
-            {title: 'yeet.', icon: '&'},
-            {title: 'yeet.', icon: '@'},
+            {title: 'yeet.', icon: '⚝'},
+            {title: 'yeet.', icon: '⚝'},
+            {title: 'yeet.', icon: '⚝'},
         ]},
     ]
 
     return (
-        <ContentLayout bleed>
-
-
-            <Section escaped>
+        <ContentLayout >
+            <Section>
                 <h2>featured</h2>
                 <div className={styles.featured}>
                     {Projects.map((project, index) => {

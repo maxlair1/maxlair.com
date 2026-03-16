@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import '@root/global.css';
 import '@root/global-fonts.css';
 import styles from '@root/app/layout.module.css';
-import { fragmentMono, sourceSerif4, sourceCodePro } from '@root/app/lib/type';
+import { instrumentSans, instrumentSerif, sourceCodePro, archivo } from '@root/app/lib/type';
 import { getInitialTheme } from './lib/theme.server';
 
 import Providers from '@components/Providers';
@@ -27,7 +27,7 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1.0,
-  maximumScale: 1.0,
+  // maximumScale: 1.0,
 };
 
 export interface RootLayoutProps {
@@ -42,7 +42,7 @@ export default async function ExploreLayout({ children }: RootLayoutProps) {
 
   return (
     <html lang="en-us" data-theme={initialTheme === 'system' ? 'light' : initialTheme}>
-      <body className={`theme-${initialTheme === 'system' ? 'light' : initialTheme} ${sourceCodePro.variable} ${sourceSerif4.variable} `}>
+      <body className={`theme-${initialTheme === 'system' ? 'light' : initialTheme} ${archivo.variable} ${instrumentSerif.variable} ${sourceCodePro.variable} `}>
         <ThemeScript />
         <Providers theme={initialTheme}>
           <main className={styles.main}>

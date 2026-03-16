@@ -11,6 +11,7 @@ import Table from '@root/components/Table'
 import BlockLoader from '@root/components/BlockLoader'
 import TableRow from '@root/components/TableRow';
 import ContentLayout from '@components/bespoke/ContentLayout';
+import Section from '@root/components/Section';
 
 interface RecommendationItem {
     src: string,
@@ -54,36 +55,38 @@ export default function Page(): React.ReactElement {
     }, []);
 
     return (
-        <ContentLayout bleed={false}>
-            <h2>recommendations</h2>
-            <p>During my career, I have recieved some really kind words from my peers, supervisors, and mentors.</p>
-            {recommendations.map((rec, key) => {
-                return <Accordion key={key} style='GRADIENT' title={`${rec.name} - ${rec.role}@${rec.company}`} children={
-                    <article className='readableLineLength prose'>
-                        <aside>
-                            <Table>
-                                <TableRow>
-                                    <TableColumn>
-                                        <Link href={rec.link}>LinkedIn</Link>
-                                    </TableColumn>
-                                    <TableColumn>
-                                        {rec.email}
-                                    </TableColumn>
-                                    <TableColumn>
-                                        {rec.phone}
-                                    </TableColumn>
-                                </TableRow>
-                            </Table>
-                        </aside>
-                        <br/>
-                        <React.Suspense fallback={<BlockLoader mode={1} />}>
-                            <FetchLetter src={rec.src}/>
+        <ContentLayout>
+            <Section bleed='full' spaceBefore={false}>
+                <h2>recommendations</h2>
+                <p>During my career, I have recieved some really kind words from my peers, supervisors, and mentors.</p>
+                {recommendations.map((rec, key) => {
+                    return <Accordion key={key} style='GRADIENT' title={`${rec.name} - ${rec.role}@${rec.company}`} children={
+                        <article className='readableLineLength prose'>
+                            <aside>
+                                <Table>
+                                    <TableRow>
+                                        <TableColumn>
+                                            <Link href={rec.link}>LinkedIn</Link>
+                                        </TableColumn>
+                                        <TableColumn>
+                                            {rec.email}
+                                        </TableColumn>
+                                        <TableColumn>
+                                            {rec.phone}
+                                        </TableColumn>
+                                    </TableRow>
+                                </Table>
+                            </aside>
                             <br/>
-                        </React.Suspense>
-                    </article>
-                    }
-                />
-            })}
+                            <React.Suspense fallback={<BlockLoader mode={1} />}>
+                                <FetchLetter src={rec.src}/>
+                                <br/>
+                            </React.Suspense>
+                        </article>
+                        }
+                    />
+                })}
+            </Section>
         </ContentLayout>
     )
 

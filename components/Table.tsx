@@ -8,11 +8,13 @@ type TableProps = React.HTMLAttributes<HTMLElement> & {
   children?: React.ReactNode;
 };
 
-const Table = ({ children, ...rest }) => {
+const Table = ({ children, ...rest }: TableProps) => {
   return (
-    <table className={styles.root} {...rest}>
-      <tbody className={styles.body}>{children}</tbody>
-    </table>
+    <div className={styles.wrapper}>
+      <table className={styles.root} {...rest}>
+        <tbody className={styles.body}>{children}</tbody>
+      </table>
+    </div>
   );
 };
 

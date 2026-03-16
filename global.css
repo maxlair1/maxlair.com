@@ -150,6 +150,7 @@ section {
 body.theme-light {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-white);
+  --theme-background-2: rgba(12, 7, 1, 0.049);
   --theme-background-modal: var(--color-gray-20);
   --theme-background-modal-footer: var(--color-gray-40);
   --theme-background-input: var(--color-gray-10);
@@ -191,6 +192,7 @@ body.theme-light {
 body.theme-dark {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-black-daybreak-100);
+  --theme-background-2: rgba(36, 33, 29, 0.31);
   --theme-background-modal: var(--color-gray-90);
   --theme-background-modal-footer: var(--color-gray-70);
   --theme-background-input: var(--color-gray-60);
@@ -232,15 +234,16 @@ body.theme-dark {
 
 /* scrollbar */
 ::-webkit-scrollbar {
-  width: 0.5ch;
+  width: 1ch;
+  height: 1ch;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--theme-background-input);
 }
- 
+
 ::-webkit-scrollbar-thumb {
-  background: var(--theme-button-foreground); 
+  background: var(--theme-button-foreground);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -294,6 +297,7 @@ body {
   --color-daybreak-90: rgba(82, 34, 0, 1);
 
   --color-gold-30: rgb(231, 174, 15);
+  --color-gold-30-2: rgb(231, 174, 15, 0.2);
 
   --color-gray-10: rgba(244, 244, 244, 1);
   --color-gray-100: rgba(22, 22, 22, 1);
@@ -384,13 +388,14 @@ body {
   --color-white-95: rgba(255, 255, 255, 0.95);
 
   --font-family-mono: var(--font-source-code-pro), monospace;
-  --font-family-serif: serif, Georgia, Times New Roman;
-  --font-family-sans: -apple-system, helvetica, sans-serif;
-  --font-family: var(--font-family-mono), 'Courier New', Courier, monospace;
+  --font-family-serif: var(--font-instrument-serif), serif, Georgia, Times New Roman;
+  --font-family-sans: var(--font-archivo), -apple-system, helvetica, sans-serif;
+  --font-family: var(--font-family-mono), Courier, monospace;
 
   --theme-text: var(--color-black-100);
   --theme-line-height-base: 1.125;
-  --font-size: 16px;
+  --base-font-size: 16px;
+  --font-size: var(--base-font-size);
 
   --z-index-page: 1;
   --z-index-page-select: 3;
@@ -399,11 +404,11 @@ body {
   --z-index-page-dropdown-menus: 6;
   --z-index-page-modals: 10;
 
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
+  /* Referenced in Sidebar layout for sidebar style change. */
+  --breakpoint-mobile: 375px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1200px;
+  --breakpoint-desktop: 1440px;
 
   background: var(--theme-background);
   color: var(--theme-text);
@@ -490,19 +495,15 @@ body {
   margin-left: 2ch;
 }
 
+/* for images, turn off anti-aliasing */
 .pixelated {
   image-rendering: -webkit-optimize-contrast; 
   image-rendering: crisp-edges;               
   image-rendering: pixelated;                 
 }
 
-@media screen and (min-width: var(--breakpoint-sm)) {
-  .readableLineLength {
-    max-width: 30ch;
-    margin: 0 auto;
+/* @media (max-width: 768px) {
+  body, html {
+    font-size: calc(var(--font-size) * 0.75);
   }
-}
-.readableLineLength {
-  max-width: 75ch;
-  margin: 0 auto;
-}
+} */

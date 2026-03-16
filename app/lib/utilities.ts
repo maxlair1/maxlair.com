@@ -471,7 +471,6 @@ export function getCssColorVar(
   return null;
 }
 
-
 export function removeExtension(input: string): string {
   return input.replace(/\.[^.]+$/, "");
 }

@@ -35,6 +35,5 @@
     font-size: clamp(0.18125rem, 0.0078rem + 0.875vw, 0.5rem);
     line-height: 1;
     font-weight: 700;
-    justify-self: center;
 }
 

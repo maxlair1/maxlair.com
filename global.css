@@ -388,7 +388,7 @@ body {
   --color-white-95: rgba(255, 255, 255, 0.95);
 
   --font-family-mono: var(--font-source-code-pro), monospace;
-  --font-family-serif: var(--font-instrument-serif), serif, Georgia, Times New Roman;
+  --font-family-serif: var(--font-baskervville), serif, Georgia, Times New Roman;
   --font-family-sans: var(--font-archivo), -apple-system, helvetica, sans-serif;
   --font-family: var(--font-family-mono), Courier, monospace;
 

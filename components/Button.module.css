@@ -14,7 +14,6 @@
   letter-spacing: 1px;
   transition: 200ms ease all;
 }
-
 .sm {
   padding: 0 1ch 0 1ch;
   line-height: calc(var(--theme-line-height-base) * 1.75em);
@@ -55,6 +54,20 @@
   &:focus {
     background: var(--theme-focused-foreground);
     box-shadow: inset 0 0 0 1px transparent;
+  }
+}
+
+.gradient {
+  background: var(--theme-gradient);
+  color: var(--theme-button-text);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--theme-gradient-hover);
+  }
+
+  &:focus {
+    background: var(--theme-gradient-hover);
   }
 }
 

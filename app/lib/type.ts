@@ -1,9 +1,16 @@
-import {Instrument_Sans, Baskervville, Archivo, Instrument_Serif, Source_Code_Pro} from 'next/font/google';
+import {Instrument_Sans, Geist, Baskervville, Archivo, Instrument_Serif, Source_Code_Pro} from 'next/font/google';
 
 export const sourceCodePro = Source_Code_Pro({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-source-code-pro',
+})
+
+export const geist = Geist({
+    subsets: ['latin'],
+    weight: ['400', '500'],
+    display: 'swap',
+    variable: '--font-geist',
 })
 
 export const baskervville = Baskervville({

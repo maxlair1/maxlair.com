@@ -11,8 +11,14 @@ interface DividerProps extends React.HTMLAttributes<HTMLSpanElement> {
 const Divider: React.FC<DividerProps> = ({ children, style, type }) => {
   if (type === 'GRADIENT') {
     return <div className={styles.gradient} style={style}>
-          {children}
-          </div>;
+      {children}
+    </div>;
+  }
+
+  if (type === 'DOTTED') {
+    return <div className={styles.dotted} style={style}>
+        {children}
+    </div>;
   }
 
   if (type === 'DOUBLE') {

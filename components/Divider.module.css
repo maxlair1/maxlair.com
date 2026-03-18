@@ -4,6 +4,14 @@
   width: 100%;
 }
 
+.dotted {
+  --h: 1px;
+  background: transparent;
+  border-top: var(--h) dotted var(--theme-border);
+  height: var(--h);
+  width: 100%;
+}
+
 .divider {
   align-items: center;
   border: 0;
@@ -23,3 +31,4 @@
   height: 1px;
   width: 100%;
 }
+

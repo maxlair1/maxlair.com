@@ -5,11 +5,10 @@ import * as Utilities from '@lib/utilities';
 
 type Bleed = 'readable' | 'medium' | 'full' | 'escaped';
 
-export default function Section({children, bleed = 'readable', spaceBefore = true, spaceAfter = true, style, backgroundColor, ...rest}: {children: React.ReactNode, bleed?: Bleed, spaceBefore?: boolean, spaceAfter?: boolean, style?: React.CSSProperties, backgroundColor?: string}): React.ReactElement { 
+export default function Section({children, bleed = 'readable', spaceBefore = true, spaceAfter = true, style, backgroundColor, className}: {children: React.ReactNode, bleed?: Bleed, spaceBefore?: boolean, spaceAfter?: boolean, style?: React.CSSProperties, backgroundColor?: string, className?: string}): React.ReactElement { 
     return (
         <section 
-            className={Utilities.classNames(styles.root, (spaceBefore ? styles.spaceBefore : ''), (spaceAfter ? styles.spaceAfter : ''))}
-            {...rest} 
+            className={Utilities.classNames(styles.root, (spaceBefore ? styles.spaceBefore : ''), (spaceAfter ? styles.spaceAfter : ''), className)}
             role='container' 
             aria-label='section'
             style={{...style, backgroundColor: backgroundColor}}

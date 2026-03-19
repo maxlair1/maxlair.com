@@ -5,7 +5,6 @@ import styles from './Slip.module.css';
 import Image from 'next/image';
 import Divider from '../Divider';
 import * as Utilities from '@lib/utilities';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 
 type SlipProps = {

@@ -9,6 +9,8 @@
     --t-scale: 1;
     --fs: var(--font-size);
     --fc: var(--theme-text-soft);
+
+    max-width: 25ch;
     
     font-size: var(--fs);
     letter-spacing: -0.25;

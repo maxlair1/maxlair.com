@@ -6,28 +6,46 @@ import Link from "next/link";
 import ContentLayout from "@root/components/bespoke/ContentLayout";
 import Accordion from "@root/components/Accordion";
 import Slip from "@root/components/bespoke/Slip";
-import Three from "@root/components/bespoke/Three";
+import Skeleton from "@root/components/bespoke/Skeleton";
+import Section from "@root/components/Section";
+import Logo from "@root/components/bespoke/Logo";
 
 export default function Page(): React.JSX.Element {
     return (
         <>
-            <ContentLayout className={styles.root}>
-                <section role="banner">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, at.</section>
+            <ContentLayout className={`${styles.root} gridBg`}>
                 <br/>
-                <section>
-                    <Three/>
-                </section>
+                <Section bleed="medium">
+                    <header className={styles.header}>
+                        <nav className={styles.nav}>
+                            <Logo style={{width: '20ch'}} fill=""/>
+                            <p>Link</p>
+                            <p>Link</p>
+                            <p>Link</p>
+                        </nav>
+                        <aside className={styles.tip}>&nbsp;<strong style={{opacity: 0.5, fontWeight: 800}}>&gt;</strong> Click "Explore" on the left, or use <kbd>SHIFT+E</kbd> to open navigation.</aside>
+                        <p>
+                            I'm a systems-driven <Link href="#">full-stack product designer</Link>, and <Link href='#'>developer</Link> from Dayton, OH.
+                            Currently lead product designer and shareholder at <Link href="https://hearthero.app/">HeartFitt</Link>. 
+                            Founder of dessign consultancy, <Link href="https://designersdrinkcoffee.com/">Designers Drink Coffee</Link>, 
+                            primarily focused on design systems and product development. I enjoy solving complex design challenges with recursive
+                            solutions.
+                        </p>
+                    </header>
+                </Section>
+                <Section>
+                    <Skeleton/>
+                </Section>
                 <br/>
-                <section className={styles.section}>
-                    {/* <aside className={styles.tip}>&nbsp;<strong style={{opacity: 0.5, fontWeight: 800}}>&gt;</strong> Click "Explore" on the left, or use <kbd>SHIFT+E</kbd> to open navigation.</aside> */}
+                {/* <Section>
                     <p>I'm a systems-driven <Link href="#">full-stack product designer</Link>, and <Link href='#'>developer</Link> from Dayton, OH.
                     Currently lead product designer and shareholder at <Link href="https://hearthero.app/">HeartFitt</Link>. 
                     Founder of design consultancy, <Link href="https://designersdrinkcoffee.com/">Designers Drink Coffee</Link>, 
                     primarily focused on design systems and product development. I enjoy solving complex design challenges with recursive
                     solutions.</p>
-                </section>
+                </Section> */}
                 <br/>
-                <section className={styles.section}>
+                <Section>
                         <div className={styles.card}>
                         <Accordion title="WHAT I DO" defaultValue style="GRADIENT">
                             {/* <header>
@@ -48,9 +66,9 @@ export default function Page(): React.JSX.Element {
                             </p>
                         </Accordion>
                         </div>
-                </section>
+                </Section>
                 <br/>
-                <section className={styles.section}>
+                <Section bleed="readable">
                     <div className={styles.gridLayout}>
                         <Slip title="Big title" subtitle="this is subtitle" src="/bean_ipad_shop-50.png" color="teal" >
                             <p>
@@ -60,7 +78,7 @@ export default function Page(): React.JSX.Element {
                         <Slip title="Big title" subtitle="this is subtitle" src="/bean_ipad_shop-50.png" color="green" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nisi.</Slip>
                         <Slip title="Big title" subtitle="this is subtitle" src="/bean_ipad_shop-50.png" color="maroon" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nisi.</Slip>
                     </div>
-                </section>
+                </Section>
                 
                 <br/>
             </ContentLayout>

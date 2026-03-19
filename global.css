@@ -173,6 +173,28 @@ body.theme-light {
   --theme-gradient-hover-90: linear-gradient(90deg, var(--theme-focused-foreground) 0%, var(--theme-background-raised) 100%);
   --theme-link: #0000EE;
   --theme-link-visited: #551A8B;
+  --theme-INVERT-overlay: var(--color-black-100-4);
+  --theme-INVERT-background: var(--color-black-100);
+  --theme-INVERT-background-raised: var(--color-neutral-90-4);
+  --theme-INVERT-background-modal: var(--color-neutral-100);
+  --theme-INVERT-background-modal-footer: var(--color-neutral-70);
+  --theme-INVERT-background-input: var(--color-neutral-60);
+  --theme-INVERT-border: var(--color-neutral-80);
+  --theme-INVERT-border-subdued: var(--color-neutral-80-6);
+  --theme-INVERT-text: var(--color-neutral-10);
+  --theme-INVERT-text-subdued: var(--color-neutral-20);
+  --theme-INVERT-button: var(--color-neutral-10);
+  --theme-INVERT-button-text: var(--color-black-100);
+  --theme-INVERT-button-soft: var(--color-neutral-10-95);
+  --theme-INVERT-button-foreground: var(--color-neutral-90);
+  --theme-INVERT-button-background: var(--color-neutral-80);
+  --theme-INVERT-focused-foreground: var(--color-daybreak);
+  --theme-INVERT-focused-foreground-subdued: var(--color-daybreak-10-5);
+  --theme-INVERT-focused-foreground-whisper: var(--color-daybreak-1);
+  --theme-INVERT-gradient: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
+  --theme-INVERT-gradient-90: linear-gradient(90deg, var(--theme-background) 0%, var(--theme-background-modal-footer) 100%);
+  --theme-INVERT-gradient-hover: linear-gradient(0deg, var(--theme-background) 0%, var(--theme-focused-foreground) 100%);
+  --theme-INVERT-gradient-hover-90: linear-gradient(90deg, var(--theme-background) 0%, var(--theme-focused-foreground) 100%);
 }
 
 body.theme-dark {
@@ -390,7 +412,7 @@ body {
 .gridBg {
     &::before {
     content: '';
-    background-image: linear-gradient(var(--theme-background-modal) 1px, transparent 1px), linear-gradient(90deg, var(--theme-background-modal) 1px, transparent 1px);
+    background-image: linear-gradient(var(--theme-border) 1px, transparent 1px), linear-gradient(90deg, var(--theme-border) 1px, transparent 1px);
     background-size: 19px 19px;
   }
 }

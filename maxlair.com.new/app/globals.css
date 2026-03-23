@@ -1,0 +1,95 @@
+:root {  
+  --hue-green: 152;           
+  --hue-pink:  calc(var(--hue-green) + 178);   /* 330° → rose */
+  --hue-amber: calc(var(--hue-green) - 104);   /* 48°  → warm yellow */
+  --hue-sky:   calc(var(--hue-green) + 32);    /* 184° → cyan */
+  --hue-neutral: 30;
+
+  --sat-neutral: 9%;
+  --sat-primary: 68%;
+  --sat-pink:    72%;
+  --sat-amber:   88%;
+  --sat-sky:     67%;
+
+  --l-50:  97%;  
+  --l-100: 93%;  
+  --l-200: 88%;
+  --l-300: 78%;  
+  --l-400: 65%;  
+  --l-500: 48%;
+  --l-600: 38%;  
+  --l-700: 28%;  
+  --l-800: 20%;
+  --l-900: 13%;  
+  --l-950: 8%;
+
+  --neutral-50:  hsl(var(--hue-neutral), var(--sat-neutral), var(--l-50));
+  --neutral-100: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-100));
+  --neutral-200: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-200));
+  --neutral-300: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-300));
+  --neutral-400: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-400));
+  --neutral-500: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-500));
+  --neutral-600: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-600));
+  --neutral-700: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-700));
+  --neutral-800: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-800));
+  --neutral-900: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-900));
+  --neutral-950: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-950));
+
+  --pink-200:  hsl(var(--hue-pink),   var(--sat-pink),   var(--l-200));
+  --pink-300:  hsl(var(--hue-pink),   var(--sat-pink),   var(--l-300));
+  --amber-200: hsl(var(--hue-amber), var(--sat-amber), var(--l-200));
+  --sky-200:   hsl(var(--hue-sky),   var(--sat-sky),   var(--l-200));
+
+  --green: var(--green-200);
+  --pink:  var(--pink-200);
+  --amber: var(--amber-200);
+  --sky:   var(--sky-200);
+
+  .light {
+    --background: var(--neutral-50);
+    --surface: var(--netural-100);
+    --border: var(--netutral-950);
+  };
+
+  .dark {};
+}
+
+
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

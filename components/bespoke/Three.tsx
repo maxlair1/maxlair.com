@@ -3,7 +3,8 @@ import * as React from 'react';
 import * as THREE from 'three'
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Environment, useGLTF, OrbitControls, ContactShadows } from '@react-three/drei'
+import { Environment } from '@react-three/drei'
+import { useGLTF } from "@react-three/drei";
 
 
 export function Model(props) {
@@ -94,3 +95,4 @@ export default function Three(): React.ReactElement {
         </div>
     )
 }
+

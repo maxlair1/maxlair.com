@@ -1,15 +1,6 @@
 :root {  
-  --hue-green: 152;           
-  --hue-pink:  calc(var(--hue-green) + 178);   /* 330° → rose */
-  --hue-amber: calc(var(--hue-green) - 104);   /* 48°  → warm yellow */
-  --hue-sky:   calc(var(--hue-green) + 32);    /* 184° → cyan */
   --hue-neutral: 30;
-
   --sat-neutral: 9%;
-  --sat-primary: 68%;
-  --sat-pink:    72%;
-  --sat-amber:   88%;
-  --sat-sky:     67%;
 
   --l-50:  97%;  
   --l-100: 93%;  
@@ -23,6 +14,7 @@
   --l-900: 13%;  
   --l-950: 8%;
 
+  /* base values */
   --neutral-50:  hsl(var(--hue-neutral), var(--sat-neutral), var(--l-50));
   --neutral-100: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-100));
   --neutral-200: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-200));
@@ -35,26 +27,89 @@
   --neutral-900: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-900));
   --neutral-950: hsl(var(--hue-neutral), var(--sat-neutral), var(--l-950));
 
-  --pink-200:  hsl(var(--hue-pink),   var(--sat-pink),   var(--l-200));
-  --pink-300:  hsl(var(--hue-pink),   var(--sat-pink),   var(--l-300));
-  --amber-200: hsl(var(--hue-amber), var(--sat-amber), var(--l-200));
-  --sky-200:   hsl(var(--hue-sky),   var(--sat-sky),   var(--l-200));
+  /* RGB alpha variants i.e. for text */
+  --RAW-black-RGB: 7,7,7;
+  --black: rgba(var(--RAW-black-RGB), 1);
+  --black-alpha-09: rgba(var(--RAW-black-RGB), 0.9);
+  --black-alpha-08: rgba(var(--RAW-black-RGB), 0.8);
+  --black-alpha-07: rgba(var(--RAW-black-RGB), 0.7);
+  --black-alpha-06: rgba(var(--RAW-black-RGB), 0.6);
+  --black-alpha-05: rgba(var(--RAW-black-RGB), 0.5);
+  --black-alpha-04: rgba(var(--RAW-black-RGB), 0.4);
+  --black-alpha-03: rgba(var(--RAW-black-RGB), 0.3);
+  --black-alpha-02: rgba(var(--RAW-black-RGB), 0.2);
+  --black-alpha-015: rgba(var(--RAW-black-RGB), 0.15);
+  --black-alpha-01: rgba(var(--RAW-black-RGB), 0.1);
+  --black-alpha-005: rgba(var(--RAW-black-RGB), 0.05);
 
-  --green: var(--green-200);
-  --pink:  var(--pink-200);
-  --amber: var(--amber-200);
-  --sky:   var(--sky-200);
+  --RAW-white-RGB: 255,255,255;
+  --white: rgba(var(--RAW-white-RGB), 1);
+  --white-alpha-09: rgba(var(--RAW-white-RGB), 0.9);
+  --white-alpha-08: rgba(var(--RAW-white-RGB), 0.8);
+  --white-alpha-07: rgba(var(--RAW-white-RGB), 0.7);
+  --white-alpha-06: rgba(var(--RAW-white-RGB), 0.6);
+  --white-alpha-05: rgba(var(--RAW-white-RGB), 0.5);
+  --white-alpha-04: rgba(var(--RAW-white-RGB), 0.4);
+  --white-alpha-03: rgba(var(--RAW-white-RGB), 0.3);
+  --white-alpha-02: rgba(var(--RAW-white-RGB), 0.2);
+  --white-alpha-015: rgba(var(--RAW-white-RGB), 0.15);
+  --white-alpha-01: rgba(var(--RAW-white-RGB), 0.1);
+  --white-alpha-005: rgba(var(--RAW-white-RGB), 0.05);
 
-  .light {
-    --background: var(--neutral-50);
-    --surface: var(--netural-100);
-    --border: var(--netutral-950);
+  --RAW-green-RGB: 102, 204, 0;
+  --green: rgba(var(--RAW-green-RGB), 1);  /* dark mode border */
+  --green-alpha-03: rgba(var(--RAW-green-RGB), 0.30); /* dark mode bg */
+
+  --RAW-maroon-RGB: 255, 86,64;
+  --maroon: rgba(var(--RAW-maroon-RGB), 1);
+  --maroon-alpha-03: rgba(var(--RAW-maroon-RGB), 0.30);
+
+  --RAW-orange-RGB: 255, 187,0;
+  --orange: rgba(var(--RAW-orange-RGB), 1);
+  --orange-alpha-03: rgba(var(--RAW-orange-RGB), 0.30);
+
+  --RAW-teal-RGB: 71, 255, 173;
+  --teal: rgba(var(--RAW-teal-RGB), 1);
+  --teal-alpha-03: rgba(var(--RAW-teal-RGB), 0.30);  
+  
+  .theme-light {
+    --background: var(--neutral-200);
+    --surface: var(--black-alpha-005);
+    --surface-hover: var(--black-alpha-01);
+    --border: var(--white);
+    --divider: var(--black-alpha-015);
+    --thought-card-title: var(--black);
+    --thought-card-text: var(--black-alpha-06);
+    --foreground: var(--neutral-950);
+    --text: var(--black);
+    --text-subdued: var(--black-alpha-06);
+    /* --foreground-hover: var(--neutral-900); */
+  };
+  
+  .theme-dark {
+    --background: var(--neutral-950);
+    --surface: var(--white-alpha-005);
+    --surface-hover: var(--white-alpha-01);
+    --border: var(--white-alpha-30);
+    --divider: var(--white-alpha-01);
+    --thought-card-title: var(--white);
+    --thought-card-foreground: var(--white-alpha-08);
+    --foreground: var(--neutral-50);
+    /* --foreground-hover: var(--neutral-100); */
   };
 
-  .dark {};
+  --root-font-size: 16px;
+  --root-line-height: 1.5;
+  --font-family-serif: var(--font-libre-baskerville);
+  --font-family-sans: var(--font-hanken-grotesk);
+
+  font-size: var(--root-font-size);
+  font-family: var(--font-hanken-grotesk);
+  line-height: var(--root-line-height);
+
+  /* animation states */
+  --pressed-depression: 0.998;
 }
-
-
 
 html {
   height: 100%;
@@ -64,6 +119,8 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+
+  transition: color, background-color 200ms ease-in-out; /* For theme transition */
 }
 
 body {
@@ -72,7 +129,6 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

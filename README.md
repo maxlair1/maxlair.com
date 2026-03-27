@@ -6,7 +6,8 @@ Live at [maxlair.com](https://maxlair.com)
 ### Social Links
 > "pssst... Max, you need to add these"
 
-### 
+### Accessibility
+[Accessible Lucide Icons](https://lucide.dev/guide/accessibility)
 
 ### Todo/Roadmap:
 - [ ] Add `grabTab` tool-tip using `<ToolTip/>`

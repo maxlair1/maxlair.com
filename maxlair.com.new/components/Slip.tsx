@@ -3,7 +3,7 @@ import * as React from 'react';
 import styles from './Slip.module.css';
 
 import Image from 'next/image';
-import Divider from '../Divider';
+// import Divider from '../Divider';
 import * as Utilities from '@/app/lib/utilities';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
@@ -53,7 +53,7 @@ export default function Slip({color, src = '/', title, subtitle, children, befor
                     {subtitle}
                 </h4>
             </div>
-            <Divider style={{borderColor: 'var(--color-teal-80)'}} type='DOTTED' />
+            {/* <Divider style={{borderColor: 'var(--color-teal-80)'}} type='DOTTED' /> */}
         </header>
 
         <div className={styles.slipBody}>

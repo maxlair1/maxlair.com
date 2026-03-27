@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { onHandleAppearanceChange } from './utilities';
+import { useEffect } from 'react';
 
 const ThemeContext = React.createContext<{
   theme: 'light' | 'dark';
@@ -52,4 +53,16 @@ export default function useTheme() {
     const ctx = React.useContext(ThemeContext);
     if (!ctx) throw new Error('useTheme must be used within ThemeProvider') && console.error('useTheme must be used within ThemeProvider');
     return ctx;
+}
+
+export function ThemeScript() {
+  useEffect(() => {
+    try {
+      const theme = localStorage.getItem("theme");
+      if (theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+      }
+    } catch {}
+  }, []);
+  return null;
 }

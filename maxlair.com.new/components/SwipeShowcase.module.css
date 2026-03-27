@@ -1,0 +1,30 @@
+.section {
+  padding: 6rem 2rem 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: block;
+}
+
+.header p {
+  font-size: 1.3rem;
+  color: var(--text-subdued);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Swiper */
+.swiper {
+  padding: 40px 0;
+  overflow: visible;
+  display: flex;
+}
+
+.slide {
+  background-color: red;
+}
+
+.slideInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

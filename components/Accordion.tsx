@@ -1,7 +1,7 @@
 'use client';
 
 import styles from '@components/Accordion.module.css';
-
+import { ChevronDown } from 'lucide-react';
 import * as React from 'react';
 import * as Utilities from '@root/app/lib/utilities';
 
@@ -11,27 +11,43 @@ interface AccordionProps {
   defaultValue?: boolean;
   title: string;
   children?: React.ReactNode;
-  style?: undefined | 'GRADIENT';
 }
 
-const Accordion: React.FC<AccordionProps> = ({ defaultValue = false, title, children, style }) => {
-  const [show, setShow] = React.useState<boolean>(defaultValue);
-  const accordionRef = React.useRef<HTMLDivElement | null>(null);
+const Accordion: React.FC<AccordionProps> = ({ 
+  defaultValue = false, 
+  title, 
+  children 
+}) => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(defaultValue);
 
-  const toggleShow = (): void => {
-    setShow((prevShow) => !prevShow);
+  const toggle = () => {
+    setIsOpen((prev) => !prev);
   };
 
   return (
-    <>
-      <Row className={styles.root} ref={accordionRef} tabIndex={0} role="button" onClick={toggleShow} aria-expanded={show}>
-        <div className={Utilities.classNames((styles.flex, show ? styles.active : undefined), (style === 'GRADIENT' ? styles.gradient : undefined))}>
-          <span className={styles.icon}>{show ? '▾' : '▸'}</span>
-          <span className={styles.content}>{title}</span>
-        </div>
+    <div className={styles.accordion}>
+      {/* Header */}
+      <Row 
+        className={Utilities.classNames(styles.header, isOpen && styles.open)}
+        onClick={toggle}
+        tabIndex={0}
+        role="button"
+        aria-expanded={isOpen}
+      >
+        <span className={styles.title}>{title}</span>
+        <ChevronDown 
+          className={Utilities.classNames(styles.icon, isOpen && styles.iconOpen)} 
+        />
       </Row>
-      {show && <Row style={{ paddingLeft: '1ch' }}>{children}</Row>}
-    </>
+
+      {/* Content */}
+      <div 
+        className={Utilities.classNames(styles.content, isOpen && styles.contentOpen)}
+      >
+        {children}
+      </div>
+      <div className={Utilities.classNames(styles.divider, isOpen && styles.dividerOpen)} />
+    </div>
   );
 };
 

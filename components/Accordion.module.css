@@ -1,45 +1,70 @@
-.root {
-  cursor: pointer;
+.accordion {
+  width: 100%;
   overflow: hidden;
 }
 
-.flex {
+/* Header */
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
-  &:hover {
-    background: var(--theme-focused-foreground);
-  }
+  cursor: pointer;
+  user-select: none;
+  transition: all 100ms ease-in-out;
+  color: var(--foreground);
+  background-color: var(--surface);
+  border-radius: 0.25em;
+  padding-inline: 0.5em;
 }
 
-.gradient {
-  background: var(--theme-gradient);
-  
-  &:hover {
-    /* background: var(--theme-focused-foreground); */
-    background: var(--theme-gradient-hover);
-  }
+.header:hover {
+  background-color: var(--surface-hover);
 }
 
+.header:active {
+  transform: scale(var(--pressed-depression));
+}
 
+.title {
+  font-weight: 600; /* semibold */
+  flex: 1;
+}
+
+/* Icon */
 .icon {
+  transition: transform 250ms ease-in-out;
   flex-shrink: 0;
-  user-select: none;
+  color: var(--text);
 }
 
-.content {
-  min-width: 10%;
+.iconOpen {
+  transform: rotate(180deg);
+}
+
+/* Content */
+.content{
+  max-height: 0;
+  transition: all 200ms ease-in-out;
+  opacity: 0;
+  padding: 0.5em 0.5em 0.5em 1em;
+}
+
+.contentOpen {
+  max-height: 1200px; /* Large enough for most content */
+  margin-bottom: 1em;
+  opacity: 1;
+}
+
+.divider {
+  border-bottom: 2px dotted var(--divider);
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  transition: width 200ms ease-out;
+}
+
+.dividerOpen {
   width: 100%;
-  user-select: none;
-  transition: 200ms ease all;
-  transition-property: padding;
-  padding-left: 1ch;
-  padding: 2ch;
-}
-
-.active {
-  .content {
-    padding-left: 2ch;
-  }
+  opacity: 1;
+  transition-delay: 200ms;
 }

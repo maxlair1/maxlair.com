@@ -1,49 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@root/*": [
-        "./*"
-      ],
-      "@system/*": [
-        "./system/*"
-      ],
-      "@demos/*": [
-        "./demos/*"
-      ],
-      "@lib/*": [
-        "app/lib/*"
-      ],
-      "@data/*": [
-        "./data/*"
-      ],
-      "@components/*": [
-        "./components/*"
-      ],
-      "@pages/*": [
-        "./pages/*"
-      ],
-      "@modules/*": [
-        "./modules/*"
-      ],
-      "@contexts/*": [
-        "./contexts/*"
-      ]
-    },
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -53,17 +19,23 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@root/*": ["./*"],
+      "@/*": ["./*"],
+      "@components/*": ["./components/*"],
+      "@lib/*": ["app/lib/*"],
+    }
   },
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
-, "app/lib/imageToPixel.js"  ]
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

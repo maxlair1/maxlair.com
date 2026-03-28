@@ -83,7 +83,9 @@
     --foreground: var(--neutral-950);
     --text: var(--black);
     --text-subdued: var(--black-alpha-06);
-    /* --foreground-hover: var(--neutral-900); */
+    --button-background: var(--neutral-950);
+    --button-foreground: var(--white);
+    --button-background-hover: var(--neutral-900);
   };
   
   .theme-dark {
@@ -95,35 +97,76 @@
     --thought-card-title: var(--white);
     --thought-card-foreground: var(--white-alpha-08);
     --foreground: var(--neutral-50);
-    /* --foreground-hover: var(--neutral-100); */
+    --text: var(--black);
+    --text-subdued: var(--black-alpha-06);
+    --button-background: var(--neutral-50);
+    --button-foreground: var(--black);
+    --button-background-hover: var(--neutral-100);
   };
   
-  --root-font-size: 16px;
-  --root-line-height: 1.5;
-  --font-family-serif: var(--font-libre-baskerville);
-  --font-family-sans: var(--font-hanken-grotesk);
-  --root-border-width: 1px;
+  /* SIZE PRIMITIVES */
   
-  --size-0: 0.125em; /* Based off root font size */ 
-  --size-1: 0.25em;
-  --size-2: 0.5em;
-  --size-3: 0.75em;
-  --size-4: 1em;
-  --size-5: 1.25em;
-  --size-6: 1.5em;
+  --size-0: 0.125rem; /* Based off root font size */ 
+  --size-1: 0.25rem;
+  --size-2: 0.5rem;
+  --size-3: 0.75rem;
+  --size-4: 1rem;
+  --size-5: 1.25rem;
+  --size-6: 1.5rem;
+  --size-7: 2rem;
+  
+  /* BORDERS */
 
+  --root-border-width: 1px;
   --border-radius-xs: var(--size-1);
   --border-radius-sm: var(--size-2);
   --border-radius-md: var(--size-3);
   --border-radius-lg: var(--size-4);
   --border-radius-xl: var(--size-5);
+  
+  /* TYPE */
+    /* NOTE:
+      Use clamp here for better scaling and no media queries.
+    */
+    /* primitives */
+  --root-font-size: 16px;
+  --root-line-height: 1.5;
+  --font-family-serif: var(--font-libre-baskerville);
+  --font-family-sans: var(--font-hanken-grotesk);
+  --font-family-mono: var(--font-recursive);
 
   font-size: var(--root-font-size);
-  font-family: var(--font-hanken-grotesk);
+  font-family: var(--font-family-sans);
   line-height: var(--root-line-height);
 
-  /* animation states */
+    /* semantic */
+  --font-size-small: calc(var(--root-font-size) * 0.875);
+  --font-size-body: calc(var(--root-font-size) * 1);
+  --font-size-title: calc(var(--root-font-size) * 1.25);
+  --font-size-subtitle: calc(var(--root-font-size) * 1.5);
+  --font-size-section-heading: calc(var(--root-font-size) * 2);
+  --optimal-line-length: 70ch;
+
+  h1,h2 {
+    font-family: var(--font-family-serif);
+  }
+  
+  code { 
+    font-family: var(--font-family-mono);
+    font-size: calc(var(--font-size-body) * 0.95);
+  }
+
+
+
+  /* global animation states */
   --pressed-depression: 0.998;
+}
+
+/* ————————————————————————— MOBILE BREAKPOINT ——————————————————————————————*/
+@media screen and (max-width: 768px) {
+    :root {
+      --optimal-line-length: 45ch;
+    }
 }
 
 html {

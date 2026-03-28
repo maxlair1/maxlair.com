@@ -1,0 +1,38 @@
+.section {
+  padding: 6rem 0rem 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: block;
+}
+
+.header p {
+  font-size: 1.3rem;
+  /* color: var(--text-subdued); */
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Swiper */
+.swiper {
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.slideCard {
+  min-height: 45rem;
+  width: 100%;
+  display: flex;
+  position: relative;
+  background-color: var(--neutral-500);
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 48.35%, rgba(54, 57, 66, 0.50) 70.98%, #202125 100%);
+  background-blend-mode: plus-darker;
+  backdrop-filter: blur(2.671703815460205px);
+}

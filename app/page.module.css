@@ -1,6 +1,14 @@
-.intro {
-    display: inline-flex;
+.intro  {
     flex-direction: column;
     gap: 0.5em;
+    flex: 0 0 auto;
     margin: 1em;
+    & > * {
+        margin-bottom: var(--size-4);
+    }
+}
+
+.main {
+    max-width: 100ch;
+    margin: 0 auto;
 }

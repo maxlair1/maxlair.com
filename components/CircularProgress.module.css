@@ -1,0 +1,47 @@
+.circularProgress {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.indicator {
+  transform: rotate(-90deg);
+}
+
+.track {
+  fill: none;
+  stroke: currentColor;
+  opacity: 0.2;
+}
+
+.range {
+  fill: none;
+  stroke: currentColor;
+  transition: stroke-dashoffset 80ms linear;
+  transform-origin: center;
+}
+
+.valueText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;           /* bigger and cleaner */
+  font-family: ui-monospace, monospace;
+  pointer-events: none;
+  color: inherit;
+}
+
+.label {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  opacity: 0.7;
+  white-space: nowrap;
+}

@@ -41,12 +41,11 @@ const Accordion: React.FC<AccordionProps> = ({
       </Row>
 
       {/* Content */}
-      <div 
-        className={Utilities.classNames(styles.content, isOpen && styles.contentOpen)}
-      >
-        {children}
-      </div>
-      <div className={Utilities.classNames(styles.divider, isOpen && styles.dividerOpen)} />
+      {isOpen && (
+        <div className={styles.content}>
+          {children}
+        </div>
+      )}
     </div>
   );
 };

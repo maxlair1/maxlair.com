@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
     <Providers theme={initialTheme}>
         <ThemeScript/>
-        <html lang="en" className={`${Fonts.hankenGrotesk.variable} ${Fonts.LibreBaskerville.variable}`}>
+        <html lang="en" className={`${Fonts.hankenGrotesk.variable} ${Fonts.LibreBaskerville.variable} ${Fonts.recursive.variable}`}>
             {/* replace w Button later */}
           <body>{children}</body>
         </html>

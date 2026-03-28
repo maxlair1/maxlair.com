@@ -1,0 +1,87 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-1);          
+  background-color: var(--button-background);
+  color: var(--button-foreground);
+  font-weight: 500;
+  border: none;
+  border-radius: var(--border-radius-sm);      /* fully rounded like your design */
+  cursor: pointer;
+  transition: all 200ms ease;
+  &.text {
+    padding-block: var(--size-2);
+    width: auto;
+  }
+}
+
+.inline {
+  display: inline-flex;
+}
+
+.text {
+  padding-inline: var(--size-2);
+}
+
+/* States */
+.button:hover {
+    background-color: var(--button-background-hover);
+}
+
+.button:active {
+    transform: scale(var(--pressed-depression));
+}
+
+.button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.7);
+}
+
+.button:hover .rightIcon {
+  transform: translateX(3px);
+}
+
+/* Disabled state */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Size variants */
+.small {
+  padding: var(--size-0) var(--size-1);           
+  font-size: var(--font-size-body);
+}
+
+.default {
+  padding: var(--size-2);           
+  font-size: var(--font-size-body);
+}
+
+.large {
+  padding: var(--size-2) var(--size-4);           
+  font-size: var(--font-size-body);
+}
+
+/* Icon container with dashed circle */
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Loading spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,36 @@
+.root {
+    position: relative;
+    overflow: hidden;
+    min-height: var(--size-4);
+    background-color: var(--surface);
+    border-radius: var(--border-radius-xs);
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        /* Note: Might need to use more global vars here. */
+        background: linear-gradient(90deg, transparent, var(--surface), transparent);
+        transform: translateX(-100%);
+        animation: shimmer 1.5s infinite;
+    }
+}
+
+
+@keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    
+/* skeleton types */
+
+.card {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius-xs); 
+}

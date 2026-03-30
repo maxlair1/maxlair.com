@@ -36,7 +36,7 @@ export default function CircularProgress({
   const center = size / 2;
   const circumference = 2 * Math.PI * radius;
 
-  const strokeDashoffset = circumference * (1 - progress);
+  const strokeDashoffset = circumference * (1 - progress) * -1;
 
   return (
     <div

@@ -19,20 +19,84 @@
   flex-direction: column;
 }
 
+.slide {
+  border-radius: var(--border-radius-lg);
+  border: var(--border) 1px solid inside;
+  overflow: hidden;
+}
+
 .slideCard {
-  min-height: 45rem;
+  min-height: 35rem;
   width: 100%;
   display: flex;
   position: relative;
   background-color: var(--neutral-500);
 }
 
+.slideCardBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: var(--size-6);
+  color: var(--white);
+  width: 100%;
+  gap: var(--size-6);
+}
+
+.controls {
+  display: flex;
+  gap: var(--size-1);
+  color: var(--white);
+  margin-left: auto;
+  flex-shrink: 0;
+  button {
+    background-color: transparent;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 100ms ease-in-out;
+    border-radius: var(--border-radius-sm);
+    padding: var(--size-1);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    &:hover {
+      background-color: var(--white-alpha-01);
+    }
+    &* {
+      color: var(--white) !important;
+    }
+  }
+}
+
+.label {
+  . {
+    max-width: 40ch;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slideCardBody {
+    flex-direction: column;
+  }
+}
+
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-
-  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 48.35%, rgba(54, 57, 66, 0.50) 70.98%, #202125 100%);
+  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 48.35%, rgba(54, 57, 66, 0.20) 70.98%, #202125 100%);
   background-blend-mode: plus-darker;
+}
+
+.overlay::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
   backdrop-filter: blur(2.671703815460205px);
+  mask: linear-gradient(transparent 20%, black 80%);
 }

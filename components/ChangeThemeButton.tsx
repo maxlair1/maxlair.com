@@ -22,7 +22,7 @@ export default function ChangeThemeButton(): React.ReactElement {
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     return (
         <Button variant="icon" before={
-            currentTheme === 'light' ? <Sun/> : <Moon/>
+            currentTheme === 'light' ? <Sun color="var(--white)"/> : <Moon color="var(--black)"/>
         }
         onClick={() => setTheme(newTheme)}
         >

@@ -7,7 +7,6 @@ import Accordion from "@components/Accordion";
 import ChangeThemeButton from "@components/ChangeThemeButton";
 import Skeleton from "@components/Skeleton";
 import Showcase from "@components/Showcase";
-import SlideCard from "@components/SlideCard";
 import CircularProgress from "@components/CircularProgress";
 
 export default function Home() {
@@ -16,7 +15,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.intro}>
           <h1>Welcome home!</h1>
-            <Showcase onLoad></Showcase>
+            <Showcase></Showcase>
           <ChangeThemeButton/>
           <Accordion title="Super duper subtitle!">
             <p>
@@ -26,8 +25,8 @@ export default function Home() {
           </Accordion>
           <Skeleton preset="paragraph"/>
           <Button>Reach out!</Button>
-          <CircularProgress thickness={4} size={42} value={25}>
-            <small>1/2</small>
+          <CircularProgress thickness={4} size={38} value={70}>
+            {/* <small>1/2</small> */}
           </CircularProgress>
         </div>
       </main>

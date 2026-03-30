@@ -13,7 +13,7 @@ export default function Providers({
 }) {
     return (
         <ThemeProvider initialTheme={theme}>
-            <LucideProvider size={18} strokeWidth={2}>
+            <LucideProvider size={18} strokeWidth={2} color='var(--icon)'>
                 {children}
             </LucideProvider>
         </ThemeProvider>

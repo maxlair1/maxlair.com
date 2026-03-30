@@ -86,6 +86,7 @@
     --button-background: var(--neutral-950);
     --button-foreground: var(--white);
     --button-background-hover: var(--neutral-900);
+    --icon: var(--black);
   };
   
   .theme-dark {
@@ -97,11 +98,12 @@
     --thought-card-title: var(--white);
     --thought-card-foreground: var(--white-alpha-08);
     --foreground: var(--neutral-50);
-    --text: var(--black);
-    --text-subdued: var(--black-alpha-06);
+    --text: var(--white);
+    --text-subdued: var(--white-alpha-06);
     --button-background: var(--neutral-50);
     --button-foreground: var(--black);
     --button-background-hover: var(--neutral-100);
+    --icon: var(--white);
   };
   
   /* SIZE PRIMITIVES */
@@ -131,6 +133,7 @@
     /* primitives */
   --root-font-size: 16px;
   --root-line-height: 1.5;
+  --root-font-weight: 400;
   --font-family-serif: var(--font-libre-baskerville);
   --font-family-sans: var(--font-hanken-grotesk);
   --font-family-mono: var(--font-recursive);
@@ -138,8 +141,10 @@
   font-size: var(--root-font-size);
   font-family: var(--font-family-sans);
   line-height: var(--root-line-height);
+  font-weight: var(--root-font-weight);
 
     /* semantic */
+  --font-size-footnote: calc(var(--root-font-size) * 0.75);
   --font-size-small: calc(var(--root-font-size) * 0.875);
   --font-size-body: calc(var(--root-font-size) * 1);
   --font-size-title: calc(var(--root-font-size) * 1.25);
@@ -151,6 +156,18 @@
     font-family: var(--font-family-serif);
   }
   
+  small {
+    font-size: var(--font-size-small);
+    font-weight: var(--root-font-weight);
+    &.footnote {
+      font-size: var(--font-size-footnote);
+      /* color: var(--text-subdued); */
+    }
+  }
+
+
+
+
   code { 
     font-family: var(--font-family-mono);
     font-size: calc(var(--font-size-body) * 0.95);
@@ -207,3 +224,20 @@ a {
     color-scheme: dark;
   }
 }
+
+.shimmerFill {
+    background: linear-gradient(90deg, transparent, var(--surface), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 1.5s infinite;
+}
+
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+

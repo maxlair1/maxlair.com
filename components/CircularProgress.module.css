@@ -17,9 +17,10 @@
 }
 
 .range {
+  transition: stroke-dashoffset 100ms linear;
   fill: none;
+  opacity: 0.75;
   stroke: currentColor;
-  transition: stroke-dashoffset 80ms linear;
   transform-origin: center;
 }
 
@@ -29,9 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1.25rem;           /* bigger and cleaner */
-  font-family: ui-monospace, monospace;
+  font-family: var(--font-family-mono);
   pointer-events: none;
   color: inherit;
 }

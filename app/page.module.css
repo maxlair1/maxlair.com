@@ -1,3 +1,9 @@
+.main {
+    max-width: 100ch;
+    margin: 0 auto;
+    transition: all 200ms ease-in-out;
+}
+
 .intro  {
     flex-direction: column;
     gap: 0.5em;
@@ -8,7 +14,18 @@
     }
 }
 
-.main {
-    max-width: 100ch;
-    margin: 0 auto;
+.header {
+    display: flex;
+    max-width: var(--size-8);
+    padding: 0.25rem 0 0.5rem 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--size-4);
+
+    .heroText {
+        font-family: var(--font-family-serif);
+        font-size: var(--font-size-title);
+        text-wrap: balance;
+    }
 }

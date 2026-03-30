@@ -6,14 +6,14 @@ import { SVGProps } from "react"
 const Logo = (props: SVGProps<SVGSVGElement> & { type?: string, fill?: string }) => {
   const { type, fill, ...rest } = props;
 
-  const Fill = fill || 'var(--theme-text)';
+  const Fill = fill || 'var(--text)';
 
   if (type === 'icon') {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="1.5ch"
-        height="1.5ch"
+        width="2em"
+        height="2em"
         viewBox="390 0 75 100"
         preserveAspectRatio="xMidYMid meet"
         fill="none"

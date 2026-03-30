@@ -62,12 +62,7 @@ export default function Skeleton({ type = 'card', lines = 1, style, preset }: Sk
         <>
             <div
                 aria-hidden
-                className={Utilities.classNames(styles.root)}
-                style={{
-                    minHeight: '45rem',
-                    width: '100%',
-                    marginBottom: 'var(--size-2)',
-                }}
+                className={Utilities.classNames(styles.root, styles.showcase)}
             />
         </>
     );

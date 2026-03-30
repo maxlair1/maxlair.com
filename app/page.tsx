@@ -8,15 +8,23 @@ import ChangeThemeButton from "@components/ChangeThemeButton";
 import Skeleton from "@components/Skeleton";
 import Showcase from "@components/Showcase";
 import CircularProgress from "@components/CircularProgress";
+import Logo from '@root/components/Logo';
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.intro}>
-          <h1>Welcome home!</h1>
+          <nav>
+            <ChangeThemeButton/>
+          </nav>
+          <header className={styles.header}>
+            <Logo type='icon'></Logo>
+            <span className={styles.heroText}>Systems-driven product designer and web developer who loves building software humans use.</span>
+          </header>
+          <React.Suspense fallback={<Skeleton preset="showcase"/>}>
             <Showcase></Showcase>
-          <ChangeThemeButton/>
+          </React.Suspense>
           <Accordion title="Super duper subtitle!">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis modi nulla atque, numquam voluptatibus nihil eligendi ex nesciunt pariatur. Labore assumenda temporibus maiores culpa doloribus illo incidunt officiis nobis vel tempora inventore repellat, nulla impedit repudiandae dolore saepe provident iure amet a dolores! Rem harum corrupti tempora sapiente omnis tempore.

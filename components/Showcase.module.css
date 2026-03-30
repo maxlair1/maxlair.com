@@ -1,15 +1,19 @@
 .section {
-  padding: 6rem 0rem 5rem;
+  padding-block: var(--size-4) var(--size-4);
   max-width: 1400px;
   margin: 0 auto;
   display: block;
 }
 
-.header p {
-  font-size: 1.3rem;
-  /* color: var(--text-subdued); */
-  max-width: 680px;
-  margin: 0 auto;
+.swiperContainer {
+  transform: translateY(30px); 
+  opacity: 0;
+  transition: opacity 800ms ease-out, 
+              transform 800ms ease-out;
+}
+.swiperContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Swiper */
@@ -20,8 +24,8 @@
 }
 
 .slide {
-  border-radius: var(--border-radius-lg);
-  border: var(--border) 1px solid inside;
+  border-radius: var(--border-radius-xl);
+  border: 1px solid var(--border);
   overflow: hidden;
 }
 
@@ -43,7 +47,7 @@
   padding: var(--size-6);
   color: var(--white);
   width: 100%;
-  gap: var(--size-6);
+  gap: var(--size-1);
 }
 
 .controls {
@@ -72,15 +76,15 @@
   }
 }
 
-.label {
-  . {
-    max-width: 40ch;
-  }
+.headline {
+    max-width: 30ch;
+    text-wrap: balance;
 }
 
 @media screen and (max-width: 768px) {
   .slideCardBody {
     flex-direction: column;
+    padding: var(--size-4);
   }
 }
 

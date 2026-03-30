@@ -2,7 +2,7 @@
 // Vendored from
 // https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/parseHotkeys.ts
 
-import { Hotkey, KeyboardModifiers } from '@modules/hotkeys/types'
+import { Hotkey, KeyboardModifiers } from '@root/modules/hotkeys/types'
 
 const reservedModifierKeywords = ['shift', 'alt', 'meta', 'mod', 'ctrl']
 

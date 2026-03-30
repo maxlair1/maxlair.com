@@ -2,8 +2,8 @@
 
 'use strict';
 
-import assign from '@modules/object-assign';
-import vary from '@modules/vary';
+import assign from '@root/modules/object-assign';
+import vary from '@root/modules/vary';
 
 var defaults = {
   origin: '*',

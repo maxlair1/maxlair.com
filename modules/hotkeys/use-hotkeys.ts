@@ -2,9 +2,9 @@
 // Vendored from
 // https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/useHotkeys.ts
 
-import { HotkeyCallback, Keys, Options, OptionsOrDependencyArray, RefType } from '@modules/hotkeys/types'
+import { HotkeyCallback, Keys, Options, OptionsOrDependencyArray, RefType } from '@root/modules/hotkeys/types'
 import { DependencyList, RefCallback, useCallback, useEffect, useState, useLayoutEffect, useRef } from 'react'
-import { mapKey, parseHotkey, parseKeysHookInput } from '@modules/hotkeys/parse-hotkeys'
+import { mapKey, parseHotkey, parseKeysHookInput } from '@root/modules/hotkeys/parse-hotkeys'
 import {
   isHotkeyEnabled,
   isHotkeyEnabledOnTag,
@@ -12,11 +12,11 @@ import {
   isKeyboardEventTriggeredByInput,
   isScopeActive,
   maybePreventDefault,
-} from '@modules/hotkeys/validators'
-import { useHotkeysContext } from '@modules/hotkeys/hotkeys-provider'
-import { useBoundHotkeysProxy } from '@modules/hotkeys/bound-hotkeys-proxy-provider'
-import useDeepEqualMemo from '@modules/hotkeys/use-deep-equal-memo'
-import { isReadonlyArray, pushToCurrentlyPressedKeys, removeFromCurrentlyPressedKeys } from '@modules/hotkeys/is-hotkey-pressed'
+} from '@root/modules/hotkeys/validators'
+import { useHotkeysContext } from '@root/modules/hotkeys/hotkeys-provider'
+import { useBoundHotkeysProxy } from '@root/modules/hotkeys/bound-hotkeys-proxy-provider'
+import useDeepEqualMemo from '@root/modules/hotkeys/use-deep-equal-memo'
+import { isReadonlyArray, pushToCurrentlyPressedKeys, removeFromCurrentlyPressedKeys } from '@root/modules/hotkeys/is-hotkey-pressed'
 
 const stopPropagation = (e: KeyboardEvent): void => {
   e.stopPropagation()

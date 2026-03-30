@@ -2,7 +2,7 @@
 // Vendored from
 // https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/isHotkeyPressed.ts
 
-import { isHotkeyModifier, mapKey } from '@modules/hotkeys/parse-hotkeys'
+import { isHotkeyModifier, mapKey } from '@root/modules/hotkeys/parse-hotkeys'
 ;(() => {
   if (typeof document !== 'undefined') {
     document.addEventListener('keydown', (e) => {

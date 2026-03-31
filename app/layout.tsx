@@ -39,7 +39,7 @@ export default async function RootLayout({
               
               {children}
               
-              <footer></footer>
+              <footer>maxlair</footer>
             </main>
           </body>
         </html>

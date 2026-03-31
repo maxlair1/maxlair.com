@@ -1,4 +1,4 @@
-.intro  {
+.root  {
     flex-direction: column;
     gap: 0.5em;
     flex: 0 0 auto;
@@ -19,16 +19,20 @@
 
     .heroText {
         font-family: var(--font-family-serif);
-        font-size: var(--font-size-title);
+        font-size: var(--font-size-subtitle);
         text-wrap: balance;
     }
+}
+
+.root section {
+    margin-block: var(--size-4);
 }
 
 .outlinks {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: var(--size-4);
+    padding-block: var(--size-4);
 }
 .socials {
     display: flex;

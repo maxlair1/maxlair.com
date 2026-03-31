@@ -28,7 +28,7 @@
 }
 
 .slideCard {
-  min-height: 34rem;
+  min-height: 35rem;
   width: 100%;
   display: flex;
   position: relative;
@@ -93,22 +93,23 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 48.35%, rgba(54, 57, 66, 0.20) 70.98%, #202125 100%);
+  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 48.35%, rgba(54, 57, 66, 0.60) 90.98%, #202125 100%);
   background-blend-mode: plus-darker;
 }
 
 @media screen and (max-width: 568px) {
-  .slideCard {
-    min-height: 32rem;
-  }
   .slideCardBody {
     flex-direction: column;
     padding: var(--size-3);
   }
 
+  .headline {
+    font-size: var(--font-size-subtitle);
+  }
+
   .overlay {
-  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 28.35%, rgba(54, 57, 66, 0.20) 50.98%, #202125c1 100%);
-}
+  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 28.35%, rgba(54, 57, 66, 0.70) 50.98%, #20212585 100%);
+  }
 }
 
 .overlay::after {

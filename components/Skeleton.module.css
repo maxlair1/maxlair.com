@@ -36,8 +36,11 @@
 }
 
 .showcase {
-  min-height: 35rem;
+  height: 35rem;
   width: 100%;
   display: flex;
   position: relative;
+  border-radius: var(--border-radius-xl);
+}
+@media screen and (max-width: 568px) {
 }

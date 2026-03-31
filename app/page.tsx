@@ -12,17 +12,15 @@ import Logo from '@root/components/Logo';
 export default function Home() {
   return (
     <div className={styles.page}>
-        <div className={styles.intro}>
+        <div className={styles.root}>
           <header className={styles.header}>
             <Logo type='icon'></Logo>
             <span className={styles.heroText}>Systems-driven product designer and web developer who loves building software humans use.</span>
           </header>
 
-          <section>
-            <React.Suspense fallback={<Skeleton preset="showcase"/>}>
-              <Showcase></Showcase>
-            </React.Suspense>
-          </section>
+          <React.Suspense fallback={<Skeleton preset="showcase"/>}>
+            <Showcase></Showcase>
+          </React.Suspense>
 
           <section className={styles.outlinks}>
             {/* Socials */}
@@ -59,6 +57,10 @@ export default function Home() {
               </a>
             </div>
             <a href="/MAX_LAIR.pdf" aria-label="Download Resume" target="_blank" rel="noopener noreferrer">Download Resume</a>
+          </section>
+
+          <section>
+            test
           </section>
 {/* 
           <Accordion title="Super duper subtitle!">

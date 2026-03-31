@@ -28,10 +28,7 @@ export default async function RootLayout({
         <html lang="en" className={`${Fonts.hankenGrotesk.variable} ${Fonts.LibreBaskerville.variable} ${Fonts.recursive.variable}`}>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <body>
-            <main style={{
-              maxWidth: '105ch',
-              margin: '0 auto'
-            }}>
+            <main>
               <header style={{
                 display: 'flex',
                 justifyContent: 'flex-end',

@@ -3,18 +3,23 @@
   align-items: center;
   justify-content: center;
   gap: var(--size-1);          
-  background-color: var(--button-background);
-  color: var(--button-foreground);
   font-weight: 500;
   border: none;
   border-radius: var(--border-radius-sm);      /* fully rounded like your design */
   cursor: pointer;
   transition: all 200ms ease;
-  &.text {
-    padding-block: var(--size-2);
-    width: auto;
-  }
 }
+
+.primary {
+  background-color: var(--button-background);
+  color: var(--button-foreground);
+}
+
+.secondary {
+  background-color: transparent;
+  color: var(--text);
+}
+
 
 .inline {
   display: inline-flex;
@@ -22,11 +27,22 @@
 
 .text {
   padding-inline: var(--size-2);
+  padding-top: 2px;
+  text-align: baseline;
+  line-height: 1.5;
 }
 
 /* States */
-.button:hover {
+.primary:hover {
     background-color: var(--button-background-hover);
+}
+
+.secondary:hover {
+    background-color: var(--hover);
+}
+
+.transparent:hover {
+    background-color: var(--button-background-transparent-hover);
 }
 
 .button:active {

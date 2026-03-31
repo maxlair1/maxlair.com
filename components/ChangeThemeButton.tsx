@@ -7,7 +7,7 @@ import Skeleton from "@components/Skeleton";
 import Button from "@components/Button";
 
 
-export default function ChangeThemeButton(): React.ReactElement { 
+export default function ChangeThemeButton({ style }: { style?: React.CSSProperties }): React.ReactElement { 
     const { theme: currentTheme, setTheme } = useTheme();
     const [mounted, setMounted] = React.useState(false);
     
@@ -21,9 +21,9 @@ export default function ChangeThemeButton(): React.ReactElement {
     
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     return (
-        <Button variant="icon" before={
-            currentTheme === 'light' ? <Sun color="var(--white)"/> : <Moon color="var(--black)"/>
-        }
+        <Button variant="icon" color="secondary" before={
+            currentTheme === 'light' ? <Sun color="var(--text)"/> : <Moon color="var(--text)"/>
+        } style={style}
         onClick={() => setTheme(newTheme)}
         >
         </Button>

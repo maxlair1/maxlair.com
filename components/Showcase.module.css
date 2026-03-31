@@ -1,5 +1,4 @@
 .section {
-  padding-block: var(--size-4) var(--size-4);
   max-width: 1400px;
   margin: 0 auto;
   display: block;
@@ -8,8 +7,7 @@
 .swiperContainer {
   transform: translateY(30px); 
   opacity: 0;
-  transition: opacity 800ms ease-out, 
-              transform 800ms ease-out;
+  transition: opacity 800ms ease-out, transform 800ms ease-out;
 }
 .swiperContainer.visible {
   opacity: 1;
@@ -25,12 +23,12 @@
 
 .slide {
   border-radius: var(--border-radius-xl);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   overflow: hidden;
 }
 
 .slideCard {
-  min-height: 35rem;
+  min-height: 34rem;
   width: 100%;
   display: flex;
   position: relative;
@@ -47,7 +45,7 @@
   padding: var(--size-6);
   color: var(--white);
   width: 100%;
-  gap: var(--size-1);
+  /* gap: var(--size-1); */
 }
 
 .controls {
@@ -76,16 +74,19 @@
   }
 }
 
-.headline {
-    max-width: 30ch;
-    text-wrap: balance;
+.label {
+  gap: var(--size-1);
+  display: flex;
+  flex-direction: column;
 }
 
-@media screen and (max-width: 768px) {
-  .slideCardBody {
-    flex-direction: column;
-    padding: var(--size-4);
-  }
+.headline {
+  max-width: 30ch;
+  text-wrap: balance;
+}
+
+.project {
+  font-weight: 400;
 }
 
 .overlay {
@@ -96,11 +97,25 @@
   background-blend-mode: plus-darker;
 }
 
+@media screen and (max-width: 568px) {
+  .slideCard {
+    min-height: 32rem;
+  }
+  .slideCardBody {
+    flex-direction: column;
+    padding: var(--size-3);
+  }
+
+  .overlay {
+  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 28.35%, rgba(54, 57, 66, 0.20) 50.98%, #202125c1 100%);
+}
+}
+
 .overlay::after {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(2.671703815460205px);
+  backdrop-filter: blur(1.671703815460205px);
   mask: linear-gradient(transparent 20%, black 80%);
 }

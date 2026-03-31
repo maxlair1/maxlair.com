@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styles from './Button.module.css';
-import { SquareDashed } from 'lucide-react';
 import * as Utilities from '@lib/utilities';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -16,6 +15,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   hugContent?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  color?: 'primary' | 'secondary' | 'transparent';
 }
 
 export default function Button({
@@ -31,12 +31,14 @@ export default function Button({
   disabled,
   hugContent = false,
   onClick,
+  color = 'primary',
   ...props
 }: ButtonProps) {
 
   const buttonClasses = Utilities.classNames(
     styles.button,
     styles[size],
+    styles[color],
     inline && styles.inline,
     hugContent && styles.hugContent,
     className
@@ -51,18 +53,19 @@ export default function Button({
         disabled={disabled || isLoading}
         aria-label={props['aria-label'] || (typeof (children || text) === 'string' ? (children || text) as string : 'Button')}
         tabIndex={0}
+        color=''
         onClick={onClick}
         {...props}
         >
         {/* Left Icon */}
         {before !== undefined ? (
-            <span className={styles.iconContainer}>
+            <p className={styles.iconContainer}>
                 {isLoading ? (
                     <div className={styles.spinner} />
                 ) : (
                     before
                 )}
-            </span>
+            </p>
         ): null}
 
         {/* Text */}

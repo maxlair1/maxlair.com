@@ -219,11 +219,9 @@ export default function Showcase() {
                 )}
               </div>
             </SwiperSlide>
-            
           ))}
         </Swiper> 
       </div>
-        <div>Test</div>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import ChangeThemeButton from "@root/components/ChangeThemeButton";
 import { ThemeScript } from "./lib/theme.provider";
 import { getInitialTheme } from "./lib/theme.server";
 import Providers from "@root/components/Providers";
+import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,18 +29,22 @@ export default async function RootLayout({
         <html lang="en" className={`${Fonts.hankenGrotesk.variable} ${Fonts.LibreBaskerville.variable} ${Fonts.recursive.variable}`}>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <body>
-            <main>
-              <header style={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                padding: 'var(--size-2)'
-              }}>
-                <ChangeThemeButton/>
+            <main className={styles.root}>
+              <header className={styles.header}>
+                <div className={styles.headerContent}>
+                  <ChangeThemeButton />
+                </div>
               </header>
-              
-              {children}
-              
-              <footer>maxlair</footer>
+
+              <div className={styles.content}>
+                {children}
+              </div>
+
+              <footer className={styles.footer}>
+                <div className={styles.footerContent}>
+                  <small>2026 © Max Lair</small>
+                </div>
+              </footer>
             </main>
           </body>
         </html>

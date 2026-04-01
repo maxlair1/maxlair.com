@@ -9,7 +9,7 @@ const tags = [
     {icon: <Gem />, body: 'text'}
 ]
 
-export default function ProjectsLayout({children}: {children: React.ReactElement}): React.ReactElement {
+export default function ProjectLayout({children}: {children: React.ReactNode}) {
     return (
         <>
             <header>
@@ -21,7 +21,7 @@ export default function ProjectsLayout({children}: {children: React.ReactElement
             </ol>
             {tags.map(tag => {
                 return (
-                    <li>
+                    <li key={tag.body}>
                         <Chip icon={tag.icon} body={tag.body}/>
                     </li>
                 )

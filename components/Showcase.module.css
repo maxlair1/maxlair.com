@@ -93,7 +93,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 48.35%, rgba(54, 57, 66, 0.60) 90.98%, #202125 100%);
+  background: linear-gradient(180deg, rgba(137, 142, 158, 0) 50%, rgba(54, 57, 66, 0.50) 80%, #202125 100%);
   background-blend-mode: plus-darker;
 }
 
@@ -108,15 +108,15 @@
   }
 
   .overlay {
-  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 28.35%, rgba(54, 57, 66, 0.70) 50.98%, #20212585 100%);
+  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 30%, rgba(54, 57, 66, 0.10) 40%, #202125 100%);
   }
 }
 
-.overlay::after {
+.overlay::before {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(1.671703815460205px);
+  backdrop-filter: blur(1.271703815460205px);
   mask: linear-gradient(transparent 20%, black 80%);
 }

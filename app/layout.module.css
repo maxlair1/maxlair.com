@@ -1,0 +1,38 @@
+/* /home/max/Code/maxlair.com/app/layout.module.css */
+.root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--size-2);
+}
+
+.headerContent {
+    max-width: 105ch;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+} 
+
+.content {
+    flex: 1;
+    width: 100%;
+    max-width: 105ch;
+    margin: 0 auto;
+}
+
+.footer {
+    margin-top: auto;
+    padding: var(--size-4) var(--size-2);
+    background-color: var(--surface);
+}
+
+.footerContent {
+    max-width: 105ch;
+    margin: 0 auto;
+}

@@ -73,7 +73,8 @@ export default function Home() {
           <section className={styles.editorials}>
             <aside className={styles.aside}>
               <header>
-                <h3>About me</h3>
+                <h2>About me</h2>
+                <br />
               </header>
               <div>
                 <Accordion title="Education and certifications">
@@ -101,50 +102,11 @@ export default function Home() {
             </aside>
             <main>
               <header>
-                <h3>Thoughts & projects</h3>
+                <h2>Thoughts & projects</h2>
+                <br />
               </header>
               <section className={styles.masonry}>
-                <Editorial src='https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' color="teal" title="Editorial Title" subtitle="Editorial Subtitle">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </Editorial>
-                <Editorial color="green" title="Editorial Title" subtitle="Editorial Subtitle">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </Editorial>
-                <Editorial color="maroon" title="Editorial Title" subtitle="Editorial Subtitle">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </Editorial>
-                <Editorial src='https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' color="teal" title="Editorial Title" subtitle="Editorial Subtitle">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </Editorial>
-                <Editorial color="green" title="Editorial Title" subtitle="Editorial Subtitle">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </Editorial>
-                <Editorial color="maroon" title="Editorial Title" subtitle="Editorial Subtitle">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </Editorial>
-                <Editorial src='https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' color="teal" title="Editorial Title" subtitle="Editorial Subtitle">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </Editorial>
-                <Editorial color="green" title="Editorial Title" subtitle="Editorial Subtitle">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </Editorial>
-                <Editorial color="maroon" title="Editorial Title" subtitle="Editorial Subtitle">
+                <Editorial src='/me.png' color="teal" title="Editorial Title" subtitle="Editorial Subtitle">
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   </p>

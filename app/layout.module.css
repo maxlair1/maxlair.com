@@ -31,6 +31,7 @@
     padding: var(--size-4) var(--size-2);
     background-color: var(--surface);
     margin: var(--size-2);
+    margin-top: 10rem;
     border-radius: var(--border-radius-lg);
 }
 

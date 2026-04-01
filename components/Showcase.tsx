@@ -15,57 +15,50 @@ import 'swiper/css/navigation';
 import styles from './Showcase.module.css';
 import Skeleton from '@components/Skeleton';
 import CircularProgress from './CircularProgress';
-import { ArrowRight, Play, Square } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Play, Square } from 'lucide-react';
 
 const slides = [
   {
-    id: 'mobile',
-    headline: 'Over 50% raise in layout design speed, with improved developer handoff',
-    project: 'US Army: ATIS Design System',
-    image: '/lb_show.png',   // Replace with your actual image
-    alt: 'Mobile view - ATIS Design System',
+    headline: 'Omni-channel AI interaction enables Property Owners to chat with Tenants across SMS, email, web, and mobile app',
+    project: 'Hominy AI',
+    image: '/projects/hominy-appearance_proj.png', 
+    alt: 'Hominy AI',
   },
   {
-    id: 'mobile',
-    headline: 'Over 50% raise in layout design speed, with improved developer handoff',
-    project: 'US Army: ATIS Design System',
-    image: 'https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',   // Replace with your actual image
-    alt: 'Mobile view - ATIS Design System',
+    headline: 'Coffee compendium in your pocket: Cafe-driven monetization model with unique features like Smart Parking',
+    project: 'Local Bean',
+    image: '/projects/lb_show.png', 
+    alt: 'Local Bean',
   },
   {
-    id: 'mobile',
     headline: 'Over 50% raise in layout design speed, with improved developer handoff',
     project: 'US Army: ATIS Design System',
-    image: 'https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',   // Replace with your actual image
-    alt: 'Mobile view - ATIS Design System',
+    image: '/projects/ATIS_proj.png', 
+    alt: 'ATIS Design System',
   },
   {
-    id: 'mobile',
-    headline: 'Over 50% raise in layout design speed, with improved developer handoff',
-    project: 'US Army: ATIS Design System',
-    image: 'https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',   // Replace with your actual image
-    alt: 'Mobile view - ATIS Design System',
+    headline: '500% faster FAA airspace approval for first-responder drone pilots, with enhanced touchless SGI waiver submission',
+    project: 'Faaviator',
+    image: '/projects/faa_proj.png', 
+    alt: 'Faaviator',
   },
   {
-    id: 'mobile',
-    headline: 'Over 50% raise in layout design speed, with improved developer handoff',
-    project: 'US Army: ATIS Design System',
-    image: 'https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',   // Replace with your actual image
-    alt: 'Mobile view - ATIS Design System',
+    headline: 'Cross-platform, documentation-fueled project mangement tool for teams of any size',
+    project: 'Grokadoc',
+    image: '/projects/grok_proj.png', 
+    alt: 'Grokadoc',
   },
   {
-    id: 'mobile',
-    headline: 'Over 50% raise in layout design speed, with improved developer handoff',
-    project: 'US Army: ATIS Design System',
-    image: 'https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',   // Replace with your actual image
-    alt: 'Mobile view - ATIS Design System',
+    headline: 'Using reward systems to gamify traditional Pomodoro focus technique',
+    project: 'Dedoro',
+    image: '/projects/dedoro_proj.png', 
+    alt: 'Dedoro',
   },
   {
-    id: 'mobile',
-    headline: 'Over 50% raise in layout design speed, with improved developer handoff',
-    project: 'US Army: ATIS Design System',
-    image: 'https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',   // Replace with your actual image
-    alt: 'Mobile view - ATIS Design System',
+    headline: 'Gamifying science-backed and heart-centric exercise: Exploring unique controls for kinetic environments (like audio and haptic queues)',
+    project: 'HeartHero Fitness',
+    image: '/projects/hearthero_proj.png', 
+    alt: 'HeartHero Fitness',
   },
 ];
 
@@ -118,6 +111,11 @@ export default function Showcase() {
   function handleAdvanceSlide() {
     if (!swiperRef.current) return;
     swiperRef.current.slideNext();
+  }
+
+  function handlePreviousSlide() {
+    if (!swiperRef.current) return;
+    swiperRef.current.slidePrev();
   }
 
   if (!isReady) {
@@ -191,6 +189,9 @@ export default function Showcase() {
                     <h2 className={styles.headline}>{slide.headline}</h2>
                   </span>
                   <div className={styles.controls} role='swiper control'>
+                    <button onClick={handlePreviousSlide} className={styles.advanceButton}>
+                      <ArrowLeft size={24} className={styles.buttonIcon} color='var(--white)'/>
+                    </button>
                     <button onClick={handlePlayPause} onMouseEnter={() => setIsHoveringDial(true)} onMouseLeave={() => setIsHoveringDial(false)} className={styles.pauseButton}>
                       <CircularProgress size={48} thickness={3} value={autoplayPercentageLeft}>
                         { isHoveringDial || isPaused ? (!isPaused ? <Square color='var(--white)' /> : <Play color='var(--white)' />)

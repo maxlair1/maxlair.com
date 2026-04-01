@@ -105,10 +105,11 @@
 
   .headline {
     font-size: var(--font-size-subtitle);
+    max-width: unset;
   }
 
   .overlay {
-  background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 30%, rgba(54, 57, 66, 0.10) 40%, #202125 100%);
+    background: linear-gradient(180deg, rgba(137, 142, 158, 0.00) 10%, rgba(54, 57, 66, 0.25) 30%, #202125 100%);
   }
 }
 

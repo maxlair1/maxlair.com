@@ -73,9 +73,6 @@
 
 .aside {
     flex: 0 0 320px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-4);
     border-right: dashed 2px var(--divider);
     padding-right: var(--size-4);
     

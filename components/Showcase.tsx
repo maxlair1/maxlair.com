@@ -67,20 +67,6 @@ const slides = [
     image: 'https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',   // Replace with your actual image
     alt: 'Mobile view - ATIS Design System',
   },
-  {
-    id: 'mobile',
-    headline: 'Over 50% raise in layout design speed, with improved developer handoff',
-    project: 'US Army: ATIS Design System',
-    image: 'https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',   // Replace with your actual image
-    alt: 'Mobile view - ATIS Design System',
-  },
-  {
-    id: 'mobile',
-    headline: 'Over 50% raise in layout design speed, with improved developer handoff',
-    project: 'US Army: ATIS Design System',
-    image: 'https://images.unsplash.com/photo-1745613998978-fae3bf6308fa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',   // Replace with your actual image
-    alt: 'Mobile view - ATIS Design System',
-  }
 ];
 
 export default function Showcase() {

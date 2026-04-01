@@ -1,6 +1,7 @@
 .accordion {
   width: 100%;
   overflow: hidden;
+  margin-bottom: var(--size-2);
 }
 
 /* Header */
@@ -15,6 +16,7 @@
   background-color: var(--surface);
   border-radius: 0.25em;
   padding-inline: 0.5em;
+  margin: 0;
 }
 
 .header:hover {

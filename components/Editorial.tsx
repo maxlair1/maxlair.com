@@ -1,6 +1,7 @@
+'use client';
 import * as React from 'react';
 
-import styles from './Slip.module.css';
+import styles from './Editorial.module.css';
 
 import Image from 'next/image';
 // import Divider from '../Divider';
@@ -8,8 +9,8 @@ import * as Utilities from '@/app/lib/utilities';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 
-type SlipProps = {
-    color: 'green' | 'teal' | 'maroon' | 'daybreak';
+type EditorialProps = {
+    color: 'green' | 'teal' | 'maroon' | 'orange';
     title: string;
     subtitle: string;
     children: React.ReactNode;
@@ -26,13 +27,12 @@ type SlipProps = {
 
 const getColorStyles = (accent: string): React.CSSProperties => {
     return {
-        '--slip-border': `var(--color-${accent}-80-3)`,
-        '--slip-bg': `var(--color-${accent})`,
-        '--slip-title': `var(--color-${accent}-100)`
+        '--editorial-bg': `var(--${accent}-alpha-03)`,
+        '--editorial-title': `var(--text-secondary)`
     } as React.CSSProperties
 }
 
-export default function Slip({color, src = '/', title, subtitle, children, before, imageMargin = false, href = '#', footer = null, style = undefined, ...rest}: SlipProps):React.ReactElement {
+export default function Editorial({color, src, title, subtitle, children, before, imageMargin = false, href = '#', footer = null, style = undefined, ...rest}: EditorialProps):React.ReactElement {
     return (
     <div className={Utilities.classNames(styles.root, styles[color])} style={{...style, ...getColorStyles(color)}} {...rest}>
         <header>
@@ -40,7 +40,7 @@ export default function Slip({color, src = '/', title, subtitle, children, befor
             {src && (
                 <div className={imageMargin ? styles.imageMargin : ''}>
                     <figure>
-                        <Image src={src} fill={true} alt="bean_test" style={{objectFit: 'cover'}} />
+                        <Image src={src} fill={true} alt={`Image for ${title}`} style={{objectFit: 'cover'}} />
                     </figure>
                 </div>
             )}
@@ -49,14 +49,14 @@ export default function Slip({color, src = '/', title, subtitle, children, befor
                 <h3>
                     {title}
                 </h3>
-                <h4>
+                <small>
                     {subtitle}
-                </h4>
+                </small>
             </div>
             {/* <Divider style={{borderColor: 'var(--color-teal-80)'}} type='DOTTED' /> */}
         </header>
 
-        <div className={styles.slipBody}>
+        <div className={styles.body}>
             {children}
         </div>
             

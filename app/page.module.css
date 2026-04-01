@@ -1,11 +1,7 @@
 .root  {
     flex-direction: column;
-    gap: 0.5em;
     flex: 0 0 auto;
-    margin: 1em;
-    & > * {
-        margin-bottom: var(--size-4);
-    }
+    margin: var(--size-4);
 }
 
 .mug {
@@ -31,6 +27,12 @@
     filter: blur(4px);
 }
 
+.hero {
+    max-width: 105ch;
+    margin: 0 auto;
+    min-height: 75vh;
+}
+
 .header {
     display: flex;
     max-width: var(--size-8);
@@ -48,7 +50,7 @@
     }
 }
 
-.root section {
+.showcase {
     margin-block: var(--size-4);
 }
 
@@ -56,10 +58,60 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-block: var(--size-4);
 }
+
 .socials {
     display: flex;
     gap: var(--size-2);
+}
 
+.editorials {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-4);
+}
+
+.aside {
+    flex: 0 0 320px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-4);
+    border-right: dashed 2px var(--divider);
+    padding-right: var(--size-4);
+    
+}
+
+.editorials main {
+    flex: 1;
+    height: fit-content;
+}
+
+.masonry {
+  column-count: 3;
+  column-gap: var(--size-2);
+  column-width: 250px;
+  column-fill: balance;
+}
+
+@media screen and (max-width: 1024px) {
+    .editorials {
+        flex-direction: column;
+    }
+
+    .aside {
+        flex: 0;
+        border-right: none;
+        border-top: dashed 2px var(--divider);
+        padding-right: 0;
+        padding-top: var(--size-4);
+    }
+}
+
+@media screen and (max-width: 786px) {
+
+
+    .masonry {
+        column-count: 2;
+        column-width: auto;
+    }
 }

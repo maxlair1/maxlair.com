@@ -27,7 +27,7 @@ const Accordion: React.FC<AccordionProps> = ({
   return (
     <div className={styles.accordion}>
       {/* Header */}
-      <Row 
+      <header 
         className={Utilities.classNames(styles.header, isOpen && styles.open)}
         onClick={toggle}
         tabIndex={0}
@@ -38,7 +38,7 @@ const Accordion: React.FC<AccordionProps> = ({
         <ChevronDown 
           className={Utilities.classNames(styles.icon, isOpen && styles.iconOpen)} 
         />
-      </Row>
+      </header>
 
       {/* Content */}
       {isOpen && (

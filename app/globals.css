@@ -82,6 +82,7 @@
     --thought-card-text: var(--black-alpha-06);
     --foreground: var(--neutral-950);
     --text: var(--black);
+    --text-seconday: var(--black-alpha-07);
     --text-subdued: var(--black-alpha-06);
     --button-background: var(--neutral-950);
     --button-foreground: var(--white);
@@ -100,6 +101,7 @@
     --thought-card-foreground: var(--white-alpha-08);
     --foreground: var(--neutral-50);
     --text: var(--white);
+    --text-seconday: var(--white-alpha-07);
     --text-subdued: var(--white-alpha-06);
     --button-background: var(--neutral-50);
     --button-foreground: var(--black);
@@ -151,11 +153,24 @@
   --font-size-body: calc(var(--root-font-size) * 1);
   --font-size-subtitle: calc(var(--root-font-size) * 1.25);
   --font-size-title: calc(var(--root-font-size) * 1.5);
-  --font-size-section-heading: calc(var(--root-font-size) * 2);
+  --font-size-title-xl: calc(var(--root-font-size) * 2);
   --optimal-line-length: 70ch;
 
-  h1,h2 {
+  h1,h2,h4 {
     font-family: var(--font-family-serif);
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: var(--font-size-section-title)
+  }
+
+  h4 {
+    color: var(--text-subdued);
+  }
+
+  h1 {
+    font-size: var(--font-size-title-xl);
   }
   
   small {
@@ -211,6 +226,8 @@ body {
   background: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  text-wrap: balance;
 }
 
 footer {

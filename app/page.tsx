@@ -6,7 +6,6 @@ import Button from "@components/Button";
 import Accordion from "@components/Accordion";
 import Skeleton from "@components/Skeleton";
 import Showcase from "@components/Showcase";
-import CircularProgress from "@components/CircularProgress";
 import Logo from '@root/components/Logo';
 
 export default function Home() {
@@ -15,6 +14,9 @@ export default function Home() {
         <div className={styles.root}>
           <header className={styles.header}>
             <Logo type='icon'></Logo>
+            {/* <div className={styles.mug}>
+              <img src="/coffee_mug_2.png" width={64} height={64}/>
+            </div> */}
             <span className={styles.heroText}>Systems-driven product designer and web developer who loves building software humans use.</span>
           </header>
 

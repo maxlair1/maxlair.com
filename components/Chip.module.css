@@ -1,0 +1,11 @@
+.root {
+    display: inline-flex;
+    padding: var(--size-1) var(--size-2);
+    gap: var(--size-2);
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}

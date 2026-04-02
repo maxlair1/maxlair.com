@@ -55,7 +55,7 @@ const slides = [
     alt: 'Dedoro',
   },
   {
-    headline: 'Gamifying science-backed and heart-centric exercise: Exploring unique controls for kinetic environments (like audio and haptic queues)',
+    headline: 'Gamifying science-backed and heart focused exercise: Exploring unique controls for kinetic environments (like audio and haptic queues)',
     project: 'HeartHero Fitness',
     image: '/projects/hearthero_proj.png', 
     alt: 'HeartHero Fitness',
@@ -142,7 +142,7 @@ export default function Showcase() {
           spaceBetween={40}
           loop={true}
           autoplay={{
-            delay: 5000,
+            delay: 7000,
             disableOnInteraction: false,
             waitForTransition: true,
           }}

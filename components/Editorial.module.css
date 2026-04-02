@@ -5,12 +5,15 @@
     height: 100%;
     background-color: var(--editorial-bg);
     color: var(--text);
-    box-shadow: var(--shadow-elevation-1);
+    /* box-shadow: var(--shadow-elevation-1); */
     border-radius: var(--border-radius-md);
     border: solid 1px var(--border);
     overflow: hidden;
     margin-bottom: 0.5em;
-    break-inside: avoid;
+    break-inside: avoid-column;
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -webkit-region-break-inside: avoid;
     
     figure {
         position: relative;
@@ -46,6 +49,9 @@
 
 }
 @media screen and (max-width: 768px) {
+    .root figure {
+        height: 150px;
+    }
     .root {
         --p: var(--size-4) var(--size-3);
     }

@@ -14,8 +14,8 @@
   transition: all 100ms ease-in-out;
   color: var(--foreground);
   background-color: var(--surface);
-  border-radius: 0.25em;
-  padding-inline: 0.5em;
+  border-radius: var(--border-radius-sm);
+  padding: var(--size-2) var(--size-3);
   margin: 0;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .title {
-  font-weight: 600; /* semibold */
+  font-weight: 500; /* /* semibold */
   flex: 1;
 }
 

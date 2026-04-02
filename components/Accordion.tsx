@@ -34,7 +34,7 @@ const Accordion: React.FC<AccordionProps> = ({
         role="button"
         aria-expanded={isOpen}
       >
-        <span className={styles.title}>{title}</span>
+        <p className={styles.title}>{title}</p>
         <ChevronDown 
           className={Utilities.classNames(styles.icon, isOpen && styles.iconOpen)} 
         />
